@@ -8,6 +8,8 @@ exports.up = knex =>
     table.string("username").notNullable().unique();
     table.string("password_hash").notNullable();
     table.timestamps(true, true);
+    table.string("location");
+    table.integer("coverage_score");
   });
 
 /**
