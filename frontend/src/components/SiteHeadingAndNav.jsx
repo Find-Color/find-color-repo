@@ -9,7 +9,7 @@ export default function SiteHeadingAndNav() {
     <a id='logo' href='/'>Find Color</a>
     <nav>
       <ul>
-        <li><NavLink to='/'>Home World</NavLink></li>
+        <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/users' end={true}>Users</NavLink></li>
         <li><NavLink to='/posts' end={true}>Missing People</NavLink></li>
         {
