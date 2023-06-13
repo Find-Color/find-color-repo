@@ -1,8 +1,6 @@
-// Update with your config settings.
+require("dotenv").config();
 const path = require("path");
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
+
 module.exports = {
   development: {
     client: "pg",
@@ -15,38 +13,20 @@ module.exports = {
     },
     migrations: {
       directory: path.join(__dirname, "src", "db", "migrations"),
+      stub: path.join(__dirname, "migration-stub.js"),
+    },
+    seeds: {
+      directory: path.join(__dirname, "src", "db", "seeds"),
     },
   },
-
-  staging: {
-    client: "postgresql",
+  test: {
+    client: "pg",
     connection: {
-      database: "my_db",
-      user: "username",
-      password: "password",
-    },
-    pool: {
-      min: 2,
-      max: 10,
-    },
-    migrations: {
-      tableName: "knex_migrations",
-    },
-  },
-
-  production: {
-    client: "postgresql",
-    connection: {
-      database: "my_db",
-      user: "username",
-      password: "password",
-    },
-    pool: {
-      min: 2,
-      max: 10,
-    },
-    migrations: {
-      tableName: "knex_migrations",
+      host: process.env.PG_HOST || "127.0.0.1",
+      port: process.env.PG_PORT || 5432,
+      user: process.env.PG_USER || "postgres",
+      password: process.env.PG_PASS || "postgres",
+      database: process.env.database || "find-color",
     },
   },
 };
