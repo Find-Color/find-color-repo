@@ -14,6 +14,11 @@ exports.up = knex => {
     table.string("height");
     table.string("eye-color");
     table.string("weight");
+    table.string("race");
+    table.string("ethnicity");
+    table.string("gender");
+    table.integer("age");
+    table.string("image");
     table.integer("user_id").references("user_id").inTable("users");
   });
 };
