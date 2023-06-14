@@ -1,13 +1,13 @@
 const create = require("./create");
 const find = require("./find");
-const listAll = require("./listAll");
+const list = require("./listAll");
 const listFromUser = require("./listFromUser");
 const deletePost = require("./deletePost");
 
 module.exports = {
   create,
   find,
-  listAll,
+  list,
   listFromUser,
   deletePost,
 };
