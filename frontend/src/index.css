@@ -3,7 +3,8 @@ body {
   margin: 0;
 }
 
-input, label {
+input,
+label {
   display: block;
 }
 
@@ -23,7 +24,7 @@ header {
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
-  color: #FFF;
+  color: #fff;
 }
 
 nav ul {
@@ -36,19 +37,40 @@ nav ul {
 
 nav a {
   display: block;
-  color: #FFF;
+  color: #fff;
 }
 
 form {
   padding: 1rem;
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
   width: 15rem;
   margin: 1rem auto;
 }
 
 /* automatically added by NavLink component */
 .active {
-  color: #EEBC32;
+  color: #eebc32;
   font-weight: bold;
   font-style: italic;
+}
+
+/* missing people card css */
+.missing-people-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.missing-people-container .card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-basis: 30%; /* Adjust the width as needed */
+  margin: 10px;
+}
+
+Button {
+  width: 20%;
+  height: 1em;
+
 }

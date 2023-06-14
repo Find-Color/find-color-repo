@@ -1,15 +1,10 @@
 import MissingPersonCard from "../components/missingPersonCard";
-
+import MissingPeopleList from "../components/MissingPeopleList";
 
 export default function Feed() {
   return (
     <>
-    <MissingPersonCard />
-      {/* <Nav />
-      <Title />
-      <ReportMissingButton />
       <MissingPeopleList />
-      <Footer /> */}
     </>
   );
 }
