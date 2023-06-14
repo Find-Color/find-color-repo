@@ -9,10 +9,10 @@ exports.up = knex => {
     table.string("location");
     table.string("status");
     table.date("date_reported");
-    table.timestamp("created_at");
+    table.timestamps(true, true);
     table.string("hair");
     table.string("height");
-    table.string("eye-color");
+    table.string("eye_color");
     table.string("weight");
     table.string("race");
     table.string("ethnicity");
@@ -21,7 +21,7 @@ exports.up = knex => {
     table.string("image");
     table.string("description_text");
     table.string("contact_info");
-    table.integer("user_id").references("user_id").inTable("users");
+    table.integer("user_id"); //.references("user_id").inTable("users");
   });
 };
 
@@ -29,4 +29,4 @@ exports.up = knex => {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.down = knex => knex.schema.dropTable("posts");
+exports.down = knex => knex.schema.dropTableIfExists("posts");
