@@ -31,7 +31,7 @@ export default function App() {
         <Route path='/users/:id' element={<UserPage />} />
         <Route path='/posts' element={<Feed />} />
         <Route path='/post/:id' element={<MissingPerson />} />
-        <Route path='/missing-person' element={<MissingPersonForm />} />
+        <Route path='/missing_person' element={<MissingPersonForm />} />
 
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
