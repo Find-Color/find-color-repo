@@ -11,6 +11,7 @@ import UsersPage from './pages/Users';
 import UserPage from './pages/User';
 import MissingPerson from './pages/MissingPerson';
 import MissingPersonForm from './pages/MissingPersonForm';
+import MissingPersonUpdateForm from './pages/MissingPersonUpdateForm';
 import Feed from './pages/Feed';
 
 
@@ -32,7 +33,7 @@ export default function App() {
         <Route path='/posts' element={<Feed />} />
         <Route path='/post/:id' element={<MissingPerson />} />
         <Route path='/missing_person' element={<MissingPersonForm />} />
-
+        <Route path='/missing_person_update/:id' element={<MissingPersonUpdateForm />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </main>
