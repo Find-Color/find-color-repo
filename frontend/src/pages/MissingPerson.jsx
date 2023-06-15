@@ -1,21 +1,27 @@
 import { useState, useEffect } from "react";
 import { getPost } from "../adapters/post-adapter";
 import { useParams } from "react-router-dom";
+// import UserContext from "./contexts/current-user-context";
+// import { checkForLoggedInUser } from "./adapters/auth-adapter";
 
 export default function MissingPerson() {
   const { id } = useParams();
 
   const [missing, setMissing] = useState(null);
+  const user = useContext(UserContext);
   useEffect(() => {
-    getPost(id).then(res => setMissing(res[0]));
+    getPost(id).then((res) => setMissing(res[0]));
   }, [id]);
 
   console.log(missing);
 
-  if (!missing) return <div>Loading...</div>
+  if (!missing) return <div>Loading...</div>;
+  const showEditButton = checkForLoggedInUser(user);
 
   return (
     <>
+      {showEditButton && <button>Edit</button>}
+
       <h2>Status: {missing.status}</h2>
       <h3>Name: {missing.name}</h3>
       <h5>Age: {missing.age}</h5>
