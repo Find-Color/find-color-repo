@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
@@ -9,54 +9,28 @@ const MissingPersonUpdateForm = () => {
   const [missing, setMissing] = useState("");
 
   // Define state variables to store form input values
-  const [name, setName] = useState(null);
+  const [name, setName] = useState("");
   const [location, setLocation] = useState("");
-  const [status, setStatus] = useState(null);
-  const [date_reported, setDateReported] = useState(null);
-  const [hair, setHair] = useState(null);
-  const [height, setHeight] = useState(null);
-  const [eye_color, setEyeColor] = useState(null);
-  const [weight, setWeight] = useState(null);
-  const [race, setRace] = useState(null);
-  const [ethnicity, setEthnicity] = useState(null);
-  const [gender, setGender] = useState(null);
-  const [age, setAge] = useState(null);
-  const [image, setImage] = useState(null);
-  const [description_text, setDescription] = useState(null);
-  const [contact_info, setContactInfo] = useState(null);
-
-  useEffect(() => {
-    getPost(id).then((res) => setMissing(res[0]));
-  }, []);
-
-  useEffect(() => {
-    if (missing) {
-      setName(missing.name);
-      setLocation(missing.location);
-      setStatus(missing.status);
-      setDateReported(missing.date_reported);
-      setHair(missing.hair);
-      setHeight(missing.height);
-      setEyeColor(missing.eye_color);
-      setWeight(missing.weight);
-      setRace(missing.race);
-      setEthnicity(missing.ethnicity);
-      setGender(missing.gender);
-      setAge(missing.age);
-      setImage(missing.image);
-      setDescription(missing.description_text);
-      setContactInfo(missing.contact_info);
-    }
-  }, [missing]);
-
-  console.log(missing?.name);
+  const [status, setStatus] = useState("");
+  const [date_reported, setDateReported] = useState("");
+  const [hair, setHair] = useState("");
+  const [height, setHeight] = useState("");
+  const [eye_color, setEyeColor] = useState("");
+  const [weight, setWeight] = useState("");
+  const [race, setRace] = useState("");
+  const [ethnicity, setEthnicity] = useState("");
+  const [gender, setGender] = useState("");
+  const [age, setAge] = useState("");
+  const [image, setImage] = useState("");
+  const [description_text, setDescription] = useState("");
+  const [contact_info, setContactInfo] = useState("");
 
   //Define context
   const { currentUser } = useContext(CurrentUserContext);
   //Define navigate (for redirecting)
   const navigate = useNavigate();
   // Handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     // Access the form data here and perform desired actions
     // e.g., send it to an API, update state, etc.
@@ -78,11 +52,11 @@ const MissingPersonUpdateForm = () => {
       contact_info: contact_info,
       user_id: currentUser.id,
     };
-    const result = await updatePost(id, formData);
+    const result = await createPost(formData);
     if (result[0] == null) {
       alert(result[1]);
     } else {
-      navigate(`/post/${id}`, { replace: true });
+      navigate("/posts", { replace: true });
     }
   };
 
