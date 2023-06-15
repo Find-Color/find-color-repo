@@ -2,6 +2,7 @@ const create = require("./create");
 const find = require("./find");
 const list = require("./listAll");
 const listFromUser = require("./listFromUser");
+const updatePost = require("./update");
 const deletePost = require("./deletePost");
 
 module.exports = {
@@ -9,5 +10,6 @@ module.exports = {
   find,
   list,
   listFromUser,
+  updatePost,
   deletePost,
 };
