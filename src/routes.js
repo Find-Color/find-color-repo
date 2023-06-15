@@ -22,10 +22,11 @@ Router.get("/logged-in-secret", checkAuthentication, (req, res) => {
 });
 
 //POSTS
+Router.post("/post", postController.create);
 Router.get("/posts", postController.list);
 Router.get("/users/:id/posts", postController.listFromUser);
 Router.get("/post/:id", postController.find);
-Router.post("/post", postController.create);
+Router.patch("/post/:id", postController.updatePost);
 Router.delete("/post/:id", postController.deletePost);
 
 module.exports = Router;
