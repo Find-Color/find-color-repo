@@ -3,33 +3,33 @@ import { getPost } from "../adapters/post-adapter";
 import { useParams } from "react-router-dom";
 
 export default function MissingPerson() {
-  let { id } = useParams();
-  console.log(id);
-  const [missing, setMissing] = useState([]);
+  const { id } = useParams();
+
+  const [missing, setMissing] = useState(null);
   useEffect(() => {
-    getPost(id).then(setMissing);
-  }, []);
+    getPost(id).then(res => setMissing(res[0]));
+  }, [id]);
+
   console.log(missing);
-  let [person, ignore] = missing;
 
-
+  if (!missing) return <div>Loading...</div>
 
   return (
     <>
-      {/* <h2>Status: {person.status}</h2>
-      <h3>Name: {person.name}</h3>
-      <h5>Age: {person.age}</h5>
-      <h5>Hair: {person.hair}</h5>
-      <h5>Height: {person.height}</h5>
-      <h5>Eye Color: {person.eye_color}</h5>
-      <h5>Weight: {person.weight}</h5>
-      <h6>Nationality: {person.ethnicity}</h6>
-      <h6>Race: {person.race}</h6>
-      <h6>Gender: {person.gender}</h6>
-      <img src={person.image} alt="" />
-      <h6>About Them: {person.description_text}</h6>
-      <h6>Date Reported: {person.date_reported}</h6>
-      <p>Contact Info: {person.contact_info}</p> */}
+      <h2>Status: {missing.status}</h2>
+      <h3>Name: {missing.name}</h3>
+      <h5>Age: {missing.age}</h5>
+      <h5>Hair: {missing.hair}</h5>
+      <h5>Height: {missing.height}</h5>
+      <h5>Eye Color: {missing.eye_color}</h5>
+      <h5>Weight: {missing.weight}</h5>
+      <h6>Nationality: {missing.ethnicity}</h6>
+      <h6>Race: {missing.race}</h6>
+      <h6>Gender: {missing.gender}</h6>
+      <img src={missing.image} alt="" />
+      <h6>About Them: {missing.description_text}</h6>
+      <h6>Date Reported: {missing.date_reported}</h6>
+      <p>Contact Info: {missing.contact_info}</p>
     </>
   );
 }
