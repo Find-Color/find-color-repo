@@ -147,6 +147,56 @@ class Post {
   }
 
   //UPDATE
+  static async update(post_id, newEntries) {
+    try {
+      const postUpdate = await knex.raw(
+        `
+          UPDATE posts
+          SET name = ?, 
+            location = ?, 
+            status = ?, 
+            date_reported = ?, 
+            hair = ?, 
+            height = ?, 
+            eye_color = ?, 
+            weight = ?, 
+            race = ?, 
+            ethnicity = ?, 
+            gender = ?, 
+            age = ?, 
+            image = ?, 
+            description_text = ?, 
+            contact_info = ? 
+          WHERE post_id = ?
+          RETURNING *;
+      `,
+        [
+          newEntries.name,
+          newEntries.location,
+          newEntries.status,
+          newEntries.date_reported,
+          newEntries.hair,
+          newEntries.height,
+          newEntries.eye_color,
+          newEntries.weight,
+          newEntries.race,
+          newEntries.ethnicity,
+          newEntries.gender,
+          newEntries.age,
+          newEntries.image,
+          newEntries.description_text,
+          newEntries.contact_info,
+          post_id,
+        ]
+      );
+      const updatedPost = postUpdate.rows[0];
+      return updatedPost;
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }
+
   //DELETE
   static async deletePost(post_id) {
     try {
