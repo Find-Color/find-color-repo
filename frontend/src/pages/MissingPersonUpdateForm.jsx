@@ -1,19 +1,22 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { getPost } from "../adapters/post-adapter";
 import { updatePost } from "../adapters/post-adapter";
-import { deleteOptions, fetchHandler } from "../utils";
 
 const MissingPersonUpdateForm = () => {
-  const { id } = useParams();
-  console.log(id);
-  const [missing, setMissing] = useState("");
-  console.log(missing);
+    const { id } = useParams();
+
+    const [missing, setMissing] = useState(null);
+    useEffect(() => {
+      getPost(id).then(res => setMissing(res[0]));
+    }, [id]);
+  
+    console.log(missing);
 
   // Define state variables to store form input values
-  const [name, setName] = useState(null);
+  const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [status, setStatus] = useState("");
   const [date_reported, setDateReported] = useState("");
@@ -29,38 +32,12 @@ const MissingPersonUpdateForm = () => {
   const [description_text, setDescription] = useState("");
   const [contact_info, setContactInfo] = useState("");
 
-  useEffect(() => {
-    getPost(id).then((res) => setMissing(res[0]));
-  }, []);
-
-  useEffect(() => {
-    if (missing) {
-      setName(missing.name);
-      setLocation(missing.location);
-      setStatus(missing.status);
-      setDateReported(missing.date_reported);
-      setHair(missing.hair);
-      setHeight(missing.height);
-      setEyeColor(missing.eye_color);
-      setWeight(missing.weight);
-      setRace(missing.race);
-      setEthnicity(missing.ethnicity);
-      setGender(missing.gender);
-      setAge(missing.age);
-      setImage(missing.image);
-      setDescription(missing.description_text);
-      setContactInfo(missing.contact_info);
-    }
-  }, [missing]);
-
-  console.log(missing?.name);
-
   //Define context
   const { currentUser } = useContext(CurrentUserContext);
   //Define navigate (for redirecting)
   const navigate = useNavigate();
   // Handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     // Access the form data here and perform desired actions
     // e.g., send it to an API, update state, etc.
@@ -82,11 +59,11 @@ const MissingPersonUpdateForm = () => {
       contact_info: contact_info,
       user_id: currentUser.id,
     };
-    const result = await updatePost(id, formData);
+    const result = await createPost(formData);
     if (result[0] == null) {
       alert(result[1]);
     } else {
-      navigate(`/post/${id}`, { replace: true });
+      navigate("/posts", { replace: true });
     }
   };
 
