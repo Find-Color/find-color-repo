@@ -54,6 +54,11 @@ form {
   font-style: italic;
 }
 
+.seeMoreButton:hover {
+  color: rgb(150, 100, 13);
+  cursor: pointer;
+}
+
 /* missing people card css */
 .missing-people-container {
   display: flex;

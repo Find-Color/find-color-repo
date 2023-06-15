@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 export default function MissingPeopleList() {
   const [posts, setPosts] = useState([]);
+  console.log(posts)
 
   useEffect(() => {
     getAllPosts().then(setPosts);
