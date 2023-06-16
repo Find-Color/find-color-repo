@@ -1,35 +1,45 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getPost } from "../adapters/post-adapter";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+// import { UserContext } from "./contexts/current-user-context";
+import { checkForLoggedInUser } from "../adapters/auth-adapter";
 
 export default function MissingPerson() {
-  let { id } = useParams();
-  console.log(id);
-  const [missing, setMissing] = useState([]);
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [missing, setMissing] = useState("");
+  const [loggedIn, setLoggedIn] = useState(null);
+
   useEffect(() => {
-    getPost(id).then(setMissing);
-  }, []);
-  console.log(missing);
-  let [person, ignore] = missing;
+    getPost(id).then((res) => setMissing(res[0]));
+    checkForLoggedInUser().then((data) => {
+      setLoggedIn(data);
+    });
+  }, [id]);
+  function handleClick() {
+    navigate(`/missing_person_update/${id}`);
+  }
 
-
+  if (!missing) return <div>Loading...</div>;
 
   return (
     <>
-      {/* <h2>Status: {person.status}</h2>
-      <h3>Name: {person.name}</h3>
-      <h5>Age: {person.age}</h5>
-      <h5>Hair: {person.hair}</h5>
-      <h5>Height: {person.height}</h5>
-      <h5>Eye Color: {person.eye_color}</h5>
-      <h5>Weight: {person.weight}</h5>
-      <h6>Nationality: {person.ethnicity}</h6>
-      <h6>Race: {person.race}</h6>
-      <h6>Gender: {person.gender}</h6>
-      <img src={person.image} alt="" />
-      <h6>About Them: {person.description_text}</h6>
-      <h6>Date Reported: {person.date_reported}</h6>
-      <p>Contact Info: {person.contact_info}</p> */}
+      {!loggedIn ? <></> : <button onClick={handleClick}>Edit Form</button>}
+      <h2>Status: {missing.status}</h2>
+      <h6>Last Seen in: {missing.location}</h6>
+      <h3>Name: {missing.name}</h3>
+      <h5>Age: {missing.age}</h5>
+      <h5>Hair: {missing.hair}</h5>
+      <h5>Height: {missing.height}</h5>
+      <h5>Eye Color: {missing.eye_color}</h5>
+      <h5>Weight: {missing.weight}</h5>
+      <h6>Nationality: {missing.ethnicity}</h6>
+      <h6>Race: {missing.race}</h6>
+      <h6>Gender: {missing.gender}</h6>
+      <img src={missing.image} alt="" />
+      <h6>About Them: {missing.description_text}</h6>
+      <h6>Date Reported: {missing.date_reported}</h6>
+      <p>Contact Info: {missing.contact_info}</p>
     </>
   );
 }
