@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getPost } from "../adapters/post-adapter";
 import { useParams, useNavigate } from "react-router-dom";
 // import { UserContext } from "./contexts/current-user-context";

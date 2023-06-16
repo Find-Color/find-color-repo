@@ -111,3 +111,6 @@ color: whitesmoke;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+.updateFormTitle{
+  text-align: center;
+}
