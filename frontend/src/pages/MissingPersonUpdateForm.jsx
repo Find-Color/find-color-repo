@@ -3,13 +3,14 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { getPost } from "../adapters/post-adapter";
+import { updatePost } from "../adapters/post-adapter";
 
 const MissingPersonUpdateForm = () => {
   const { id } = useParams();
   const [missing, setMissing] = useState("");
 
   // Define state variables to store form input values
-  const [name, setName] = useState("");
+  const [name, setName] = useState(null);
   const [location, setLocation] = useState("");
   const [status, setStatus] = useState("");
   const [date_reported, setDateReported] = useState("");
@@ -52,11 +53,11 @@ const MissingPersonUpdateForm = () => {
       contact_info: contact_info,
       user_id: currentUser.id,
     };
-    const result = await createPost(formData);
+    const result = await updatePost(id, formData);
     if (result[0] == null) {
       alert(result[1]);
     } else {
-      navigate("/posts", { replace: true });
+      navigate(`/post/${id}`, { replace: true });
     }
   };
 
