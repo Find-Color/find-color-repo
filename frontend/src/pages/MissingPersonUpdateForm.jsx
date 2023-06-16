@@ -1,16 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { createPost } from "../adapters/post-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
 import { getPost } from "../adapters/post-adapter";
 import { updatePost } from "../adapters/post-adapter";
 
 const MissingPersonUpdateForm = () => {
   const { id } = useParams();
-  console.log(id);
   const [missing, setMissing] = useState("");
-  console.log(missing);
 
   // Define state variables to store form input values
   const [name, setName] = useState(null);
