@@ -80,12 +80,31 @@ Button {
 
 }
 
+/* Footer css */
+
 #footer {
 height: 330px;
 background-color: #000;
 display: grid;
 grid-template-columns: 1fr 1fr;
 color: whitesmoke;
+gap: 15%;
+
+position: relative;
+}
+
+
+#footer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: whitesmoke;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 80%;
+  margin: auto 0;
 }
 
 #footercol1 {
@@ -93,10 +112,20 @@ color: whitesmoke;
   grid-template-columns: 1fr 1fr;
 }
 
-#footercol2 {
+.footercol2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
 .updateFormTitle{
   text-align: center;
+}
+
+#footerTitle{
+  display:flex;
+  justify-content: center;
+}
+
+.footerPadding{
+  padding-top: 25px;
 }
