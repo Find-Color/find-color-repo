@@ -1,27 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getPost } from "../adapters/post-adapter";
-import { useParams } from "react-router-dom";
-// import UserContext from "./contexts/current-user-context";
-// import { checkForLoggedInUser } from "./adapters/auth-adapter";
+import { useParams, useNavigate } from "react-router-dom";
+// import { UserContext } from "./contexts/current-user-context";
+import { checkForLoggedInUser } from "../adapters/auth-adapter";
 
 export default function MissingPerson() {
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const [missing, setMissing] = useState(null);
-  const user = useContext(UserContext);
+  const [loggedIn, setLoggedIn] = useState(null);
+  //   const user = useContext(UserContext);
   useEffect(() => {
     getPost(id).then((res) => setMissing(res[0]));
+    checkForLoggedInUser().then((data) => {
+      setLoggedIn(data);
+    });
   }, [id]);
-
-  console.log(missing);
+  function handleClick() {
+    navigate(`/missing_person_update/${id}`);
+  }
 
   if (!missing) return <div>Loading...</div>;
-  const showEditButton = checkForLoggedInUser(user);
 
   return (
     <>
-      {showEditButton && <button>Edit</button>}
-
+      {!loggedIn ? <></> : <button onClick={handleClick}>Edit Form</button>}
       <h2>Status: {missing.status}</h2>
       <h3>Name: {missing.name}</h3>
       <h5>Age: {missing.age}</h5>
