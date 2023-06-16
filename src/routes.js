@@ -33,10 +33,10 @@ Router.delete("/post/:id", postController.deletePost);
 //UPVOTES
 Router.post("/upvote/:user_id/:post_id", upvoteController.add);
 Router.get("/upvote/:user_id/:post_id", upvoteController.find);
-Router.get("/post/upvote/:post_id", upvoteController.listFromPost);
-Router.get("/user/upvote/:user_id", upvoteController.listFromUser);
+Router.get("/upvote/post/:post_id", upvoteController.listFromPost);
+Router.get("/upvote/user/:user_id", upvoteController.listFromUser);
 Router.delete("/upvote/:user_id/:post_id", upvoteController.remove);
-Router.delete("/post/upvote/:post_id", upvoteController.removeAllFromPost);
-Router.delete("/user/upvote/:user_id", upvoteController.removeAllFromUser);
+Router.delete("/upvote/post/:post_id", upvoteController.removeAllFromPost);
+Router.delete("/upvote/user/:user_id", upvoteController.removeAllFromUser);
 
 module.exports = Router;
