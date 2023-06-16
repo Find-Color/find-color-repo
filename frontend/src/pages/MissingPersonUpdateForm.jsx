@@ -7,9 +7,7 @@ import { updatePost } from "../adapters/post-adapter";import { updatePost } from
 
 const MissingPersonUpdateForm = () => {
   const { id } = useParams();
-  console.log(id);
   const [missing, setMissing] = useState("");
-  console.log(missing);
 
   // Define state variables to store form input values
   const [name, setName] = useState(null);
