@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { getPost } from "../adapters/post-adapter";
 import { updatePost } from "../adapters/post-adapter";
+import { deleteOptions, fetchHandler } from "../utils";
 
 const MissingPersonUpdateForm = () => {
   const { id } = useParams();
   const [missing, setMissing] = useState("");
 
   // Define state variables to store form input values
-  const [name, setName] = useState(null);
+  const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [status, setStatus] = useState("");
   const [date_reported, setDateReported] = useState("");
@@ -60,12 +61,6 @@ const MissingPersonUpdateForm = () => {
       navigate(`/post/${id}`, { replace: true });
     }
   };
-
-  // Delete Post
-  function handleDelete() {
-    fetchHandler(`/api/post/${id}`, deleteOptions);
-    navigate(`/posts`);
-  }
 
   function handleDelete() {
     fetchHandler(`/api/post/${id}`,deleteOptions)
