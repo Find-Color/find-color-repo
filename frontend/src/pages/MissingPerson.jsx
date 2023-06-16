@@ -7,9 +7,9 @@ import { checkForLoggedInUser } from "../adapters/auth-adapter";
 export default function MissingPerson() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [missing, setMissing] = useState(null);
+  const [missing, setMissing] = useState("");
   const [loggedIn, setLoggedIn] = useState(null);
- 
+
   useEffect(() => {
     getPost(id).then((res) => setMissing(res[0]));
     checkForLoggedInUser().then((data) => {
@@ -26,6 +26,7 @@ export default function MissingPerson() {
     <>
       {!loggedIn ? <></> : <button onClick={handleClick}>Edit Form</button>}
       <h2>Status: {missing.status}</h2>
+      <h6>Last Seen in: {missing.location}</h6>
       <h3>Name: {missing.name}</h3>
       <h5>Age: {missing.age}</h5>
       <h5>Hair: {missing.hair}</h5>

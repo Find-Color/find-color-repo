@@ -4,27 +4,28 @@ import { useNavigate } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { getPost } from "../adapters/post-adapter";
 import { updatePost } from "../adapters/post-adapter";
+import { deleteOptions, fetchHandler } from "../utils";
 
 const MissingPersonUpdateForm = () => {
   const { id } = useParams();
   const [missing, setMissing] = useState("");
 
   // Define state variables to store form input values
-  const [name, setName] = useState(null);
+  const [name, setName] = useState("");
   const [location, setLocation] = useState("");
-  const [status, setStatus] = useState(null);
-  const [date_reported, setDateReported] = useState(null);
-  const [hair, setHair] = useState(null);
-  const [height, setHeight] = useState(null);
-  const [eye_color, setEyeColor] = useState(null);
-  const [weight, setWeight] = useState(null);
-  const [race, setRace] = useState(null);
-  const [ethnicity, setEthnicity] = useState(null);
-  const [gender, setGender] = useState(null);
-  const [age, setAge] = useState(null);
-  const [image, setImage] = useState(null);
-  const [description_text, setDescription] = useState(null);
-  const [contact_info, setContactInfo] = useState(null);
+  const [status, setStatus] = useState("");
+  const [date_reported, setDateReported] = useState("");
+  const [hair, setHair] = useState("");
+  const [height, setHeight] = useState("");
+  const [eye_color, setEyeColor] = useState("");
+  const [weight, setWeight] = useState("");
+  const [race, setRace] = useState("");
+  const [ethnicity, setEthnicity] = useState("");
+  const [gender, setGender] = useState("");
+  const [age, setAge] = useState("");
+  const [image, setImage] = useState("");
+  const [description_text, setDescription] = useState("");
+  const [contact_info, setContactInfo] = useState("");
 
   useEffect(() => {
     getPost(id).then((res) => setMissing(res[0]));
@@ -86,6 +87,11 @@ const MissingPersonUpdateForm = () => {
       navigate(`/post/${id}`, { replace: true });
     }
   };
+
+  function handleDelete() {
+    fetchHandler(`/api/post/${id}`,deleteOptions)
+    navigate(`/posts`);
+  }
 
   return (
     <>
@@ -214,7 +220,8 @@ const MissingPersonUpdateForm = () => {
           />
         </label>
         {/* Submit button */}
-        <button type="submit">Report Missing Person</button>
+        <button type="submit">Update Form</button>
+        <button onClick={handleDelete}>Remove Post</button>
       </form>
     </>
   );
