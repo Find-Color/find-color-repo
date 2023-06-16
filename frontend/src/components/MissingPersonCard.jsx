@@ -1,5 +1,6 @@
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function MissingPersonCard({ name, location, status, post_id }) {
   const navigate = useNavigate();

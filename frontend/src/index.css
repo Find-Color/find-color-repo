@@ -79,3 +79,7 @@ Button {
   height: 1em;
 
 }
+
+.updateFormTitle{
+  text-align: center;
+}
