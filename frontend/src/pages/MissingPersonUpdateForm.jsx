@@ -8,10 +8,12 @@ import { deleteOptions, fetchHandler } from "../utils";
 
 const MissingPersonUpdateForm = () => {
   const { id } = useParams();
+  console.log(id);
   const [missing, setMissing] = useState("");
+  console.log(missing);
 
   // Define state variables to store form input values
-  const [name, setName] = useState("");
+  const [name, setName] = useState(null);
   const [location, setLocation] = useState("");
   const [status, setStatus] = useState("");
   const [date_reported, setDateReported] = useState("");
@@ -80,8 +82,6 @@ const MissingPersonUpdateForm = () => {
       contact_info: contact_info,
       user_id: currentUser.id,
     };
-
-    // Update Form
     const result = await updatePost(id, formData);
     if (result[0] == null) {
       alert(result[1]);

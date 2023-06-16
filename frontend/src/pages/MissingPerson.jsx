@@ -11,7 +11,7 @@ export default function MissingPerson() {
   const navigate = useNavigate();
   const [missing, setMissing] = useState("");
   const [loggedIn, setLoggedIn] = useState(null);
-
+  //   const user = useContext(UserContext);
   useEffect(() => {
     getPost(id).then((res) => setMissing(res[0]));
     checkForLoggedInUser().then((data) => {
