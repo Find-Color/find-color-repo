@@ -27,32 +27,6 @@ const MissingPersonUpdateForm = () => {
   const [description_text, setDescription] = useState("");
   const [contact_info, setContactInfo] = useState("");
 
-  useEffect(() => {
-    getPost(id).then((res) => setMissing(res[0]));
-  }, []);
-
-  useEffect(() => {
-    if (missing) {
-      setName(missing.name);
-      setLocation(missing.location);
-      setStatus(missing.status);
-      setDateReported(missing.date_reported);
-      setHair(missing.hair);
-      setHeight(missing.height);
-      setEyeColor(missing.eye_color);
-      setWeight(missing.weight);
-      setRace(missing.race);
-      setEthnicity(missing.ethnicity);
-      setGender(missing.gender);
-      setAge(missing.age);
-      setImage(missing.image);
-      setDescription(missing.description_text);
-      setContactInfo(missing.contact_info);
-    }
-  }, [missing]);
-
-  console.log(missing?.name);
-
   //Define context
   const { currentUser } = useContext(CurrentUserContext);
   //Define navigate (for redirecting)
@@ -234,3 +208,4 @@ const MissingPersonUpdateForm = () => {
 };
 
 export default MissingPersonUpdateForm;
+
