@@ -1,19 +1,19 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { getPost } from "../adapters/post-adapter";
 import { updatePost } from "../adapters/post-adapter";
-
 const MissingPersonUpdateForm = () => {
-    const { id } = useParams();
+  const { id } = useParams();
+  console.log(id);
 
-    const [missing, setMissing] = useState(null);
-    useEffect(() => {
-      getPost(id).then(res => setMissing(res[0]));
-    }, [id]);
-  
-    console.log(missing);
+  const [missing, setMissing] = useState(null);
+  useEffect(() => {
+    getPost(id).then((res) => setMissing(res[0]));
+  }, [id]);
+
+  console.log(missing);
 
   // Define state variables to store form input values
   const [name, setName] = useState("");
@@ -37,7 +37,7 @@ const MissingPersonUpdateForm = () => {
   //Define navigate (for redirecting)
   const navigate = useNavigate();
   // Handle form submission
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Access the form data here and perform desired actions
     // e.g., send it to an API, update state, etc.
@@ -74,128 +74,135 @@ const MissingPersonUpdateForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      {/* Input fields */}
-      <label>
-        Name:
-        <input
-          type="text"
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
-      </label>
-      {/* Repeat this pattern for other input fields */}
-      <label>
-        Location:
-        <input
-          type="text"
-          value={location}
-          onChange={e => setLocation(e.target.value)}
-        />
-      </label>
-      <label>
-        Status:
-        <input
-          type="text"
-          value={status}
-          onChange={e => setStatus(e.target.value)}
-        />
-      </label>
-      <label>
-        Date Reported:
-        <input
-          type="text"
-          value={date_reported}
-          onChange={e => setDateReported(e.target.value)}
-        />
-      </label>
-      <label>
-        Hair:
-        <input
-          type="text"
-          value={hair}
-          onChange={e => setHair(e.target.value)}
-        />
-      </label>
-      <label>
-        Height:
-        <input
-          type="text"
-          value={height}
-          onChange={e => setHeight(e.target.value)}
-        />
-      </label>
-      <label>
-        Eye Color:
-        <input
-          type="text"
-          value={eye_color}
-          onChange={e => setEyeColor(e.target.value)}
-        />
-      </label>
-      <label>
-        Weight:
-        <input
-          type="text"
-          value={weight}
-          onChange={e => setWeight(e.target.value)}
-        />
-      </label>
-      <label>
-        Race:
-        <input
-          type="text"
-          value={race}
-          onChange={e => setRace(e.target.value)}
-        />
-      </label>
-      <label>
-        Ethnicity:
-        <input
-          type="text"
-          value={ethnicity}
-          onChange={e => setEthnicity(e.target.value)}
-        />
-      </label>
-      <label>
-        Gender:
-        <input
-          type="text"
-          value={gender}
-          onChange={e => setGender(e.target.value)}
-        />
-      </label>
-      <label>
-        Age:
-        <input type="text" value={age} onChange={e => setAge(e.target.value)} />
-      </label>
-      <label>
-        Image:
-        <input
-          type="text"
-          value={image}
-          onChange={e => setImage(e.target.value)}
-        />
-      </label>
-      <label>
-        Description:
-        <input
-          type="text"
-          value={description_text}
-          onChange={e => setDescription(e.target.value)}
-        />
-      </label>
-      <label>
-        Contact Information:
-        <input
-          type="text"
-          value={contact_info}
-          onChange={e => setContactInfo(e.target.value)}
-        />
-      </label>
-      {/* Submit button */}
-      <button type="submit">Report Missing Person</button>
-    </form>
+    <>
+    <h1 className="updateFormTitle">Update Form</h1>
+      <form onSubmit={handleSubmit}>
+        {/* Input fields */}
+        <label>
+          Name:
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        {/* Repeat this pattern for other input fields */}
+        <label>
+          Location:
+          <input
+            type="text"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
+        </label>
+        <label>
+          Status:
+          <input
+            type="text"
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          />
+        </label>
+        <label>
+          Date Reported:
+          <input
+            type="text"
+            value={date_reported}
+            onChange={(e) => setDateReported(e.target.value)}
+          />
+        </label>
+        <label>
+          Hair:
+          <input
+            type="text"
+            value={hair}
+            onChange={(e) => setHair(e.target.value)}
+          />
+        </label>
+        <label>
+          Height:
+          <input
+            type="text"
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
+          />
+        </label>
+        <label>
+          Eye Color:
+          <input
+            type="text"
+            value={eye_color}
+            onChange={(e) => setEyeColor(e.target.value)}
+          />
+        </label>
+        <label>
+          Weight:
+          <input
+            type="text"
+            value={weight}
+            onChange={(e) => setWeight(e.target.value)}
+          />
+        </label>
+        <label>
+          Race:
+          <input
+            type="text"
+            value={race}
+            onChange={(e) => setRace(e.target.value)}
+          />
+        </label>
+        <label>
+          Ethnicity:
+          <input
+            type="text"
+            value={ethnicity}
+            onChange={(e) => setEthnicity(e.target.value)}
+          />
+        </label>
+        <label>
+          Gender:
+          <input
+            type="text"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+          />
+        </label>
+        <label>
+          Age:
+          <input
+            type="text"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+          />
+        </label>
+        <label>
+          Image:
+          <input
+            type="text"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+          />
+        </label>
+        <label>
+          Description:
+          <input
+            type="text"
+            value={description_text}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </label>
+        <label>
+          Contact Information:
+          <input
+            type="text"
+            value={contact_info}
+            onChange={(e) => setContactInfo(e.target.value)}
+          />
+        </label>
+        {/* Submit button */}
+        <button type="submit">Report Missing Person</button>
+      </form>
+    </>
   );
 };
 
