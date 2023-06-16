@@ -94,3 +94,20 @@ Button {
 .cardButton{
   width: 25%;
 }
+#footer {
+height: 330px;
+background-color: #000;
+display: grid;
+grid-template-columns: 1fr 1fr;
+color: whitesmoke;
+}
+
+#footercol1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#footercol2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

@@ -14,6 +14,7 @@ import MissingPersonForm from './pages/MissingPersonForm';
 import MissingPersonUpdateForm from './pages/MissingPersonUpdateForm';
 import Feed from './pages/Feed';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from './components/Footer';
 
 
 export default function App() {
@@ -38,5 +39,6 @@ export default function App() {
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </main>
+    <Footer />
   </>;
 }
