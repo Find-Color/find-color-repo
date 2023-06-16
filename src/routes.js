@@ -3,6 +3,7 @@ const checkAuthentication = require("./middleware/check-authentication");
 const addModels = require("./middleware/add-models");
 const userController = require("./controllers/user");
 const postController = require("./controllers/post");
+const upvoteController = require("./controllers/upvote");
 
 const Router = express.Router();
 Router.use(addModels);
@@ -28,5 +29,14 @@ Router.get("/users/:id/posts", postController.listFromUser);
 Router.get("/post/:id", postController.find);
 Router.patch("/post/:id", postController.updatePost);
 Router.delete("/post/:id", postController.deletePost);
+
+//UPVOTES
+Router.post("/upvote/:user_id/:post_id", upvoteController.add);
+Router.get("/upvote/:user_id/:post_id", upvoteController.find);
+Router.get("/post/upvote/:post_id", upvoteController.listFromPost);
+Router.get("/user/upvote/:user_id", upvoteController.listFromUser);
+Router.delete("/upvote/:user_id/:post_id", upvoteController.remove);
+Router.delete("/post/upvote/:post_id", upvoteController.removeAllFromPost);
+Router.delete("/user/upvote/:user_id", upvoteController.removeAllFromUser);
 
 module.exports = Router;

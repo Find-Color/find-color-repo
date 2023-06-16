@@ -80,6 +80,8 @@ const MissingPersonUpdateForm = () => {
       contact_info: contact_info,
       user_id: currentUser.id,
     };
+
+    // Update Form
     const result = await updatePost(id, formData);
     if (result[0] == null) {
       alert(result[1]);
@@ -88,8 +90,9 @@ const MissingPersonUpdateForm = () => {
     }
   };
 
+  // Delete Post
   function handleDelete() {
-    fetchHandler(`/api/post/${id}`,deleteOptions)
+    fetchHandler(`/api/post/${id}`, deleteOptions);
     navigate(`/posts`);
   }
 
