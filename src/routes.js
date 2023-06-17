@@ -4,7 +4,7 @@ const addModels = require("./middleware/add-models");
 const userController = require("./controllers/user");
 const postController = require("./controllers/post");
 const upvoteController = require("./controllers/upvote");
-const upvoteController = require("./controllers/upvote");
+const commentController = require("./controllers/comment");
 
 const Router = express.Router();
 Router.use(addModels);
@@ -39,5 +39,14 @@ Router.get("/user/upvote/:user_id", upvoteController.listFromUser);
 Router.delete("/upvote/:user_id/:post_id", upvoteController.remove);
 Router.delete("/post/upvote/:post_id", upvoteController.removeAllFromPost);
 Router.delete("/user/upvote/:user_id", upvoteController.removeAllFromUser);
+
+//COMMENTS
+Router.post("/comment", commentController.create);
+Router.get("/comments/:commentId", commentController.find);
+Router.get('/posts/:postId/comments', commentController.listFromPost);
+Router.get('/users/:userId/comments', commentController.listFromUser);
+Router.patch('/comments/:commentId',commentController.update);
+Router.delete('/posts/:postId/comments', commentController.deleteAllFromPost);
+Router.delete('/users/:userId/comments', commentController.deleteAllFromUser);
 
 module.exports = Router;
