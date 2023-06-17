@@ -1,6 +1,8 @@
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
+  color: white;
+  background-color: #000;
 }
 
 input,
@@ -76,10 +78,19 @@ form {
 
 Button {
   width: 20%;
-  height: 1em;
+  height: 5vh;
 
 }
 
 .updateFormTitle{
   text-align: center;
+}
+
+.personCard{
+  color: white;
+  background-color: #000;
+}
+
+.cardButton{
+  width: 25%;
 }

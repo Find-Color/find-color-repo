@@ -1,13 +1,16 @@
 import MissingPersonCard from "../components/missingPersonCard";
 import MissingPeopleList from "../components/MissingPeopleList";
 import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/esm/Button";
 
 export default function Feed() {
+  const navigate = useNavigate();
+  const handleFormRoute = ()=>{navigate('/missing_person')}
   return (
     <>
       <>
-        <NavLink to="/missing_person">New Post</NavLink>
+      <Button onClick={handleFormRoute} variant="danger">New Post</Button>
       </>
       <MissingPeopleList />
     </>
