@@ -49,8 +49,8 @@ class Comment {
     return comments;
   }
 
-  async update(newText) {
-    this.commentText = newText;
+  async update(new_text) {
+    this.commentText = new_text;
 
     await knex.raw('UPDATE comments SET comment_text = ? WHERE comment_id = ?', [newText, this.commentId]);
 
