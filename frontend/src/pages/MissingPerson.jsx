@@ -3,6 +3,7 @@ import { getPost } from "../adapters/post-adapter";
 import { useParams, useNavigate } from "react-router-dom";
 // import { UserContext } from "./contexts/current-user-context";
 import { checkForLoggedInUser } from "../adapters/auth-adapter";
+import Comments from "../components/Comments";
 
 export default function MissingPerson() {
   const { id } = useParams();
@@ -40,6 +41,7 @@ export default function MissingPerson() {
       <h6>About Them: {missing.description_text}</h6>
       <h6>Date Reported: {missing.date_reported}</h6>
       <p>Contact Info: {missing.contact_info}</p>
+      <Comments />
     </>
   );
 }
