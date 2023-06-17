@@ -49,6 +49,22 @@ class Comment {
 
     return comments;
   }
+
+  async update(new_text) {
+    this.commentText = new_text;
+
+    await knex.raw('UPDATE comments SET comment_text = ? WHERE comment_id = ?', [newText, this.commentId]);
+
+    return this;
+  }
+
+  static async deleteAllFromPost(post_id) {
+    await knex.raw('DELETE FROM comments WHERE post_id = ?', [post_id]);
+  }
+
+  static async deleteAllFromUser(user_id) {
+    await knex.raw('DELETE FROM comments WHERE user_id = ?', [user_id]);
+  }
 }
 
 module.exports = Comment;
