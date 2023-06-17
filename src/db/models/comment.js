@@ -12,7 +12,6 @@ class Comment {
     const commentId = generateUniqueId();
     const comment = new Comment(commentId, post_id, user_id, comment_text);
 
-    // Insert the comment into the database
     await knex.raw(
       'INSERT INTO comments (comment_id, post_id, user_id, comment_text) VALUES (?, ?, ?, ?)',
       [commentId, post_id, user_id, comment_text]
@@ -49,6 +48,24 @@ class Comment {
 
     return comments;
   }
+
+  async update(newText) {
+    this.commentText = newText;
+
+    await knex.raw('UPDATE comments SET comment_text = ? WHERE comment_id = ?', [newText, this.commentId]);
+
+    return this;
+  }
+
+  static async deleteAllFromPost(post_id) {
+    await knex.raw('DELETE FROM comments WHERE post_id = ?', [post_id]);
+  }
+
+  static async deleteAllFromUser(user_id) {
+    await knex.raw('DELETE FROM comments WHERE user_id = ?', [user_id]);
+  }
 }
+
+
 
 module.exports = Comment;
