@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { getPost } from "../adapters/post-adapter";
-import { updatePost } from "../adapters/post-adapter";import { updatePost } from "../adapters/post-adapter";
+import { updatePost } from "../adapters/post-adapter";
 import { deleteOptions, fetchHandler } from "../utils";
 
 const MissingPersonUpdateForm = () => {
