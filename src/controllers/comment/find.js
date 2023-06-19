@@ -1,12 +1,15 @@
-
 const find = async (req, res) => {
-  const { commentId } = req.params;
-
+  const {
+    params: { comment_id },
+    db: { Comment },
+  } = req;
   try {
-    const comment = await Comment.find(commentId);
-    res.status(200).json(comment);
+    const comment = await Comment.find(comment_id);
+    if (comment) return res.status(200).send(comment);
+    return res.status(404).json({ error: "Comment not found" });
   } catch (error) {
-    res.status(404).json({ error: 'Comment not found' });
+    console.log(error);
+    return null;
   }
 };
 
