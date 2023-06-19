@@ -48,8 +48,6 @@ class Comment {
         )
     );
 
-    return comments;
-  }
 
   static async listFromPost(post_id) {
     try {
