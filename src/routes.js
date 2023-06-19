@@ -42,11 +42,11 @@ Router.delete("/user/upvote/:user_id", upvoteController.removeAllFromUser);
 
 //COMMENTS
 Router.post("/comment", commentController.create);
-Router.get("/comments/:commentId", commentController.find);
-Router.get('/posts/:postId/comments', commentController.listFromPost);
-Router.get('/users/:userId/comments', commentController.listFromUser);
-Router.patch('/comments/:commentId',commentController.update);
-Router.delete('/posts/:postId/comments', commentController.deleteAllFromPost);
-Router.delete('/users/:userId/comments', commentController.deleteAllFromUser);
+// Router.get("/comments/:commentId", commentController.find);
+// Router.get('/posts/:postId/comments', commentController.listFromPost);
+// Router.get('/users/:userId/comments', commentController.listFromUser);
+// Router.patch('/comments/:commentId',commentController.update);
+// Router.delete('/posts/:postId/comments', commentController.deleteAllFromPost);
+// Router.delete('/users/:userId/comments', commentController.deleteAllFromUser);
 
 module.exports = Router;
