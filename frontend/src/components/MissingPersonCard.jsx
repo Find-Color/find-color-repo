@@ -29,10 +29,16 @@ export default function MissingPersonCard({ name, location, status, post_id }) {
           See More
         </h4>
       </Card.Body>
-      <Button>Up Vote</Button>
-      <Button onClick={() => setModalShow(true)} variant="warning" className="cardButton">
+      <Button className="cardButton" variant="warning">Up Vote</Button>
+      <br />
+      <Button
+        onClick={() => setModalShow(true)}
+        variant="warning"
+        className="cardButton"
+      >
         Comment
       </Button>
+      <br />
       <CommentModalDMMY show={modalShow} onHide={() => setModalShow(false)} />
     </Card>
   );

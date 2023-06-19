@@ -76,25 +76,27 @@ form {
   margin: 10px;
 }
 
+.cardButton {
+  width: 25%;
+}
+
 Button {
   width: 20%;
   height: 5vh;
-
 }
 
 /* Footer css */
 
 #footer {
-height: 330px;
-background-color: #000;
-display: grid;
-grid-template-columns: 1fr 1fr;
-color: whitesmoke;
-gap: 15%;
+  height: 330px;
+  background-color: #000;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: whitesmoke;
+  gap: 15%;
 
-position: relative;
+  position: relative;
 }
-
 
 #footer::after {
   content: "";
@@ -119,15 +121,15 @@ position: relative;
   grid-template-columns: 1fr 1fr;
 }
 
-.updateFormTitle{
+.updateFormTitle {
   text-align: center;
 }
 
-#footerTitle{
-  display:flex;
+#footerTitle {
+  display: flex;
   justify-content: center;
 }
 
-.footerPadding{
+.footerPadding {
   padding-top: 25px;
 }

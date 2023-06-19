@@ -13,8 +13,11 @@ export default function CommentModalDMMY(props) {
   };
   const handleComment = (event) => {
     setCommentText(event.target.value);
-    console.log(commentText);
   };
+  const sendComment = () => {
+    console.log(commentText)
+  }
+
   return (
     <Modal
     
@@ -34,15 +37,16 @@ export default function CommentModalDMMY(props) {
 
         <Form.Group
         style={{backgroundColor: "black", color: "white"}}
-          onChange={handleComment}
+          
           className="mb-3"
           controlId="exampleForm.ControlTextarea1"
         >
           <Form.Label style={{backgroundColor: "black", color: "white"}}>Example textarea</Form.Label>
-          <Form.Control as="textarea" rows={3} style={{backgroundColor: "black", color: "white"}}/>
+          <Form.Control onChange={handleComment}  as="textarea" rows={3} style={{backgroundColor: "black", color: "white"}}/>
         </Form.Group>
       </Modal.Body>
       <Modal.Footer style={{backgroundColor: "black", color: "white"}}>
+        <Button variant="warning" onClick={sendComment}>Send</Button>
         <Button onClick={props.onHide} variant="warning">
           Close
         </Button>
