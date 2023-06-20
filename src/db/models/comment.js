@@ -14,7 +14,8 @@ class Comment {
       [post_id, user_id, comment_text]
     );
 
-    return comment;
+    const newComment = result.rows[0];
+    return newComment;
   }
 
   static async find(comment_id) {

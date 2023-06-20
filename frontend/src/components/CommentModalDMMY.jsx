@@ -1,37 +1,42 @@
-// import { fetchHandler, getPostOptions } from "../utils";
 import { createComment } from "../adapters/comment-adapter";
 import Button from "react-bootstrap/Button";
 import { Modal } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
 import { checkForLoggedInUser } from "../adapters/auth-adapter";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function CommentModalDMMY(props) {
+  const navigate = useNavigate();
   const [commentText, setCommentText] = useState("");
   const [loggedIn, setLoggedIn] = useState(null);
-  
+
   useEffect(() => {
     checkForLoggedInUser().then((data) => {
       setLoggedIn(data);
     });
-  }),[];
+  }, []);
+
+  const handleComment = (event) => {
+    setCommentText(event.target.value);
+  };
+  const sendComment = async (e) => {
+    e.preventDefault();
+    let post_id = props.post_id;
+    let user_id = loggedIn.id;
+    const body = {
+      post_id: post_id,
+      user_id: user_id,
+      comment_text: commentText,
+    };
+    await createComment(body);
+    navigate(`/post/${post_id}`);
+  };
 
   const modalStyle = {
     backgroundColor: "black", // Background color for the modal
     color: "white", // Text color for the modal
   };
-  const handleComment = (event) => {
-    setCommentText(event.target.value);
-  };
-  const sendComment = () => {
-    let post_id = props.post_id;
-    let id = loggedIn.id;
-    let data = { commentText, post_id, id };
-    console.log(data);
-    createComment(data).then(console.log(data))
-  };
-
   return (
     <Modal
       className="modal"
