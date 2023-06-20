@@ -13,41 +13,28 @@ class Comment {
       "INSERT INTO comments (post_id, user_id, comment_text) VALUES (?, ?, ?) RETURNING *",
       [post_id, user_id, comment_text]
     );
-    const {
-      rows: [comment],
-    } = result;
-    const newComment = new Comment(comment);
-    return newComment;
+
+    return comment;
   }
 
   static async find(comment_id) {
-    try {
-      const result = await knex.raw(
-        "SELECT * FROM comments WHERE comment_id = ?",
-        [comment_id]
-      );
-      const {
-        rows: [comment],
-      } = result;
-      return new Comment(comment);
-    } catch (err) {
-      console.log(err);
-      return null;
+    const result = await knex.raw('SELECT * FROM comments WHERE comment_id = ?', [comment_id]);
+    const comment = result.rows[0];
+
+    if (comment) {
+      return new Comment(comment.comment_id, comment.post_id, comment.user_id, comment.comment_text);
+    } else {
+      throw new Error('Comment not found');
     }
   }
 
   static async listFromPost(post_id) {
-    try {
-      const result = await knex.raw(
-        "SELECT * FROM comments WHERE post_id = ?",
-        [post_id]
-      );
-      const comments = result.rows.map(comment => new Comment(comment));
-      return comments;
-    } catch (err) {
-      console.log(err);
-      return null;
-    }
+    const result = await knex.raw('SELECT * FROM comments WHERE post_id = ?', [post_id]);
+    const comments = result.rows.map(
+      (comment) => new Comment(comment.comment_id, comment.post_id, comment.user_id, comment.comment_text)
+    );
+
+    return comments;
   }
 
   static async listFromUser(user_id) {

@@ -1,9 +1,4 @@
-import {
-  fetchHandler,
-  getPostOptions,
-  getPatchOptions,
-  deleteOptions,
-} from "../utils";
+import { fetchHandler, getPostOptions, deleteOptions } from "../utils";
 
 // Router.get("/upvote/:user_id/:post_id", upvoteController.find);
 // Router.get("/post/upvote/:post_id", upvoteController.listFromPost);
@@ -15,27 +10,33 @@ const baseUrl = `/api/upvote`;
 
 export const toggleUpvote = async (user_id, post_id) => {
   const exists = await fetchHandler(`${baseUrl}/${user_id}/${post_id}`);
-  return exists
+  return exists[0].length == 1
     ? await fetchHandler(`${baseUrl}/${user_id}/${post_id}`, deleteOptions)
     : await fetchHandler(`${baseUrl}/${user_id}/${post_id}`, getPostOptions());
 };
 
-export const getAllUpvotesFromPost = async post_id => {
-  const [upvotes] = await fetchHandler(`/post/upvote/${post_id}`);
+export const getAllUpvotesFromPost = async (post_id) => {
+  const [upvotes] = await fetchHandler(`/api/post/upvote/${post_id}`);
   return upvotes || [];
 };
 
-export const getAllUpvotesFromUser = async user_id => {
-  const [upvotes] = await fetchHandler(`/user/upvote/${user_id}`);
+export const getAllUpvotesFromUser = async (user_id) => {
+  const [upvotes] = await fetchHandler(`/api/user/upvote/${user_id}`);
   return upvotes || [];
 };
 
-export const deleteAllUpvotesFromPost = async post_id => {
-  const upvotes = await fetchHandler(`/post/upvote/${post_id}`, deleteOptions);
+export const deleteAllUpvotesFromPost = async (post_id) => {
+  const upvotes = await fetchHandler(
+    `/api/post/upvote/${post_id}`,
+    deleteOptions
+  );
   return upvotes;
 };
 
-export const deleteAllUpvotesFromUser = async user_id => {
-  const upvotes = await fetchHandler(`/user/upvote/${user_id}`, deleteOptions);
+export const deleteAllUpvotesFromUser = async (user_id) => {
+  const upvotes = await fetchHandler(
+    `/api/user/upvote/${user_id}`,
+    deleteOptions
+  );
   return upvotes;
 };

@@ -50,7 +50,6 @@ class Post {
     height,
     eye_color,
     weight,
-    race,
     ethnicity,
     gender,
     age,
@@ -61,8 +60,8 @@ class Post {
     try {
       const postInsert = await knex.raw(
         `
-        INSERT INTO posts(name, location, status, date_reported, hair, height, eye_color, weight, race, ethnicity, gender, age, image, description_text, contact_info, user_id)
-        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO posts(name, location, status, date_reported, hair, height, eye_color, weight, ethnicity, gender, age, image, description_text, contact_info, user_id)
+        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         RETURNING *;
       `,
         [
@@ -74,7 +73,6 @@ class Post {
           height,
           eye_color,
           weight,
-          race,
           ethnicity,
           gender,
           age,
@@ -160,7 +158,6 @@ class Post {
             height = ?, 
             eye_color = ?, 
             weight = ?, 
-            race = ?, 
             ethnicity = ?, 
             gender = ?, 
             age = ?, 
@@ -179,7 +176,6 @@ class Post {
           newEntries.height,
           newEntries.eye_color,
           newEntries.weight,
-          newEntries.race,
           newEntries.ethnicity,
           newEntries.gender,
           newEntries.age,
