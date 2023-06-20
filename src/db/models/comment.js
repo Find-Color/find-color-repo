@@ -1,27 +1,30 @@
 const knex = require("../knex");
 
 class Comment {
-  constructor({ comment_id, post_id, user_id, comment_text }) {
+  constructor({ comment_id, post_id, user_id, comment_text, username }) {
     this.comment_id = comment_id;
     this.post_id = post_id;
     this.user_id = user_id;
     this.comment_text = comment_text;
+    this.username = username
   }
 
   static async create(post_id, user_id, comment_text) {
     const result = await knex.raw(
-      'INSERT INTO comments (post_id, user_id, comment_text) VALUES (?, ?, ?) RETURNING *',
+      "INSERT INTO comments (post_id, user_id, comment_text) VALUES (?, ?, ?) RETURNING *",
       [post_id, user_id, comment_text]
     );
-
-    const newComment = result.rows[0];
+    const {
+      rows: [comment],
+    } = result;
+    const newComment = new Comment(comment);
     return newComment;
   }
 
   static async find(comment_id) {
     try {
       const result = await knex.raw(
-        "SELECT * FROM comments WHERE comment_id = ?",
+        "SELECT comments.*, users.username FROM comments JOIN users ON comments.user_id = users.id WHERE comment_id = ?",
         [comment_id]
       );
       const {
@@ -37,7 +40,7 @@ class Comment {
   static async listFromPost(post_id) {
     try {
       const result = await knex.raw(
-        "SELECT * FROM comments WHERE post_id = ?",
+        "SELECT comments.*, users.username FROM comments JOIN users ON comments.user_id = users.id WHERE post_id = ?",
         [post_id]
       );
       const comments = result.rows.map(comment => new Comment(comment));
@@ -49,9 +52,10 @@ class Comment {
   }
 
   static async listFromUser(user_id) {
-    const result = await knex.raw("SELECT * FROM comments WHERE user_id = ?", [
-      user_id,
-    ]);
+    const result = await knex.raw(
+      "SELECT comments.*, users.username FROM comments JOIN users ON comments.user_id = users.id  WHERE user_id = ?",
+      [user_id]
+    );
     const comments = result.rows.map(comment => new Comment(comment));
     return comments;
   }
