@@ -1,3 +1,5 @@
+const knex = require("../knex");
+
 class Upvote {
   constructor(user_id, post_id) {
     this.user_id = user_id;
@@ -11,7 +13,7 @@ class Upvote {
         rows: { result },
       } = await knex.raw(`INSERT INTO upvotes(user_id, post_id) VALUES(?, ?)`, [
         user_id,
-        post_id, 
+        post_id,
       ]);
       return result;
     } catch (err) {
@@ -65,7 +67,7 @@ class Upvote {
   static async remove(user_id, post_id) {
     try {
       const result = await knex.raw(
-        `DELETE * FROM upvotes WHERE user_id = ? AND post_id = ?`,
+        `DELETE FROM upvotes WHERE user_id = ? AND post_id = ?`,
         [user_id, post_id]
       );
       return result;
@@ -77,7 +79,7 @@ class Upvote {
 
   static async removeAllFromPost(post_id) {
     try {
-      const result = await knex.raw(`DELETE * FROM upvotes WHERE post_id = ?`, [
+      const result = await knex.raw(`DELETE FROM upvotes WHERE post_id = ?`, [
         post_id,
       ]);
       return result;
@@ -89,7 +91,7 @@ class Upvote {
 
   static async removeAllFromUser(user_id) {
     try {
-      const result = await knex.raw(`DELETE * FROM upvotes WHERE user_id = ?`, [
+      const result = await knex.raw(`DELETE FROM upvotes WHERE user_id = ?`, [
         user_id,
       ]);
       return result;
@@ -99,3 +101,5 @@ class Upvote {
     }
   }
 }
+
+module.exports = Upvote;

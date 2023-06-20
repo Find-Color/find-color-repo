@@ -34,7 +34,6 @@ export default function MissingPerson() {
       <h5>Eye Color: {missing.eye_color}</h5>
       <h5>Weight: {missing.weight}</h5>
       <h6>Nationality: {missing.ethnicity}</h6>
-      <h6>Race: {missing.race}</h6>
       <h6>Gender: {missing.gender}</h6>
       <img src={missing.image} alt="" />
       <h6>About Them: {missing.description_text}</h6>
