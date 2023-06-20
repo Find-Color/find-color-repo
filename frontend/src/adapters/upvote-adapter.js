@@ -21,21 +21,27 @@ export const toggleUpvote = async (user_id, post_id) => {
 };
 
 export const getAllUpvotesFromPost = async post_id => {
-  const [upvotes] = await fetchHandler(`/post/upvote/${post_id}`);
+  const [upvotes] = await fetchHandler(`${baseUrl}/post/upvote/${post_id}`);
   return upvotes || [];
 };
 
 export const getAllUpvotesFromUser = async user_id => {
-  const [upvotes] = await fetchHandler(`/user/upvote/${user_id}`);
+  const [upvotes] = await fetchHandler(`${baseUrl}/user/upvote/${user_id}`);
   return upvotes || [];
 };
 
 export const deleteAllUpvotesFromPost = async post_id => {
-  const upvotes = await fetchHandler(`/post/upvote/${post_id}`, deleteOptions);
+  const upvotes = await fetchHandler(
+    `${baseUrl}/post/upvote/${post_id}`,
+    deleteOptions
+  );
   return upvotes;
 };
 
 export const deleteAllUpvotesFromUser = async user_id => {
-  const upvotes = await fetchHandler(`/user/upvote/${user_id}`, deleteOptions);
+  const upvotes = await fetchHandler(
+    `${baseUrl}/user/upvote/${user_id}`,
+    deleteOptions
+  );
   return upvotes;
 };
