@@ -1,11 +1,12 @@
 const knex = require("../knex");
 
 class Comment {
-  constructor({ comment_id, post_id, user_id, comment_text }) {
+  constructor({ comment_id, post_id, user_id, comment_text, username }) {
     this.comment_id = comment_id;
     this.post_id = post_id;
     this.user_id = user_id;
     this.comment_text = comment_text;
+    this.username = username
   }
 
   static async create(post_id, user_id, comment_text) {
