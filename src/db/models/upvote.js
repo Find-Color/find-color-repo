@@ -1,4 +1,5 @@
 const knex = require("../knex");
+
 class Upvote {
   constructor(user_id, post_id) {
     this.user_id = user_id;
@@ -79,7 +80,7 @@ class Upvote {
 
   static async removeAllFromPost(post_id) {
     try {
-      const result = await knex.raw(`DELETE * FROM upvotes WHERE post_id = ?`, [
+      const result = await knex.raw(`DELETE FROM upvotes WHERE post_id = ?`, [
         post_id,
       ]);
       return result;
@@ -91,7 +92,7 @@ class Upvote {
 
   static async removeAllFromUser(user_id) {
     try {
-      const result = await knex.raw(`DELETE * FROM upvotes WHERE user_id = ?`, [
+      const result = await knex.raw(`DELETE FROM upvotes WHERE user_id = ?`, [
         user_id,
       ]);
       return result;

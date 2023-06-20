@@ -28,20 +28,17 @@ export default function MissingPerson() {
 
   return (
     <>
-      <section>
-        {!loggedIn ? <></> : <button onClick={handleClick}>Edit Form</button>}
-        <h2>Status: {missing.status}</h2>
-        <h6>Last Seen in: {missing.location}</h6>
-        <h3>Name: {missing.name}</h3>
-        <h5>Age: {missing.age}</h5>
-        <h5>Hair: {missing.hair}</h5>
-        <h5>Height: {missing.height}</h5>
-        <h5>Eye Color: {missing.eye_color}</h5>
-        <h5>Weight: {missing.weight}</h5>
-        <h6>Nationality: {missing.ethnicity}</h6>
-        <h6>Race: {missing.race}</h6>
-        <h6>Gender: {missing.gender}</h6>
-      </section>
+      {!loggedIn ? <></> : <button onClick={handleClick}>Edit Form</button>}
+      <h2>Status: {missing.status}</h2>
+      <h6>Last Seen in: {missing.location}</h6>
+      <h3>Name: {missing.name}</h3>
+      <h5>Age: {missing.age}</h5>
+      <h5>Hair: {missing.hair}</h5>
+      <h5>Height: {missing.height}</h5>
+      <h5>Eye Color: {missing.eye_color}</h5>
+      <h5>Weight: {missing.weight}</h5>
+      <h6>Nationality: {missing.ethnicity}</h6>
+      <h6>Gender: {missing.gender}</h6>
       <img src={missing.image} alt="" />
       <section>
         <CommentsMissingPerson comments={comments}/>
