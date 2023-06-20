@@ -7,5 +7,5 @@ const remove = async (req, res) => {
   const upvote = await Upvote.remove(user_id, post_id);
   res.send(upvote);
 };
-
+ 
 module.exports = remove;

@@ -4,7 +4,6 @@ import { createComment } from "../adapters/comment-adapter";
 import { useEffect, useState, useContext } from "react";
 import { checkForLoggedInUser } from "../adapters/auth-adapter";
 import { useParams, useNavigate } from "react-router-dom";
-import CurrentUserContextProvider from "../contexts/CurrentUserContextProvider";
 import CommentCard from "./CommentCard";
 
 export default function CommentsMissingPerson({ comments }) {
