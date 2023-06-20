@@ -1,4 +1,4 @@
-import { fetchHandler, getPostOptions, getPatchOptions } from "../utils";
+import { fetchHandler, getPostOptions, getPatchOptions , deleteOptions} from "../utils";
 
 // Router.post("/comment", commentController.create);
 // Router.get("/comments/:comment_id", commentController.find);
