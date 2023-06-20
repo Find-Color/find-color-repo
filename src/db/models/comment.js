@@ -23,7 +23,7 @@ class Comment {
   static async find(comment_id) {
     try {
       const result = await knex.raw(
-        "SELECT * FROM comments WHERE comment_id = ?",
+        "SELECT comments.*, users.username FROM comments JOIN users ON comments.user_id = users.id WHERE comment_id = ?",
         [comment_id]
       );
       const {
@@ -39,7 +39,7 @@ class Comment {
   static async listFromPost(post_id) {
     try {
       const result = await knex.raw(
-        "SELECT * FROM comments WHERE post_id = ?",
+        "SELECT comments.*, users.username FROM comments JOIN users ON comments.user_id = users.id WHERE post_id = ?",
         [post_id]
       );
       const comments = result.rows.map(comment => new Comment(comment));
@@ -51,9 +51,10 @@ class Comment {
   }
 
   static async listFromUser(user_id) {
-    const result = await knex.raw("SELECT * FROM comments WHERE user_id = ?", [
-      user_id,
-    ]);
+    const result = await knex.raw(
+      "SELECT comments.*, users.username FROM comments JOIN users ON comments.user_id = users.id  WHERE user_id = ?",
+      [user_id]
+    );
     const comments = result.rows.map(comment => new Comment(comment));
     return comments;
   }
