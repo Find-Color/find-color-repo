@@ -3,13 +3,15 @@ import { useState, useEffect, useContext } from "react";
 import PostContext from "../contexts/PostContext";
 
 export default function MissingPeopleList() {
-  const { posts } = useContext(PostContext);
+  const { posts, filteredResults } = useContext(PostContext);
   console.log(posts);
+
+  const values = filteredResults ? filteredResults : posts;
 
   return (
     <>
       <div className="ui centered cards missing-people-container">
-        {posts.map((person, i) => {
+        {values.map((person, i) => {
           return <MissingPersonCard key={person.post_id} {...person} />;
         })}
       </div>
