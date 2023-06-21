@@ -1,14 +1,10 @@
 import MissingPersonCard from "./missingPersonCard";
-import { getAllPosts } from "../adapters/post-adapter";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import PostContext from "../contexts/PostContext";
 
 export default function MissingPeopleList() {
-  const [posts, setPosts] = useState([]);
-  console.log(posts)
-
-  useEffect(() => {
-    getAllPosts().then(setPosts);
-  }, []);
+  const { posts } = useContext(PostContext);
+  console.log(posts);
 
   return (
     <>
