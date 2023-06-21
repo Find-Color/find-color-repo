@@ -6,6 +6,6 @@ const add = async (req, res) => {
   } = req;
   const upvote = await Upvote.add(user_id, post_id);
   res.send(upvote);
-};
+}; 
 
 module.exports = add;

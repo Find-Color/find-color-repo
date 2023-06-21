@@ -1,20 +1,24 @@
 import { useState, useEffect, useContext } from "react";
 import { getPost } from "../adapters/post-adapter";
 import { useParams, useNavigate } from "react-router-dom";
-// import { UserContext } from "./contexts/current-user-context";
 import { checkForLoggedInUser } from "../adapters/auth-adapter";
+import CommentsMissingPerson from "../components/CommentsMissingPerson";
+import { getAllCommentsFromPost } from "../adapters/comment-adapter";
 
 export default function MissingPerson() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [missing, setMissing] = useState("");
   const [loggedIn, setLoggedIn] = useState(null);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     getPost(id).then((res) => setMissing(res[0]));
     checkForLoggedInUser().then((data) => {
       setLoggedIn(data);
     });
+    getAllCommentsFromPost(id).then(setComments)
+    console.log(comments)
   }, [id]);
   function handleClick() {
     navigate(`/missing_person_update/${id}`);
@@ -36,9 +40,12 @@ export default function MissingPerson() {
       <h6>Nationality: {missing.ethnicity}</h6>
       <h6>Gender: {missing.gender}</h6>
       <img src={missing.image} alt="" />
-      <h6>About Them: {missing.description_text}</h6>
-      <h6>Date Reported: {missing.date_reported}</h6>
-      <p>Contact Info: {missing.contact_info}</p>
+      <section>
+        <CommentsMissingPerson comments={comments}/>
+        <h6>About Them: {missing.description_text}</h6>
+        <h6>Date Reported: {missing.date_reported}</h6>
+        <p>Contact Info: {missing.contact_info}</p>
+      </section>
     </>
   );
 }

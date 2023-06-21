@@ -13,6 +13,7 @@ import MissingPerson from './pages/MissingPerson';
 import MissingPersonForm from './pages/MissingPersonForm';
 import MissingPersonUpdateForm from './pages/MissingPersonUpdateForm';
 import Feed from './pages/Feed';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './components/Footer';
 
 

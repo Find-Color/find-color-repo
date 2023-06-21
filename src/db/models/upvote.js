@@ -25,12 +25,11 @@ class Upvote {
   //read
   static async find(user_id, post_id) {
     try {
-      const {
-        rows: [exists],
-      } = await knex.raw(
+      const result = await knex.raw(
         `SELECT * FROM upvotes WHERE user_id = ? AND post_id = ?`,
         [user_id, post_id]
       );
+      const exists = result.rows;
       return exists;
     } catch (err) {
       console.log(err);
@@ -40,10 +39,12 @@ class Upvote {
 
   static async listFromPost(post_id) {
     try {
+      console.log(post_id)
       const { rows } = await knex.raw(
         `SELECT * FROM upvotes WHERE post_id = ?`,
         [post_id]
       );
+      console.log("model", rows);
       return rows;
     } catch (err) {
       console.log(err);

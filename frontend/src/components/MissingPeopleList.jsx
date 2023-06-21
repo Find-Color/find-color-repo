@@ -10,7 +10,7 @@ export default function MissingPeopleList() {
     <>
       <div className="ui centered cards missing-people-container">
         {posts.map((person, i) => {
-          return <MissingPersonCard key={i} {...person} />;
+          return <MissingPersonCard key={person.post_id} {...person} />;
         })}
       </div>
     </>
