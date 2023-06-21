@@ -4,20 +4,15 @@ import { useState, useEffect } from "react";
 import { getAllUpvotesFromPost } from "../adapters/upvote-adapter";
 
 export default function MissingPeopleList() {
-  const [posts, setPosts] = useState([]);
-  const [upVoteCount, setUpVoteCount] = useState([]);
+  const { posts, filteredResults } = useContext(PostContext);
   console.log(posts);
 
-  useEffect(() => {
-    getAllPosts().then(setPosts);
-    // getAllUpvotesFromPost(post_id).then(setUpVoteCount);
-    // console.log(`this many`, upVoteCount);
-  }, []);
+  const values = filteredResults ? filteredResults : posts;
 
   return (
     <>
       <div className="ui centered cards missing-people-container">
-        {posts.map((person, i) => {
+        {values.map((person, i) => {
           return <MissingPersonCard key={person.post_id} {...person} />;
         })}
       </div>

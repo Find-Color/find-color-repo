@@ -1,5 +1,4 @@
 export default function UpVote({upVoteCount}) {
-console.log(upVoteCount)
 
   return (
     <>

@@ -12,7 +12,14 @@ function PostProvider({ children }) {
     getAllPosts().then(setPosts);
   }, []);
 
-  const value = { posts };
+  let filteredResults = "";
+
+  // if the filtered states exist, then filter posts based on those results
+  if (selectEthnicity || selectGender || selectAge) {
+    // filteredResults =
+  }
+
+  const value = { posts, filteredResults };
 
   return <PostContext.Provider value={value}>{children}</PostContext.Provider>;
 }
