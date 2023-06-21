@@ -5,10 +5,10 @@ import { getAllUpvotesFromPost } from "../adapters/upvote-adapter";
 
 export default function MissingPeopleList() {
   const { posts, filteredResults } = useContext(PostContext);
-  console.log(posts);
-
   const values = filteredResults ? filteredResults : posts;
-
+  console.log("posts: ", posts);
+  console.log("filtered: ", filteredResults);
+  console.log("values: ", values);
   return (
     <>
       <div className="ui centered cards missing-people-container">
