@@ -19,7 +19,7 @@ const MissingPersonForm = () => {
   const [age, setAge] = useState("0");
   const [image, setImage] = useState("");
   const [description_text, setDescription] = useState("");
-  const [contact_info, setContactInfo] = useState("")
+  const [contact_info, setContactInfo] = useState("");
   const [missingPersonURL, setMissingPersonURL] = useState("");
   const widgetRef = useRef(null);
 
@@ -35,7 +35,6 @@ const MissingPersonForm = () => {
           const deliveryURL = result.info.secure_url;
           console.log("Delivery URL:", deliveryURL);
           setMissingPersonURL(deliveryURL);
-        } else {
           console.error("Upload error:", error);
         }
       }
@@ -51,7 +50,7 @@ const MissingPersonForm = () => {
   //Define navigate (for redirecting)
   const navigate = useNavigate();
   // Handle form submission
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Access the form data here and perform desired actions
     // e.g., send it to an API, update state, etc.
@@ -90,7 +89,7 @@ const MissingPersonForm = () => {
           required
           type="text"
           value={name}
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
         />
       </label>
       {/* Repeat this pattern for other input fields */}
@@ -100,7 +99,7 @@ const MissingPersonForm = () => {
           required
           type="text"
           value={location}
-          onChange={e => setLocation(e.target.value)}
+          onChange={(e) => setLocation(e.target.value)}
         />
       </label>
       <label>
@@ -108,7 +107,7 @@ const MissingPersonForm = () => {
         <select
           required
           value={location_state}
-          onChange={e => setLocationState(e.target.value)}
+          onChange={(e) => setLocationState(e.target.value)}
         >
           {statesUSA.map((state, index) => (
             <option key={index} value={state}>
@@ -122,7 +121,7 @@ const MissingPersonForm = () => {
         <select
           required
           value={status}
-          onChange={e => setStatus(e.target.value)}
+          onChange={(e) => setStatus(e.target.value)}
         >
           <option value="Missing">Missing</option>
           <option value="Found">Found</option>
@@ -134,12 +133,12 @@ const MissingPersonForm = () => {
           required
           type="date"
           value={date_reported}
-          onChange={e => setDateReported(e.target.value)}
+          onChange={(e) => setDateReported(e.target.value)}
         />
       </label>
       <label>
         Hair Color:
-        <select required value={hair} onChange={e => setHair(e.target.value)}>
+        <select required value={hair} onChange={(e) => setHair(e.target.value)}>
           <option value="Black">Black</option>
           <option value="Light Brown">Light Brown</option>
           <option value="Brown">Brown</option>
@@ -158,7 +157,7 @@ const MissingPersonForm = () => {
           type="number"
           min="0"
           value={Math.floor(height / 12)} // Calculate feet value
-          onChange={e => {
+          onChange={(e) => {
             const feet = parseInt(e.target.value) || 0;
             setHeight(feet * 12 + (height % 12));
           }}
@@ -170,7 +169,7 @@ const MissingPersonForm = () => {
           min="0"
           max="11"
           value={height % 12} // Calculate inches value
-          onChange={e => {
+          onChange={(e) => {
             const inches = parseInt(e.target.value) || 0;
             setHeight(Math.floor(height / 12) * 12 + inches);
           }}
@@ -182,7 +181,7 @@ const MissingPersonForm = () => {
         <select
           required
           value={eye_color}
-          onChange={e => setEyeColor(e.target.value)}
+          onChange={(e) => setEyeColor(e.target.value)}
         >
           <option value="Brown">Brown</option>
           <option value="Blue">Blue</option>
@@ -197,7 +196,7 @@ const MissingPersonForm = () => {
           type="number"
           min="0"
           value={weight}
-          onChange={e => setWeight(e.target.value)}
+          onChange={(e) => setWeight(e.target.value)}
         />
       </label>
       <label>
@@ -205,7 +204,7 @@ const MissingPersonForm = () => {
         <select
           required
           value={ethnicity}
-          onChange={e => setEthnicity(e.target.value)}
+          onChange={(e) => setEthnicity(e.target.value)}
         >
           <option value="Other">Other</option>
           <option value="Latino/Hispanic">Latino/Hispanic</option>
@@ -228,7 +227,7 @@ const MissingPersonForm = () => {
         <select
           required
           value={gender}
-          onChange={e => setGender(e.target.value)}
+          onChange={(e) => setGender(e.target.value)}
         >
           <option value="Male">Male</option>
           <option value="Female">Female</option>
@@ -243,25 +242,25 @@ const MissingPersonForm = () => {
           type="number"
           min="0"
           value={age}
-          onChange={e => setAge(e.target.value)}
+          onChange={(e) => setAge(e.target.value)}
         />
       </label>
       <label>
         Image:
-        <button onClick={openWidget}>Open Upload Widget</button>
+        <button onClick={openWidget}>Open Image</button>
       </label>
       <label>
         Description:
         <textarea
           value={description_text}
-          onChange={e => setDescription(e.target.value)}
+          onChange={(e) => setDescription(e.target.value)}
         ></textarea>
       </label>
       <label>
         Contact Information:
         <textarea
           value={contact_info}
-          onChange={e => setContactInfo(e.target.value)}
+          onChange={(e) => setContactInfo(e.target.value)}
         ></textarea>
       </label>
       {/* Submit button */}

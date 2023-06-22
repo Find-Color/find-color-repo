@@ -10,7 +10,7 @@ import {
   getAllUpvotesFromPost,
 } from "../adapters/upvote-adapter";
 
-export default function MissingPersonCard({ name, location, status, post_id }) {
+export default function MissingPersonCard({ name, location_state, status, post_id, image }) {
   const [modalShow, setModalShow] = useState(false);
   const [upVoteCount, setUpVoteCount] = useState([]);
   const [loggedIn, setLoggedIn] = useState(null);
@@ -18,6 +18,7 @@ export default function MissingPersonCard({ name, location, status, post_id }) {
   useEffect(() => {
     checkForLoggedInUser().then(data => {
       setLoggedIn(data);
+      console.log(image)
     });
     getAllUpvotesFromPost(post_id).then(setUpVoteCount);
   }, []);
@@ -39,8 +40,9 @@ export default function MissingPersonCard({ name, location, status, post_id }) {
     >
       {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
       <Card.Body>
+        <img src={image} alt="missing" />
         <h3>Name: {name}</h3>
-        <h4>Last Seen: {location}</h4>
+        <h4>Last Seen: {location_state}</h4>
         <h5>Status: {status}</h5>
         <h5>Up Votes: {upVoteCount.length}</h5>
         <h4 className="seeMoreButton" onClick={handleClick}>
