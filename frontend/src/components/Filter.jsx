@@ -41,27 +41,29 @@ function Filter() {
       <form id="form" onChange={handleChange}>
         <h5>Status</h5>
         <input type="checkbox" name="Status" value="Missing" />
-        <label for="Missing">Missing</label>
+        <label htmlFor="Missing">Missing</label>
         <input type="checkbox" name="Status" value="Found" />
-        <label for="Found">Found</label>
+        <label htmlFor="Found">Found</label>
         <h5>Ethnicity</h5>
-        <label for="Latino/Hispanic">Latino/Hispanic</label>
+        <label htmlFor="Latino/Hispanic">Latino/Hispanic</label>
         <input type="checkbox" name="Ethnicity" value="Latino/Hispanic" />
-        <label for="Black/African American">Black/African American</label>
+        <label htmlFor="Black/African American">Black/African American</label>
         <input
           type="checkbox"
           name="Ethnicity"
           value="Black/African American"
         />
-        <label for="Asian">Asian</label>
+        <label htmlFor="Asian">Asian</label>
         <input type="checkbox" name="Ethnicity" value="Asian" />
-        <label for="Hawaiian/Pacific Islander">Hawaiian/Pacific Islander</label>
+        <label htmlFor="Hawaiian/Pacific Islander">
+          Hawaiian/Pacific Islander
+        </label>
         <input
           type="checkbox"
           name="Ethnicity"
           value="Hawaiian/Pacific Islander"
         />
-        <label for="Indigenous American/Alaska Native">
+        <label htmlFor="Indigenous American/Alaska Native">
           Indigenous American/Alaska Native
         </label>
         <input
@@ -69,7 +71,7 @@ function Filter() {
           name="Ethnicity"
           value="Indigenous American/Alaska Native"
         />
-        <label for="Middle Eastern/North African">
+        <label htmlFor="Middle Eastern/North African">
           Middle Eastern/North African
         </label>
         <input
@@ -77,16 +79,16 @@ function Filter() {
           name="Ethnicity"
           value="Middle Eastern/North African"
         />
-        <label for="Multi-Racial">Multi-Racial</label>
+        <label htmlFor="Multi-Racial">Multi-Racial</label>
         <input type="checkbox" name="Ethnicity" value="Multi-Racial" />
         <h5>Gender</h5>
-        <label for="Female">Female</label>
+        <label htmlFor="Female">Female</label>
         <input type="checkbox" name="Gender" value="Female" />
-        <label for="Male">Male</label>
+        <label htmlFor="Male">Male</label>
         <input type="checkbox" name="Gender" value="Male" />
-        <label for="Non-Binary">Non-Binary</label>
+        <label htmlFor="Non-Binary">Non-Binary</label>
         <input type="checkbox" name="Gender" value="Non-Binary" />
-        <label for="Other">Other</label>
+        <label htmlFor="Other">Other</label>
         <input type="checkbox" name="Gender" value="Other" />
         <h5>Age</h5>
         <input type="number" min="0" name="Age-" />
