@@ -39,7 +39,7 @@ const MissingPersonUpdateForm = () => {
       setStatus(missing.status);
       setDateReported(missing.date_reported);
       setHair(missing.hair);
-      setHeight(missing.height);
+      // setHeight(missing.height);
       setEyeColor(missing.eye_color);
       setWeight(missing.weight);
       setEthnicity(missing.ethnicity);
@@ -169,7 +169,6 @@ const MissingPersonUpdateForm = () => {
           <input
             required
             type="number"
-            min="0"
             value={Math.floor(height / 12)} // Calculate feet value
             onChange={e => {
               const feet = parseInt(e.target.value) || 0;
@@ -180,7 +179,6 @@ const MissingPersonUpdateForm = () => {
           <input
             required
             type="number"
-            min="0"
             max="11"
             value={height % 12} // Calculate inches value
             onChange={e => {
