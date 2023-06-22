@@ -11,7 +11,6 @@ const baseUrl = "/api";
 export const createPost = async body =>
   fetchHandler(`${baseUrl}/post`, getPostOptions(body));
 
-// eating errors here for simplicity
 export const getAllPosts = async () => {
   const [posts] = await fetchHandler(`${baseUrl}/posts`);
   return posts || [];

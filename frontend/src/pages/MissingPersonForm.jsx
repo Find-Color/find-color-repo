@@ -7,6 +7,7 @@ const MissingPersonForm = () => {
   // Define state variables to store form input values
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
+  const [location_state, setLocationState] = useState("");
   const [status, setStatus] = useState("Missing");
   const [date_reported, setDateReported] = useState("");
   const [hair, setHair] = useState("");
@@ -57,6 +58,7 @@ const MissingPersonForm = () => {
     const formData = {
       name: name,
       location: location,
+      location_state: location_state,
       status: status,
       date_reported: date_reported,
       hair: hair,
@@ -93,13 +95,27 @@ const MissingPersonForm = () => {
       </label>
       {/* Repeat this pattern for other input fields */}
       <label>
-        Location:
+        City/Town:
         <input
           required
           type="text"
           value={location}
           onChange={e => setLocation(e.target.value)}
         />
+      </label>
+      <label>
+        State:
+        <select
+          required
+          value={location_state}
+          onChange={e => setLocationState(e.target.value)}
+        >
+          {statesUSA.map((state, index) => (
+            <option key={index} value={state}>
+              {state}
+            </option>
+          ))}
+        </select>
       </label>
       <label>
         Status:
@@ -255,3 +271,56 @@ const MissingPersonForm = () => {
 };
 
 export default MissingPersonForm;
+
+const statesUSA = [
+  "Alabama",
+  "Alaska",
+  "Arizona",
+  "Arkansas",
+  "California",
+  "Colorado",
+  "Connecticut",
+  "Delaware",
+  "Florida",
+  "Georgia",
+  "Hawaii",
+  "Idaho",
+  "Illinois",
+  "Indiana",
+  "Iowa",
+  "Kansas",
+  "Kentucky",
+  "Louisiana",
+  "Maine",
+  "Maryland",
+  "Massachusetts",
+  "Michigan",
+  "Minnesota",
+  "Mississippi",
+  "Missouri",
+  "Montana",
+  "Nebraska",
+  "Nevada",
+  "New Hampshire",
+  "New Jersey",
+  "New Mexico",
+  "New York",
+  "North Carolina",
+  "North Dakota",
+  "Ohio",
+  "Oklahoma",
+  "Oregon",
+  "Pennsylvania",
+  "Rhode Island",
+  "South Carolina",
+  "South Dakota",
+  "Tennessee",
+  "Texas",
+  "Utah",
+  "Vermont",
+  "Virginia",
+  "Washington",
+  "West Virginia",
+  "Wisconsin",
+  "Wyoming",
+];

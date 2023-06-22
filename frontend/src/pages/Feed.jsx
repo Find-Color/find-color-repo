@@ -1,10 +1,12 @@
 import MissingPersonCard from "../components/missingPersonCard";
 import MissingPeopleList from "../components/MissingPeopleList";
-import Button from "react-bootstrap/esm/Button";
-import Filter from "../components/filter";
-import { useEffect, useState } from "react";
+import Filter from "../components/Filter";
+import { useContext, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import CloudinaryUpload from "../components/CloudinaryUpload";
+import Button from "react-bootstrap/esm/Button";
+import Accordion from "react-bootstrap/Accordion";
+import PostContext from "../contexts/PostContext";
+
 export default function Feed() {
   const [filterBool, setFilterBool] = useState(false);
   const navigate = useNavigate();
@@ -24,6 +26,17 @@ export default function Feed() {
           New Post
         </Button>
       </>
+      <Accordion>
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>Filters</Accordion.Header>
+          <Accordion.Body>
+            <Filter />
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
+      {/* <p>
+        {selectStatus}, {selectEthnicity},{selectGender}, {selectAge}
+      </p> */}
       <MissingPeopleList />
     </>
   );
