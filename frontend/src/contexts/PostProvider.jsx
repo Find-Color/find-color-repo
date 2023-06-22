@@ -23,19 +23,12 @@ function PostProvider({ children }) {
     selectAge[1] !== "" ||
     selectStatus.length
   ) {
-    console.log(selectEthnicity, selectGender, selectAge, selectStatus);
-    console.log(selectAge[0] !== "" || selectAge[1] !== "");
     filteredResults = posts.filter(post => {
       const resultBooleans = [];
       if (selectEthnicity.length) {
         resultBooleans.push(selectEthnicity.includes(post.ethnicity));
       }
       if (selectAge[0] !== "" || selectAge[1] !== "") {
-        console.log("selectAge: ", selectAge);
-        console.log(
-          "age: ",
-          post.age >= (selectAge[0] || 0) && post.age <= (selectAge[1] || 1000)
-        );
         resultBooleans.push(
           post.age >= (selectAge[0] || 0) && post.age <= (selectAge[1] || 1000)
         );
@@ -46,7 +39,6 @@ function PostProvider({ children }) {
       if (selectStatus.length) {
         resultBooleans.push(selectStatus.includes(post.status));
       }
-      console.log(resultBooleans);
       return resultBooleans.every(boo => boo);
     });
   }
