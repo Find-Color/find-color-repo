@@ -1,29 +1,28 @@
 const knex = require("../knex");
 
-class Bookmarks {
-  constructor(bookmark_id,user_id, post_id) {
+class Bookmark {
+  constructor(bookmark_id, user_id, post_id) {
     this.bookmark_id = bookmark_id;
     this.user_id = user_id;
     this.post_id = post_id;
   }
 
-  //create
+  // Create bookmark
   static async createBookmark(user_id, post_id) {
     try {
-        const result = await knex.raw(
-            `INSERT INTO bookmarks(user_id, post_id) VALUES (?, ?) RETURNING id`,
-            [user_id, post_id]
-          );
-          const { id } = result.rows[0];
-          return new Bookmark(id, user_id, post_id);
-        } catch (err) {
-          console.log(err);
-          return null;
-        }
+      const result = await knex.raw(
+        `INSERT INTO bookmarks(user_id, post_id) VALUES (?, ?) RETURNING bookmark_id`,
+        [user_id, post_id]
+      );
+      const { bookmark_id } = result.rows[0];
+      return new Bookmark(bookmark_id, user_id, post_id);
+    } catch (err) {
+      console.error(err);
+      return null;
     }
-  
+  }
 
-  //read
+  // Get bookmark count for each post
   static async getBookmarkCountForPosts() {
     try {
       const result = await knex.raw(`
@@ -34,14 +33,36 @@ class Bookmarks {
 
       return result.rows;
     } catch (err) {
-      console.log(err);
+      console.error(err);
       return null;
     }
   }
 
- 
+  // Get all bookmarks from a user
+  static async getAllBookmarksFromUser(user_id) {
+    try {
+      const result = await knex.raw("SELECT * FROM bookmarks WHERE user_id = ?", [user_id]);
+      const bookmarks = result.rows.map((bookmark) => new Bookmark(bookmark.bookmark_id, bookmark.user_id, bookmark.post_id));
+      return bookmarks;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
 
-  //delete
+  // Get bookmarks from a post
+  static async getBookmarksFromPost(post_id) {
+    try {
+      const result = await knex.raw("SELECT * FROM bookmarks WHERE post_id = ?", [post_id]);
+      const bookmarks = result.rows.map((bookmark) => new Bookmark(bookmark.bookmark_id, bookmark.user_id, bookmark.post_id));
+      return bookmarks;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
+
+  // Delete bookmark
   static async remove(user_id, post_id) {
     try {
       const result = await knex.raw(
@@ -50,10 +71,10 @@ class Bookmarks {
       );
       return result;
     } catch (err) {
-      console.log(err);
+      console.error(err);
       return null;
     }
   }
 }
 
-module.exports = Bookmarks;
+module.exports = Bookmark;
