@@ -14,16 +14,16 @@ export default function CommentsMissingPerson({ comments }) {
   const [loggedIn, setLoggedIn] = useState(null);
 
   useEffect(() => {
-    checkForLoggedInUser().then((data) => {
+    checkForLoggedInUser().then(data => {
       setLoggedIn(data);
     });
   }, [commentText, comment]);
 
   // Helper functions for Comments
-  const handleComment = (event) => {
+  const handleComment = event => {
     setCommentText(event.target.value);
   };
-  const sendComment = async (e) => {
+  const sendComment = async e => {
     e.preventDefault();
     let post_id = id;
     let user_id = loggedIn.id;
@@ -37,7 +37,7 @@ export default function CommentsMissingPerson({ comments }) {
     await createComment(body);
 
     // Update the comments state with the new comment
-    setComments((prevComments) => [...prevComments, body]);
+    setComments(prevComments => [...prevComments, body]);
 
     // Clear the comment text input
     setCommentText("");
@@ -50,14 +50,16 @@ export default function CommentsMissingPerson({ comments }) {
           <Form.Label>Comments</Form.Label>
           <ul>
             {comments.map((comment, i) => {
-               return <CommentCard key={i} comment_text={comment.comment_text}/>
+              return (
+                <CommentCard key={i} comment_text={comment.comment_text} />
+              );
             })}
           </ul>
           <Form.Control
             type="text"
             placeholder="Make a Comment"
             value={commentText}
-            onChange={(e) => setCommentText(e.target.value)}
+            onChange={e => setCommentText(e.target.value)}
           />
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
