@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { createPost } from "../adapters/post-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
@@ -18,7 +18,32 @@ const MissingPersonForm = () => {
   const [age, setAge] = useState("0");
   const [image, setImage] = useState("");
   const [description_text, setDescription] = useState("");
-  const [contact_info, setContactInfo] = useState("");
+  const [contact_info, setContactInfo] = useState("")
+  const [missingPersonURL, setMissingPersonURL] = useState("");
+  const widgetRef = useRef(null);
+
+  useEffect(() => {
+    widgetRef.current = window.cloudinary.createUploadWidget(
+      {
+        cloudName: "dn7lhv9d9",
+        uploadPreset: "ml_default",
+      },
+      (error, result) => {
+        if (!error && result && result.event === "success") {
+          console.log("Upload result:", result);
+          const deliveryURL = result.info.secure_url;
+          console.log("Delivery URL:", deliveryURL);
+          setMissingPersonURL(deliveryURL);
+        } else {
+          console.error("Upload error:", error);
+        }
+      }
+    );
+  }, []);
+
+  const openWidget = () => {
+    widgetRef.current.open();
+  };
 
   //Define context
   const { currentUser } = useContext(CurrentUserContext);
@@ -41,7 +66,7 @@ const MissingPersonForm = () => {
       ethnicity: ethnicity,
       gender: gender,
       age: age,
-      image: image,
+      image: missingPersonURL,
       description_text: description_text,
       contact_info: contact_info,
       user_id: currentUser.id,
@@ -207,11 +232,7 @@ const MissingPersonForm = () => {
       </label>
       <label>
         Image:
-        <input
-          type="text"
-          value={image}
-          onChange={e => setImage(e.target.value)}
-        />
+        <button onClick={openWidget}>Open Upload Widget</button>
       </label>
       <label>
         Description:

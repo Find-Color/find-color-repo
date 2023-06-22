@@ -27,7 +27,6 @@ export default function CommentsMissingPerson({ comments }) {
     e.preventDefault();
     let post_id = id;
     let user_id = loggedIn.id;
-    console.log(post_id, user_id);
     const body = {
       post_id: post_id,
       user_id: user_id,
@@ -50,7 +49,7 @@ export default function CommentsMissingPerson({ comments }) {
           <Form.Label>Comments</Form.Label>
           <ul>
             {comments.map((comment, i) => {
-               return <CommentCard key={i} comment_text={comment.comment_text}/>
+               return <CommentCard key={i} comment_text={comment.comment_text} username={comment.username}/>
             })}
           </ul>
           <Form.Control

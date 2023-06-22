@@ -17,8 +17,8 @@ export default function MissingPerson() {
     checkForLoggedInUser().then((data) => {
       setLoggedIn(data);
     });
-    getAllCommentsFromPost(id).then(setComments)
-    console.log(comments)
+    getAllCommentsFromPost(id).then(setComments);
+    console.log(comments[0]);
   }, [id]);
   function handleClick() {
     navigate(`/missing_person_update/${id}`);
@@ -41,8 +41,10 @@ export default function MissingPerson() {
       <h6>Gender: {missing.gender}</h6>
       <img src={missing.image} alt="" />
       <section>
-        <CommentsMissingPerson comments={comments}/>
         <h6>About Them: {missing.description_text}</h6>
+        <CommentsMissingPerson comments={comments} />
+      </section>
+      <section>
         <h6>Date Reported: {missing.date_reported}</h6>
         <p>Contact Info: {missing.contact_info}</p>
       </section>
