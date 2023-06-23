@@ -5,6 +5,8 @@ const userController = require("./controllers/user");
 const postController = require("./controllers/post");
 const upvoteController = require("./controllers/upvote");
 const commentController = require("./controllers/comment");
+const bookmarksController = require('./controllers/bookmarks');
+
 
 const Router = express.Router();
 Router.use(addModels);
@@ -48,5 +50,12 @@ Router.get("/users/:user_id/comments", commentController.listFromUser);
 Router.patch("/comments/:comment_id", commentController.update);
 Router.delete("/posts/:post_id/comments", commentController.deleteAllFromPost);
 Router.delete("/users/:user_id/comments", commentController.deleteAllFromUser);
+
+//BOOKMARKS
+Router.post("/bookmarks",bookmarksController.createBookmark );
+Router.get("/users/:user_id/bookmarks", bookmarksController.getAllBookmarksFromUser);
+Router.get('/posts/:post_id/bookmarks', bookmarksController.getBookmarksFromPost);
+Router.get('/bookmark-counts', bookmarksController.getBookmarkCountForPosts);
+Router.delete("/bookmarks/:user_id/:post_id", bookmarksController.remove );
 
 module.exports = Router;

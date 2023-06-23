@@ -16,7 +16,6 @@ const MissingPersonForm = () => {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [location_state, setLocationState] = useState("");
-  // const [status, setStatus] = useState("Missing");
   const [date_reported, setDateReported] = useState("");
   const [hair, setHair] = useState("");
   const [feet, setFeet] = useState("");

@@ -13,7 +13,7 @@ class Upvote {
         rows: { result },
       } = await knex.raw(`INSERT INTO upvotes(user_id, post_id) VALUES(?, ?)`, [
         user_id,
-        post_id,
+        post_id, 
       ]);
       return result;
     } catch (err) {

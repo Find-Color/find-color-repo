@@ -2,8 +2,8 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.up = knex => {
-  return knex.schema.createTable("posts", table => {
+exports.up = (knex) => {
+  return knex.schema.createTable("posts", (table) => {
     table.increments("post_id");
     table.string("name");
     table.string("location");
@@ -21,7 +21,8 @@ exports.up = knex => {
     table.string("image");
     table.text("description_text");
     table.string("contact_info");
-    table.integer("user_id"); //.references("user_id").inTable("users");
+    table.integer("user_id").unsigned();
+    table.foreign("user_id").references("user_id").inTable("users");
   });
 };
 
@@ -29,4 +30,4 @@ exports.up = knex => {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.down = knex => knex.schema.dropTableIfExists("posts");
+exports.down = (knex) => knex.schema.dropTableIfExists("posts");
