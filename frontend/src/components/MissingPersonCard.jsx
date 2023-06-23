@@ -16,7 +16,7 @@ export default function MissingPersonCard({ name, location, status, post_id }) {
   const [loggedIn, setLoggedIn] = useState(null);
   const { id } = useParams();
   useEffect(() => {
-    checkForLoggedInUser().then((data) => {
+    checkForLoggedInUser().then(data => {
       setLoggedIn(data);
     });
     getAllUpvotesFromPost(post_id).then(setUpVoteCount);
@@ -27,10 +27,8 @@ export default function MissingPersonCard({ name, location, status, post_id }) {
   }
   async function handleUpVote(post_id) {
     const user_id = loggedIn.id;
-    console.log(`post id: ${post_id}`, `user id: ${user_id}`);
     await toggleUpvote(user_id, post_id);
   }
-console.log({post_id, upVoteCount})
   return (
     <Card
       className="ui card"

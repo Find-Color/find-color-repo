@@ -1,11 +1,15 @@
 const knex = require("../knex");
 
 class Comment {
-  constructor({ comment_id, post_id, user_id, comment_text }) {
+
+  constructor({ comment_id, post_id, user_id, comment_text, username }) {
+
     this.comment_id = comment_id;
     this.post_id = post_id;
     this.user_id = user_id;
     this.comment_text = comment_text;
+
+
   }
 
   static async create(post_id, user_id, comment_text) {
@@ -28,22 +32,34 @@ class Comment {
     }
   }
 
-  static async listFromPost(post_id) {
-    const result = await knex.raw('SELECT * FROM comments WHERE post_id = ?', [post_id]);
-    const comments = result.rows.map(
-      (comment) => new Comment(comment.comment_id, comment.post_id, comment.user_id, comment.comment_text)
-    );
-
-    return comments;
-  }
 
   static async listFromUser(user_id) {
     const result = await knex.raw("SELECT * FROM comments WHERE user_id = ?", [
       user_id,
     ]);
-    const comments = result.rows.map(comment => new Comment(comment));
+
+    const comments = result.rows.map(
+      comment =>
+        new Comment(
+          comment.comment_id,
+          comment.post_id,
+          comment.user_id,
+          comment.comment_text
+        )
+    );
+
     return comments;
   }
+
+
+  async update(new_text) {
+    this.commentText = new_text;
+
+    await knex.raw(
+      "UPDATE comments SET comment_text = ? WHERE comment_id = ?",
+      [newText, this.commentId]
+    );
+
 
   async update(new_text) {
     this.comment_text = new_text;
@@ -55,27 +71,13 @@ class Comment {
   }
 
   static async deleteAllFromPost(post_id) {
-    try {
-      const result = await knex.raw("DELETE FROM comments WHERE post_id = ?", [
-        post_id,
-      ]);
-      return result;
-    } catch (err) {
-      console.log(err);
-      return null;
-    }
+
+    await knex.raw("DELETE FROM comments WHERE post_id = ?", [post_id]);
   }
 
   static async deleteAllFromUser(user_id) {
-    try {
-      const result = await knex.raw("DELETE FROM comments WHERE user_id = ?", [
-        user_id,
-      ]);
-      return result;
-    } catch (err) {
-      console.log(err);
-      return null;
-    }
+    await knex.raw("DELETE FROM comments WHERE user_id = ?", [user_id]);
+
   }
 }
 

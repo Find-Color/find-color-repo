@@ -6,6 +6,7 @@ class Post {
     user_id,
     name,
     location,
+    location_state,
     status,
     date_reported,
     hair,
@@ -24,6 +25,7 @@ class Post {
     this.user_id = user_id;
     this.name = name;
     this.location = location;
+    this.location_state = location_state;
     this.status = status;
     this.date_reported = date_reported;
     this.hair = hair;
@@ -44,6 +46,7 @@ class Post {
     user_id,
     name,
     location,
+    location_state,
     status,
     date_reported,
     hair,
@@ -60,13 +63,14 @@ class Post {
     try {
       const postInsert = await knex.raw(
         `
-        INSERT INTO posts(name, location, status, date_reported, hair, height, eye_color, weight, ethnicity, gender, age, image, description_text, contact_info, user_id)
-        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO posts(name, location, location_state, status, date_reported, hair, height, eye_color, weight, ethnicity, gender, age, image, description_text, contact_info, user_id)
+        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)
         RETURNING *;
       `,
         [
           name,
           location,
+          location_state,
           status,
           date_reported,
           hair,
@@ -152,6 +156,7 @@ class Post {
           UPDATE posts
           SET name = ?, 
             location = ?, 
+            location_state = ?,
             status = ?, 
             date_reported = ?, 
             hair = ?, 
@@ -170,6 +175,7 @@ class Post {
         [
           newEntries.name,
           newEntries.location,
+          newEntries.location_state,
           newEntries.status,
           newEntries.date_reported,
           newEntries.hair,

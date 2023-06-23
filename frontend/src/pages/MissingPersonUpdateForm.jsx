@@ -13,6 +13,7 @@ const MissingPersonUpdateForm = () => {
   // Define state variables to store form input values
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
+  const [location_state, setLocationState] = useState("");
   const [status, setStatus] = useState("Missing");
   const [date_reported, setDateReported] = useState("");
   const [hair, setHair] = useState("");
@@ -34,10 +35,11 @@ const MissingPersonUpdateForm = () => {
     if (missing) {
       setName(missing.name);
       setLocation(missing.location);
+      setLocationState(missing.location_state);
       setStatus(missing.status);
       setDateReported(missing.date_reported);
       setHair(missing.hair);
-      setHeight(missing.height);
+      // setHeight(missing.height);
       setEyeColor(missing.eye_color);
       setWeight(missing.weight);
       setEthnicity(missing.ethnicity);
@@ -63,6 +65,7 @@ const MissingPersonUpdateForm = () => {
     const formData = {
       name: name,
       location: location,
+      location_state: location_state,
       status: status,
       date_reported: date_reported,
       hair: hair,
@@ -86,7 +89,7 @@ const MissingPersonUpdateForm = () => {
   };
 
   function handleDelete() {
-    fetchHandler(`/api/post/${id}`,deleteOptions)
+    fetchHandler(`/api/post/${id}`, deleteOptions);
     navigate(`/posts`);
   }
 
@@ -106,13 +109,27 @@ const MissingPersonUpdateForm = () => {
         </label>
         {/* Repeat this pattern for other input fields */}
         <label>
-          Location:
+          City/Town:
           <input
             required
             type="text"
             value={location}
             onChange={e => setLocation(e.target.value)}
           />
+        </label>
+        <label>
+          State:
+          <select
+            required
+            value={location_state}
+            onChange={e => setLocationState(e.target.value)}
+          >
+            {statesUSA.map((state, index) => (
+              <option key={index} value={state}>
+                {state}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           Status:
@@ -152,7 +169,6 @@ const MissingPersonUpdateForm = () => {
           <input
             required
             type="number"
-            min="0"
             value={Math.floor(height / 12)} // Calculate feet value
             onChange={e => {
               const feet = parseInt(e.target.value) || 0;
@@ -163,7 +179,6 @@ const MissingPersonUpdateForm = () => {
           <input
             required
             type="number"
-            min="0"
             max="11"
             value={height % 12} // Calculate inches value
             onChange={e => {
@@ -276,3 +291,55 @@ const MissingPersonUpdateForm = () => {
 
 export default MissingPersonUpdateForm;
 
+const statesUSA = [
+  "Alabama",
+  "Alaska",
+  "Arizona",
+  "Arkansas",
+  "California",
+  "Colorado",
+  "Connecticut",
+  "Delaware",
+  "Florida",
+  "Georgia",
+  "Hawaii",
+  "Idaho",
+  "Illinois",
+  "Indiana",
+  "Iowa",
+  "Kansas",
+  "Kentucky",
+  "Louisiana",
+  "Maine",
+  "Maryland",
+  "Massachusetts",
+  "Michigan",
+  "Minnesota",
+  "Mississippi",
+  "Missouri",
+  "Montana",
+  "Nebraska",
+  "Nevada",
+  "New Hampshire",
+  "New Jersey",
+  "New Mexico",
+  "New York",
+  "North Carolina",
+  "North Dakota",
+  "Ohio",
+  "Oklahoma",
+  "Oregon",
+  "Pennsylvania",
+  "Rhode Island",
+  "South Carolina",
+  "South Dakota",
+  "Tennessee",
+  "Texas",
+  "Utah",
+  "Vermont",
+  "Virginia",
+  "Washington",
+  "West Virginia",
+  "Wisconsin",
+  "Wyoming",
+];

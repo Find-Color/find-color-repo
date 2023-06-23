@@ -7,6 +7,7 @@ exports.up = (knex) => {
     table.increments("post_id");
     table.string("name");
     table.string("location");
+    table.string("location_state");
     table.string("status");
     table.date("date_reported");
     table.timestamps(true, true);
