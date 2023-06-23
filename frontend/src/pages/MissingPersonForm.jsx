@@ -49,7 +49,7 @@ const MissingPersonForm = () => {
     );
   }, []);
 
-  const openWidget = (e) => {
+  const openWidget = e => {
     e.preventDefault(); // Prevent the default form submission behavior
     widgetRef.current.open();
   };
@@ -59,7 +59,7 @@ const MissingPersonForm = () => {
   //Define navigate (for redirecting)
   const navigate = useNavigate();
   // Handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     const height = feet * 12 + inches;
@@ -91,7 +91,6 @@ const MissingPersonForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-<<<<<<< HEAD
       <Input
         required
         variant="standard"
@@ -165,94 +164,13 @@ const MissingPersonForm = () => {
 
       <div className=" flex gap-2">
         <Input
-=======
-      {/* Input fields */}
-      <label>
-        Name:
-        <input
-          required
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </label>
-      {/* Repeat this pattern for other input fields */}
-      <label>
-        City/Town:
-        <input
-          required
-          type="text"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-      </label>
-      <label>
-        State:
-        <select
-          required
-          value={location_state}
-          onChange={(e) => setLocationState(e.target.value)}
-        >
-          {statesUSA.map((state, index) => (
-            <option key={index} value={state}>
-              {state}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label>
-        Status:
-        <select
-          required
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-        >
-          <option value="Missing">Missing</option>
-          <option value="Found">Found</option>
-        </select>
-      </label>
-      <label>
-        Date Reported:
-        <input
-          required
-          type="date"
-          value={date_reported}
-          onChange={(e) => setDateReported(e.target.value)}
-        />
-      </label>
-      <label>
-        Hair Color:
-        <select required value={hair} onChange={(e) => setHair(e.target.value)}>
-          <option value="Black">Black</option>
-          <option value="Light Brown">Light Brown</option>
-          <option value="Brown">Brown</option>
-          <option value="Dark Brown">Dark Brown</option>
-          <option value="Blonde">Blonde</option>
-          <option value="Ginger">Ginger</option>
-          <option value="Dyed">Dyed</option>
-          <option value="Other">Other</option>
-        </select>
-      </label>
-      <label>
-        {/* //this calculates the height in inches */}
-        Height:
-        <input
->>>>>>> mathewBranch
           required
           label="Height ( ft )"
           type="number"
           min="0"
-<<<<<<< HEAD
           variant="outlined"
           value={feet}
           onChange={e => setFeet(e.target.value)}
-=======
-          value={Math.floor(height / 12)} // Calculate feet value
-          onChange={(e) => {
-            const feet = parseInt(e.target.value) || 0;
-            setHeight(feet * 12 + (height % 12));
-          }}
->>>>>>> mathewBranch
         />
         <p>ft</p>
         <Input
@@ -261,7 +179,6 @@ const MissingPersonForm = () => {
           type="number"
           min="0"
           max="11"
-<<<<<<< HEAD
           value={inches}
           onChange={e => setInches(e.target.value)}
         />
@@ -310,7 +227,7 @@ const MissingPersonForm = () => {
         label="Image"
         type="file"
         value={image}
-        onChange={e => setImage(e.target.value)}
+        onClick={e => openWidget(e)}
       />
 
       <Textarea
@@ -326,103 +243,6 @@ const MissingPersonForm = () => {
         onChange={e => setContactInfo(e.target.value)}
       ></Textarea>
 
-=======
-          value={height % 12} // Calculate inches value
-          onChange={(e) => {
-            const inches = parseInt(e.target.value) || 0;
-            setHeight(Math.floor(height / 12) * 12 + inches);
-          }}
-        />
-        <p>inches</p>
-      </label>
-      <label>
-        Eye Color:
-        <select
-          required
-          value={eye_color}
-          onChange={(e) => setEyeColor(e.target.value)}
-        >
-          <option value="Brown">Brown</option>
-          <option value="Blue">Blue</option>
-          <option value="Green">Green</option>
-          <option value="Hazel">Hazel</option>
-        </select>
-      </label>
-      <label>
-        Weight (lbs):
-        <input
-          required
-          type="number"
-          min="0"
-          value={weight}
-          onChange={(e) => setWeight(e.target.value)}
-        />
-      </label>
-      <label>
-        Ethnicity:
-        <select
-          required
-          value={ethnicity}
-          onChange={(e) => setEthnicity(e.target.value)}
-        >
-          <option value="Other">Other</option>
-          <option value="Latino/Hispanic">Latino/Hispanic</option>
-          <option value="Black/African American">Black/African American</option>
-          <option value="Asian">Asian</option>
-          <option value="Hawaiian/Pacific Islander">
-            Hawaiian/Pacific Islander
-          </option>
-          <option value="Indigenous American/Alaska Native">
-            Indigenous American/Alaska Native
-          </option>
-          <option value="Middle Eastern/North African">
-            Middle Eastern/North African
-          </option>
-          <option value="Multi-Racial">Multi-Racial</option>
-        </select>
-      </label>
-      <label>
-        Gender:
-        <select
-          required
-          value={gender}
-          onChange={(e) => setGender(e.target.value)}
-        >
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Non-Binary">Non-Binary</option>
-          <option value="Other">Other</option>
-        </select>
-      </label>
-      <label>
-        Age:
-        <input
-          required
-          type="number"
-          min="0"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
-        />
-      </label>
-      <label>
-        Image:
-        <button onClick={(e) => openWidget(e)}>Open Image</button>
-      </label>
-      <label>
-        Description:
-        <textarea
-          value={description_text}
-          onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
-      </label>
-      <label>
-        Contact Information:
-        <textarea
-          value={contact_info}
-          onChange={(e) => setContactInfo(e.target.value)}
-        ></textarea>
-      </label>
->>>>>>> mathewBranch
       {/* Submit button */}
       <Button type="submit">Report Missing Person</Button>
     </form>

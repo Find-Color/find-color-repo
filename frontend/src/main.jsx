@@ -5,19 +5,6 @@ import UserContextProvider from "./contexts/CurrentUserContextProvider.jsx";
 import PostProvider from "./contexts/PostProvider.jsx";
 import "./index.css";
 import { ThemeProvider } from "@material-tailwind/react";
-<<<<<<< HEAD
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <UserContextProvider>
-    <PostProvider>
-      <BrowserRouter>
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
-      </BrowserRouter>
-    </PostProvider>
-  </UserContextProvider>
-=======
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ThemeProvider>
     <UserContextProvider>
@@ -28,5 +15,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </PostProvider>
     </UserContextProvider>
   </ThemeProvider>
->>>>>>> mathewBranch
 );

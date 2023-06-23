@@ -10,11 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
-=======
     "@cloudinary/react": "^1.11.2",
     "@cloudinary/url-gen": "^1.10.1",
->>>>>>> mathewBranch
     "@material-tailwind/react": "^2.0.4",
     "bootstrap": "^5.3.0",
     "cloudinary": "^1.37.2",
