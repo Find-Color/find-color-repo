@@ -22,22 +22,24 @@ class Comment {
   }
 
   static async find(comment_id) {
-    const result = await knex.raw('SELECT * FROM comments WHERE comment_id = ?', [comment_id]);
-    const comment = result.rows[0];
-
-    if (comment) {
-      return new Comment(comment.comment_id, comment.post_id, comment.user_id, comment.comment_text);
-    } else {
-      throw new Error('Comment not found');
+    try {
+      const result = await knex.raw(
+        "SELECT comments.*, users.username FROM comments JOIN users ON comments.user_id = users.id WHERE comment_id = ?",
+        [comment_id]
+      );
+      const {
+        rows: [comment],
+      } = result;
+      return new Comment(comment);
+    } catch (err) {
+      console.log(err);
+      return null;
     }
   }
 
 
   static async listFromUser(user_id) {
-    const result = await knex.raw("SELECT * FROM comments WHERE user_id = ?", [
-      user_id,
-    ]);
-
+    const result = await knex.raw('SELECT * FROM comments WHERE user_id = ?', [user_id]);
     const comments = result.rows.map(
       comment =>
         new Comment(
@@ -83,13 +85,11 @@ class Comment {
   }
 
   static async deleteAllFromPost(post_id) {
-
-    await knex.raw("DELETE FROM comments WHERE post_id = ?", [post_id]);
+    await knex.raw('DELETE FROM comments WHERE post_id = ?', [post_id]);
   }
 
   static async deleteAllFromUser(user_id) {
-    await knex.raw("DELETE FROM comments WHERE user_id = ?", [user_id]);
-
+    await knex.raw('DELETE FROM comments WHERE user_id = ?', [user_id]);
   }
 }
 
