@@ -21,7 +21,6 @@ const MissingPersonUpdateForm = () => {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [location_state, setLocationState] = useState("");
-  const [location_state, setLocationState] = useState("");
   const [status, setStatus] = useState("Missing");
   const [date_reported, setDateReported] = useState("");
   const [hair, setHair] = useState("");
@@ -44,7 +43,6 @@ const MissingPersonUpdateForm = () => {
     if (missing) {
       setName(missing.name);
       setLocation(missing.location);
-      setLocationState(missing.location_state);
       setLocationState(missing.location_state);
       setStatus(missing.status);
       setDateReported(missing.date_reported.match(/^.{10}/)[0]);
@@ -78,7 +76,6 @@ const MissingPersonUpdateForm = () => {
       name: name,
       location: location,
       location_state: location_state,
-      location_state: location_state,
       status: status,
       date_reported: date_reported,
       hair: hair,
@@ -102,7 +99,6 @@ const MissingPersonUpdateForm = () => {
   };
 
   function handleDelete() {
-    fetchHandler(`/api/post/${id}`, deleteOptions);
     fetchHandler(`/api/post/${id}`, deleteOptions);
     navigate(`/posts`);
   }
