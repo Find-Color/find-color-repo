@@ -16,7 +16,7 @@ const createPost = async (req, res) => {
       ethnicity,
       gender,
       age,
-      image,
+      image_post,
       description_text,
       contact_info,
     },
@@ -35,7 +35,7 @@ const createPost = async (req, res) => {
     ethnicity,
     gender,
     age,
-    image,
+    image_post,
     description_text,
     contact_info
   );

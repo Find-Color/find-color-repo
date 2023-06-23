@@ -4,6 +4,7 @@ import CurrentUserContext from "../contexts/current-user-context";
 import { getUser } from "../adapters/user-adapter";
 import { logUserOut } from "../adapters/auth-adapter";
 import UpdateUsernameForm from "../components/UpdateUsernameForm";
+import { Button, Typography } from "@material-tailwind/react";
 
 export default function UserPage() {
   const navigate = useNavigate();
@@ -38,8 +39,15 @@ export default function UserPage() {
   const profileUsername = isCurrentUserProfile ? currentUser.username : userProfile.username;
 
   return <>
-    <h1>{profileUsername}</h1>
-    { !!isCurrentUserProfile && <button onClick={handleLogout}>Log Out</button> }
+  <section className="userTabs">
+  <Typography variant="h4" color="blue-gray">{profileUsername}</Typography>
+    <Button color="red" variant="text">Edit Profile</Button>
+    <Button color="red" variant="text">Quiz</Button>
+    <Button color="red" variant="text">View Posts</Button>
+    { !!isCurrentUserProfile && <Button onClick={handleLogout} color="red" variant="text">Log Out</Button> }
+  </section>
+    
+   
     <p>If the user had any data, here it would be</p>
     <p>Fake Bio or something</p>
     {

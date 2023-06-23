@@ -1,12 +1,25 @@
 import { createComment } from "../adapters/comment-adapter";
-import Button from "react-bootstrap/Button";
-import { Modal } from "react-bootstrap";
-import Form from "react-bootstrap/Form";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { checkForLoggedInUser } from "../adapters/auth-adapter";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import {
+  Textarea,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
+  Card,
+  Input,
+  Checkbox,
+  Button,
+  Typography,
+} from "@material-tailwind/react";
 
-export default function CommentModalDMMY(props) {
+export default function CommentModalDMMY({
+  showDialog,
+  handleCloseDialog,
+  post_id,
+}) {
   const navigate = useNavigate();
   const [commentText, setCommentText] = useState("");
   const [loggedIn, setLoggedIn] = useState(null);
@@ -20,9 +33,10 @@ export default function CommentModalDMMY(props) {
   const handleComment = (event) => {
     setCommentText(event.target.value);
   };
+
   const sendComment = async (e) => {
     e.preventDefault();
-    let post_id = props.post_id;
+    // let post_id = post_id;
     let user_id = loggedIn.id;
     const body = {
       post_id: post_id,
@@ -33,56 +47,61 @@ export default function CommentModalDMMY(props) {
     navigate(`/post/${post_id}`);
   };
 
-  const modalStyle = {
-    backgroundColor: "black", // Background color for the modal
-    color: "white", // Text color for the modal
-  };
   return (
-    <Modal
-      className="modal"
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header
-        closeButton
-        style={{ backgroundColor: "black", color: "white" }}
-      >
-        <Modal.Title
-          id="contained-modal-title-vcenter"
-          style={{ backgroundColor: "black", color: "white" }}
-        >
-          Make a Comment
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body style={{ backgroundColor: "black", color: "white" }}>
-        <h4>Centered Modal</h4>
-
-        <Form.Group
-          style={{ backgroundColor: "black", color: "white" }}
-          className="mb-3"
-          controlId="exampleForm.ControlTextarea1"
-        >
-          <Form.Label style={{ backgroundColor: "black", color: "white" }}>
-            Example textarea
-          </Form.Label>
-          <Form.Control
-            onChange={handleComment}
-            as="textarea"
-            rows={3}
-            style={{ backgroundColor: "black", color: "white" }}
-          />
-        </Form.Group>
-      </Modal.Body>
-      <Modal.Footer style={{ backgroundColor: "black", color: "white" }}>
-        <Button variant="warning" onClick={sendComment}>
-          Send
-        </Button>
-        <Button onClick={props.onHide} variant="warning">
-          Close
-        </Button>
-      </Modal.Footer>
-    </Modal>
+    <Fragment>
+      <Dialog open={showDialog} handler={handleCloseDialog}>
+        <DialogHeader>User Name</DialogHeader>
+        <DialogBody divider>
+          <Card color="transparent" shadow={false}>
+            <Typography variant="h4" color="blue-gray">
+              Make a comment
+            </Typography>
+            <Typography color="gray" className="mt-1 font-normal">
+              We recommend kind words or whereabouts of the person
+            </Typography>
+            <form
+              className="mt-10 mb-4 w-80 max-w-screen-lg sm:w-96"
+              onChange={handleComment}
+            >
+              <div className="mb-4 flex flex-col gap-6">
+                <div className="w-90">
+                  <Textarea label="Message" />
+                </div>
+              </div>
+              <Button
+                className="mt-6"
+                fullWidth
+                onClick={sendComment}
+                color="red"
+              >
+                Send
+              </Button>
+            </form>
+          </Card>
+        </DialogBody>
+        <DialogFooter>
+          <Button
+            variant="text"
+            color="red"
+            onClick={handleCloseDialog}
+            className="mr-1"
+          >
+            <span>Cancel</span>
+          </Button>
+          {/* <Button variant="gradient" color="red" onClick={handleCloseDialog}>
+            <span>Confirm</span>
+          </Button> */}
+        </DialogFooter>
+      </Dialog>
+    </Fragment>
   );
+}
+
+{
+  /* <Button variant="warning" onClick={sendComment}>
+Send
+</Button>
+<Button onClick={props.onHide} variant="warning">
+Close
+</Button> */
 }

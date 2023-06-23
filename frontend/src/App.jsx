@@ -13,11 +13,12 @@ import MissingPerson from "./pages/MissingPerson";
 import MissingPersonForm from "./pages/MissingPersonForm";
 import MissingPersonUpdateForm from "./pages/MissingPersonUpdateForm";
 import Feed from "./pages/Feed";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./components/Footer";
 import { Cloudinary } from "@cloudinary/url-gen";
+// import { ThemeProvider } from "@material-tailwind/react";
 
-export default function App() {
+
+ function App() {
   const cld = new Cloudinary({ cloud: { cloudName: "dn7lhv9d9" } });
   const { setCurrentUser } = useContext(UserContext);
   useEffect(() => {
@@ -25,9 +26,10 @@ export default function App() {
   }, [setCurrentUser]);
 
   return (
+    // <ThemeProvider value={customTheme}>
     <>
       <SiteHeadingAndNav />
-      <main>
+      <main >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
@@ -46,5 +48,8 @@ export default function App() {
       </main>
       <Footer />
     </>
+    // </ThemeProvider>
   );
 }
+
+export default App

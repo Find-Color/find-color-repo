@@ -1,8 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
-  color: white;
-  background-color: #000;
+  /* background-color: #1e2329;
+  color: #fff; */
+}
+
+.dark {
+  /* Apply styles for dark mode */
+  background-color: #1f2937;
+  color: #fff;
+}
+
+.light {
+  /* Apply styles for light mode */
+  background-color: #f3f4f6;
+  color: #000;
 }
 
 input,
@@ -19,14 +35,12 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
-  background: #000;
 }
 
 #logo {
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
-  color: #fff;
 }
 
 nav ul {
@@ -39,7 +53,6 @@ nav ul {
 
 nav a {
   display: block;
-  color: #fff;
 }
 
 form {
@@ -77,7 +90,7 @@ form {
 }
 
 .cardButton {
-  width: 25%;
+  width: 35%;
 }
 
 Button {
@@ -137,16 +150,15 @@ Button {
 /* Footer css */
 
 #footer {
-height: 330px;
-background-color: #000;
-display: grid;
-grid-template-columns: 1fr 1fr;
-color: whitesmoke;
-gap: 15%;
+  height: 330px;
+  background-color: #000;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: whitesmoke;
+  gap: 15%;
 
-position: relative;
+  position: relative;
 }
-
 
 #footer::after {
   content: "";
@@ -174,16 +186,15 @@ position: relative;
 /* Footer css */
 
 #footer {
-height: 330px;
-background-color: #000;
-display: grid;
-grid-template-columns: 1fr 1fr;
-color: whitesmoke;
-gap: 15%;
+  height: 330px;
+  background-color: #000;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: whitesmoke;
+  gap: 15%;
 
-position: relative;
+  position: relative;
 }
-
 
 #footer::after {
   content: "";
@@ -208,15 +219,60 @@ position: relative;
   grid-template-columns: 1fr 1fr;
 }
 
-.updateFormTitle{
+.updateFormTitle {
   text-align: center;
 }
 
-#footerTitle{
-  display:flex;
+#footerTitle {
+  display: flex;
   justify-content: center;
 }
 
-.footerPadding{
+.footerPadding {
   padding-top: 25px;
+}
+
+.editForm{
+  width: 45%;
+  margin-top: 6%;
+}
+
+#missingPersonInfoParent{
+  display: flex;
+  flex-direction: row;
+}
+
+.missingPersonInfoOne{
+  width: 20%;
+  padding-left: 2%;
+}
+
+.missingPersonInfoTwo{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
+.missingPersonInfoThree{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-content: center;
+
+}
+
+.userTabs{
+  display: flex;
+  justify-content: center;
+}
+#dateAndContact{
+  padding-top: 2%;
+  text-align: center;
+}
+
+#decriptionCommentButton{
+  display: flex;
+ justify-content: center;
 }

@@ -41,7 +41,8 @@ const MissingPersonForm = () => {
     );
   }, []);
 
-  const openWidget = () => {
+  const openWidget = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
     widgetRef.current.open();
   };
 
@@ -247,7 +248,7 @@ const MissingPersonForm = () => {
       </label>
       <label>
         Image:
-        <button onClick={openWidget}>Open Image</button>
+        <button onClick={(e) => openWidget(e)}>Open Image</button>
       </label>
       <label>
         Description:
