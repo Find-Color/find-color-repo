@@ -27,7 +27,6 @@ export default function CommentsMissingPerson({ comments }) {
     e.preventDefault();
     let post_id = id;
     let user_id = loggedIn.id;
-    console.log(post_id, user_id);
     const body = {
       post_id: post_id,
       user_id: user_id,
