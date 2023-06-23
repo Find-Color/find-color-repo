@@ -52,13 +52,13 @@ class Comment {
   }
 
 
-  async update(new_text) {
-    this.commentText = new_text;
+  // async update(new_text) {
+  //   this.commentText = new_text;
 
-    await knex.raw(
-      "UPDATE comments SET comment_text = ? WHERE comment_id = ?",
-      [newText, this.commentId]
-    );
+  //   await knex.raw(
+  //     "UPDATE comments SET comment_text = ? WHERE comment_id = ?",
+  //     [newText, this.commentId]
+  //   );
 
 
   async update(new_text) {

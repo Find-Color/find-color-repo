@@ -5,7 +5,7 @@ const userController = require("./controllers/user");
 const postController = require("./controllers/post");
 const upvoteController = require("./controllers/upvote");
 const commentController = require("./controllers/comment");
-const bookmarksController = require('../controllers/bookmarks');
+const bookmarksController = require('./controllers/bookmarks');
 
 
 const Router = express.Router();
