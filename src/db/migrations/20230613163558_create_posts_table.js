@@ -12,10 +12,9 @@ exports.up = knex => {
     table.date("date_reported");
     table.timestamps(true, true);
     table.string("hair");
-    table.string("height");
+    table.integer("height");
     table.string("eye_color");
-    table.string("weight");
-    table.string("race");
+    table.integer("weight");
     table.string("ethnicity");
     table.string("gender");
     table.integer("age");
