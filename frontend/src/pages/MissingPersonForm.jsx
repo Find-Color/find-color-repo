@@ -200,7 +200,7 @@ const MissingPersonForm = () => {
         <Option value="Dyed">Dyed</Option>
         <Option value="Other">Other</Option>
       </Select>
-      {/* //this calculates the height in inches */}
+
       <Select
         label="Eye Color"
         variant="standard"
@@ -243,7 +243,6 @@ const MissingPersonForm = () => {
         onChange={e => setContactInfo(e.target.value)}
       ></Textarea>
 
-      {/* Submit button */}
       <Button type="submit">Report Missing Person</Button>
     </form>
   );

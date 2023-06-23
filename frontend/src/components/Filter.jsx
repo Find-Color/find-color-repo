@@ -9,7 +9,6 @@ function Filter() {
     setSelectGender,
     setSelectAge,
     setSelectStatus,
-    selectName,
     setSelectName,
   } = useContext(PostContext);
 
@@ -56,7 +55,6 @@ function Filter() {
 
   return (
     <>
-      {selectName}
       <form id="form" onChange={handleChange}>
         <Input name="Name" label="Name" pattern="[A-Za-z ]*" />
         <h5>Status</h5>
