@@ -1,12 +1,11 @@
 import { Textarea, Button, IconButton, Form } from "@material-tailwind/react";
-import { LinkIcon } from "@heroicons/react/24/outline";
 import { createComment } from "../adapters/comment-adapter";
 import { useEffect, useState, useContext, Fragment } from "react";
 import { checkForLoggedInUser } from "../adapters/auth-adapter";
 import { useParams, useNavigate } from "react-router-dom";
 import CommentCard from "./CommentCard";
 
-export default function CommentsMissingPerson({ comments }) {
+export default function CommentsMissingPerson({ comments, username }) {
   const navigate = useNavigate();
   const { id } = useParams();
   const [comment, setComments] = useState(comments);
@@ -29,8 +28,9 @@ export default function CommentsMissingPerson({ comments }) {
   const sendComment = async (e) => {
     e.preventDefault();
     console.log(commentText);
+    console.log(loggedIn)
     let post_id = id;
-    let user_id = loggedIn.id;
+    let user_id = loggedIn.user_id;
     const body = {
       post_id: post_id,
       user_id: user_id,
@@ -53,7 +53,7 @@ export default function CommentsMissingPerson({ comments }) {
           return (
             <CommentCard
               key={i}
-              username={comment.username}
+              username={username}
               comment_text={comment.comment_text}
             />
           );

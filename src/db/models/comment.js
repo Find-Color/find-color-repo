@@ -8,7 +8,7 @@ class Comment {
     this.post_id = post_id;
     this.user_id = user_id;
     this.comment_text = comment_text;
-
+ 
 
   }
 
@@ -18,7 +18,7 @@ class Comment {
       [post_id, user_id, comment_text]
     );
 
-    return comment;
+    return result;
   }
 
   static async find(comment_id) {
@@ -49,6 +49,20 @@ class Comment {
     );
 
     return comments;
+  }
+
+  static async listFromPost(post_id) {
+    try {
+      const result = await knex.raw(
+        "SELECT * FROM comments WHERE post_id = ?",
+        [post_id]
+      );
+      const comments = result.rows.map(comment => new Comment(comment));
+      return comments;
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
   }
 
 

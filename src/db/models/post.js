@@ -101,7 +101,7 @@ class Post {
         `
           SELECT *, users.username
           FROM posts
-          JOIN users ON posts.user_id = users.id
+          JOIN users ON posts.user_id = users.user_id
           WHERE post_id = ?;
         `,
         [post_id]
@@ -119,7 +119,7 @@ class Post {
         `
           SELECT *, users.username
           FROM posts
-          JOIN users ON posts.user_id = users.id;
+          JOIN users ON posts.user_id = users.user_id;
       `
       );
       return rows;
@@ -137,7 +137,7 @@ class Post {
           SELECT *, users.username
           FROM posts
           JOIN users ON posts.user_id = users.id
-          WHERE users.id = ?;
+          WHERE users.user_id = ?;
       `,
         [user_id]
       );

@@ -21,12 +21,12 @@ export default function MissingPersonCard({
   post_id,
   image_post,
 }) {
-  const [modalShow, setModalShow] = useState(false);
   const [upVoteCount, setUpVoteCount] = useState([]);
   const [loggedIn, setLoggedIn] = useState(null);
-  const [size, setSize] = useState(null);
+  const [upVoteBool, setUpVoteBool] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
-  
+  const [counter, setCounter] = useState(upVoteCount.length);
+
 
   const toggleDialog = () => {
     setShowDialog(!showDialog);
@@ -48,7 +48,9 @@ export default function MissingPersonCard({
       console.log(image_post);
     });
     getAllUpvotesFromPost(post_id).then(setUpVoteCount);
-  }, []);
+    setCounter(upVoteCount.length)
+    console.log(counter)
+  }, [upVoteCount.length]);
 
   const navigate = useNavigate();
 
@@ -57,7 +59,15 @@ export default function MissingPersonCard({
   }
 
   async function handleUpVote(post_id) {
-    const user_id = loggedIn.id;
+    if (!upVoteBool) {
+      setUpVoteCount(counter + 1)
+      setUpVoteBool(true);
+    } else {
+      setUpVoteCount(counter - 1)
+      setUpVoteBool(false);
+    }
+
+    const user_id = loggedIn.user_id;
     await toggleUpvote(user_id, post_id);
   }
 
@@ -70,7 +80,7 @@ export default function MissingPersonCard({
         <h3>Name: {name}</h3>
         <h4>Last Seen: {location_state}</h4>
         <h5>Status: {status}</h5>
-        <h5>Up Votes: {upVoteCount.length}</h5>
+        <h5>Up Votes: {counter}</h5>
         <br />
         <h4 className="seeMoreButton" onClick={handleClick}>
           See More

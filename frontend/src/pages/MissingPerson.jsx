@@ -21,6 +21,7 @@ export default function MissingPerson() {
     });
     getAllCommentsFromPost(id).then(setComments);
   }, [id]);
+
   function handleClick() {
     navigate(`/missing_person_update/${id}`);
   }
@@ -30,6 +31,7 @@ export default function MissingPerson() {
   };
 
   if (!missing) return <div>Loading...</div>;
+  console.log(comments)
   // if(missing.height )
   return (
     <>
@@ -72,10 +74,20 @@ export default function MissingPerson() {
 
         <section className="missingPersonInfoThree">
           <div id="decriptionCommentButtonParent">
-            <Button id="decriptionCommentButton" color="amber" variant="text" onClick={handleDescription}>
+            <Button
+              id="decriptionCommentButton"
+              color="amber"
+              variant="text"
+              onClick={handleDescription}
+            >
               Description
             </Button>
-            <Button id="decriptionCommentButton" color="amber" variant="text" onClick={handleDescription}>
+            <Button
+              id="decriptionCommentButton"
+              color="amber"
+              variant="text"
+              onClick={handleDescription}
+            >
               Comments
             </Button>
           </div>
@@ -84,7 +96,7 @@ export default function MissingPerson() {
               About Them: {missing.description_text}
             </Typography>
           ) : (
-            <CommentsMissingPerson comments={comments} />
+            <CommentsMissingPerson comments={comments} username={loggedIn.username}/>
           )}
         </section>
       </div>

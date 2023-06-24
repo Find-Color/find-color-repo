@@ -10,7 +10,7 @@ const baseUrl = `/api/upvote`;
 
 export const toggleUpvote = async (user_id, post_id) => {
   const exists = await fetchHandler(`${baseUrl}/${user_id}/${post_id}`);
-  return exists[0].length == 1
+  return exists[0].length === 1
     ? await fetchHandler(`${baseUrl}/${user_id}/${post_id}`, deleteOptions)
     : await fetchHandler(`${baseUrl}/${user_id}/${post_id}`, getPostOptions());
 };

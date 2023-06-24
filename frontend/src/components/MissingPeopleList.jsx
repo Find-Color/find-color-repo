@@ -1,4 +1,4 @@
-import MissingPersonCard from "./missingPersonCard";
+import MissingPersonCard from "./MissingPersonCard";
 import { useState, useEffect, useContext } from "react";
 import PostContext from "../contexts/PostContext";
 
