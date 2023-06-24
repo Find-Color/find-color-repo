@@ -26,6 +26,7 @@ export default function MissingPersonCard({
   const [loggedIn, setLoggedIn] = useState(null);
   const [size, setSize] = useState(null);
   const [showDialog, setShowDialog] = useState(false);
+  
 
   const toggleDialog = () => {
     setShowDialog(!showDialog);

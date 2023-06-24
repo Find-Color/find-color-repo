@@ -9,6 +9,11 @@ body {
   color: #fff; */
 }
 
+Button {
+  display: flex;
+  justify-content: center;
+}
+
 .dark {
   /* Apply styles for dark mode */
   background-color: #1f2937;
@@ -187,10 +192,10 @@ Button {
 
 #footer {
   height: 330px;
-  background-color: #000;
+  background-color: black;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  color: whitesmoke;
+  color: white;
   gap: 15%;
 
   position: relative;
@@ -232,47 +237,74 @@ Button {
   padding-top: 25px;
 }
 
-.editForm{
+.editForm {
   width: 45%;
   margin-top: 6%;
 }
 
-#missingPersonInfoParent{
+#missingPersonInfoParent {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
-.missingPersonInfoOne{
+.missingPersonInfoOne {
   width: 20%;
   padding-left: 2%;
+  margin-bottom: 2%;
 }
 
-.missingPersonInfoTwo{
+.missingPersonInfoTwo {
   width: 40%;
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
 }
 
-.missingPersonInfoThree{
-  width: 40%;
+.missingPersonInfoThree {
+  width: 28%;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  align-content: center;
-
+  justify-content: center;
+  align-content: flex-end;
+  margin-bottom: 2%;
 }
 
-.userTabs{
+.userTabs {
   display: flex;
   justify-content: center;
 }
-#dateAndContact{
+#dateAndContact {
   padding-top: 2%;
   text-align: center;
 }
 
-#decriptionCommentButton{
+#decriptionCommentButtonParent {
   display: flex;
- justify-content: center;
+  justify-content: center;
+  align-content: center;
+}
+
+#decriptionCommentButton {
+  width: 28%;
+  height: 95%;
+}
+
+#personComment {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: small;
+  width: 50%;
+  height: 95%;
+}
+
+#missingPersonCardCommentButton {
+  display: flex;
+  justify-content: end;
+  align-content: end;
+}
+#missingPersonCardParent {
+  display: flex;
+  justify-content: space-around;
 }

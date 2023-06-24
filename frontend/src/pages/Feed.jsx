@@ -1,4 +1,3 @@
-import MissingPersonCard from "../components/missingPersonCard";
 import MissingPeopleList from "../components/MissingPeopleList";
 import Filter from "../components/filter";
 import { useContext, useEffect, useState, Fragment } from "react";

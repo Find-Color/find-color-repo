@@ -71,11 +71,11 @@ export default function MissingPerson() {
         </section>
 
         <section className="missingPersonInfoThree">
-          <div id="decriptionCommentButton">
-            <Button color="amber" variant="text" onClick={handleDescription}>
+          <div id="decriptionCommentButtonParent">
+            <Button id="decriptionCommentButton" color="amber" variant="text" onClick={handleDescription}>
               Description
             </Button>
-            <Button color="amber" variant="text" onClick={handleDescription}>
+            <Button id="decriptionCommentButton" color="amber" variant="text" onClick={handleDescription}>
               Comments
             </Button>
           </div>
