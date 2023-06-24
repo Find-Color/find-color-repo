@@ -8,6 +8,7 @@ function PostProvider({ children }) {
   const [selectGender, setSelectGender] = useState([]);
   const [selectAge, setSelectAge] = useState(["", ""]);
   const [selectStatus, setSelectStatus] = useState([]);
+  const [selectName, setSelectName] = useState("");
 
   useEffect(() => {
     getAllPosts().then(setPosts);
@@ -21,10 +22,15 @@ function PostProvider({ children }) {
     selectGender.length ||
     selectAge[0] !== "" ||
     selectAge[1] !== "" ||
-    selectStatus.length
+    selectStatus.length ||
+    selectName
   ) {
     filteredResults = posts.filter(post => {
       const resultBooleans = [];
+      if (selectName) {
+        const regex = new RegExp(selectName, "ig");
+        resultBooleans.push(regex.test(post.name));
+      }
       if (selectEthnicity.length) {
         resultBooleans.push(selectEthnicity.includes(post.ethnicity));
       }
@@ -54,6 +60,8 @@ function PostProvider({ children }) {
     setSelectAge,
     selectStatus,
     setSelectStatus,
+    selectName,
+    setSelectName
   };
 
   return <PostContext.Provider value={value}>{children}</PostContext.Provider>;

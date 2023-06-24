@@ -272,8 +272,10 @@ Button {
 
 .userTabs {
   display: flex;
+  display: flex;
   justify-content: center;
 }
+
 #dateAndContact {
   padding-top: 2%;
   text-align: center;
@@ -293,18 +295,5 @@ Button {
 #personComment {
   align-items: center;
   display: flex;
-  justify-content: center;
-  font-size: small;
-  width: 50%;
-  height: 95%;
-}
-
-#missingPersonCardCommentButton {
-  display: flex;
-  justify-content: end;
-  align-content: end;
-}
-#missingPersonCardParent {
-  display: flex;
-  justify-content: space-around;
+ justify-content: center;
 }
