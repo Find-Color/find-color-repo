@@ -54,96 +54,107 @@ function Filter() {
   };
 
   return (
-    <>
-      <form id="form" onChange={handleChange}>
-        <Input name="Name" label="Name" pattern="[A-Za-z ]*" />
-        <h5>Status</h5>
-        <div className="flex gap-2">
-          <Chip
-            value="Missing"
-            variant="ghost"
-            color="red"
-            icon={
-              <Checkbox
-                color="red"
-                name="Status"
+      <form
+        id="form"
+        onChange={handleChange}
+        className="flex flex-col gap-2"
+      >
+        <div className="flex gap-5">
+          <div className="flex flex-col justify-center gap-2">
+            {/* //name, status and age */}
+            <Input name="Name" label="Name" pattern="[A-Za-z ]*" />
+            <h5>Status</h5>
+            <div className="flex gap-2">
+              <Chip
                 value="Missing"
-                ripple={false}
-                containerProps={{ className: "p-0" }}
-                className="border-red-900 border-2 checked:bg-red-900 checked:border-red-900 -ml-px before:hidden"
+                variant="ghost"
+                color="red"
+                icon={
+                  <Checkbox
+                    color="red"
+                    name="Status"
+                    value="Missing"
+                    ripple={false}
+                    containerProps={{ className: "p-0" }}
+                    className="border-red-900 border-2 checked:bg-red-900 checked:border-red-900 -ml-px before:hidden"
+                  />
+                }
               />
-            }
-          />
-          <Chip
-            value="Found"
-            variant="ghost"
-            color="green"
-            icon={
-              <Checkbox
-                color="green"
-                name="Status"
+              <Chip
                 value="Found"
-                ripple={false}
-                containerProps={{ className: "p-0 flex items-center" }}
-                className="border-green-900 border-2 checked:bg-green-900 checked:border-green-900 -ml-px before:hidden"
+                variant="ghost"
+                color="green"
+                icon={
+                  <Checkbox
+                    color="green"
+                    name="Status"
+                    value="Found"
+                    ripple={false}
+                    containerProps={{ className: "p-0 flex items-center" }}
+                    className="border-green-900 border-2 checked:bg-green-900 checked:border-green-900 -ml-px before:hidden"
+                  />
+                }
               />
-            }
-          />
-        </div>
-        <h5>Ethnicity</h5>
-        <div className="flex flex-col gap-2">
-          {ethnicities.map((name, i) => (
-            <Chip
-              variant="outlined"
-              value={name}
-              color="gray"
-              className="rounded-full"
-              icon={
-                <Checkbox
+            </div>
+            <h5>Gender</h5>
+            <div className="flex flex-col gap-2">
+              {genders.map((name, i) => (
+                <Chip
+                  variant="outlined"
+                  value={name}
                   color="gray"
-                  name="Ethnicity"
                   className="rounded-full"
-                  value={name}
-                  ripple={false}
-                  containerProps={{ className: "p-0" }}
+                  icon={
+                    <Checkbox
+                      color="gray"
+                      name="Gender"
+                      className="rounded-full border"
+                      value={name}
+                      ripple={false}
+                      containerProps={{ className: "p-0" }}
+                    />
+                  }
                 />
-              }
-            />
-          ))}
-        </div>
-        <h5>Gender</h5>
-        <div className="flex flex-col gap-2">
-          {genders.map((name, i) => (
-            <Chip
-              variant="outlined"
-              value={name}
-              color="gray"
-              className="rounded-full"
-              icon={
-                <Checkbox
+              ))}
+            </div>
+          </div>
+          <div>
+            <h5>Ethnicity</h5>
+            <div className="flex flex-col gap-2 ">
+              {ethnicities.map((name, i) => (
+                <Chip
+                  variant="outlined"
+                  value={name}
                   color="gray"
-                  name="Gender"
-                  className="rounded-full border"
-                  value={name}
-                  ripple={false}
-                  containerProps={{ className: "p-0" }}
+                  className="rounded-full"
+                  icon={
+                    <Checkbox
+                      color="gray"
+                      name="Ethnicity"
+                      className="rounded-full"
+                      value={name}
+                      ripple={false}
+                      containerProps={{ className: "p-0" }}
+                    />
+                  }
                 />
-              }
-            />
-          ))}
+              ))}
+            </div>
+          </div>
         </div>
-        <h5>Age</h5>
-        <div className="flex gap-2">
-          <Input type="number" min="0" name="Age-" label="Min" />
-          <p>to</p>
-          <Input type="number" max="100" name="Age+" label="Max" />
+        <div>
+          <h5>Age</h5>
+          <div className="flex gap-2">
+            <Input type="number" min="0" name="Age-" label="Min" />
+            <p>to</p>
+            <Input type="number" max="100" name="Age+" label="Max" />
+          </div>
         </div>
         <Button type="button" color="gray" onClick={handleClear}>
           <XCircleIcon strokeWidth={2} className="h-5 w-5" />
           Clear
         </Button>
       </form>
-    </>
   );
 }
 
