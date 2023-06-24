@@ -5,7 +5,14 @@ import { getUser } from "../adapters/user-adapter";
 import { logUserOut } from "../adapters/auth-adapter";
 import UpdateUsernameForm from "../components/UpdateUsernameForm";
 import { Button, Typography } from "@material-tailwind/react";
-
+import {
+  Tabs,
+  TabsHeader,
+  TabsBody,
+  Tab,
+  TabPanel,
+} from "@material-tailwind/react";
+ import TransparentTabs from "../components/profiletabs";
 export default function UserPage() {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -39,20 +46,18 @@ export default function UserPage() {
   const profileUsername = isCurrentUserProfile ? currentUser.username : userProfile.username;
 
   return <>
-  <section className="userTabs">
-  <Typography variant="h4" color="blue-gray">{profileUsername}</Typography>
-    <Button color="red" variant="text">Edit Profile</Button>
+  <section className="userTabs" >
+  {/* <Typography variant="h4" color="blue-gray">{profileUsername}</Typography> */}
+    {/* <Button color="red" variant="text">Edit Profile</Button>
     <Button color="red" variant="text">Quiz</Button>
-    <Button color="red" variant="text">View Posts</Button>
-    { !!isCurrentUserProfile && <Button onClick={handleLogout} color="red" variant="text">Log Out</Button> }
+    <Button color="red" variant="text">View Posts</Button> */}
+    {/* { !!isCurrentUserProfile && <Button onClick={handleLogout} color="red" variant="text">Log Out</Button> } */}
   </section>
+  <TransparentTabs />
     
-   
-    <p>If the user had any data, here it would be</p>
-    <p>Fake Bio or something</p>
-    {
+    {/* {
       !!isCurrentUserProfile
         && <UpdateUsernameForm currentUser={currentUser} setCurrentUser={setCurrentUser}/>
-    }
+    } */}
   </>;
 }
