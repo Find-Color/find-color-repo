@@ -64,7 +64,7 @@ export default function MissingPerson() {
             alt=""
             className=" h-80 w-80 rounded-lg"
           />
-          <Typography variant="paragraph" id="dateAndContact">
+          <Typography variant="small" id="dateAndContact">
             Date Reported: {missing.date_reported}
           </Typography>
           <Typography variant="paragraph" id="dateAndContact">
@@ -92,8 +92,8 @@ export default function MissingPerson() {
             </Button>
           </div>
           {tabBool ? (
-            <Typography variant="lead">
-              About Them: {missing.description_text}
+            <Typography variant="small">
+               {missing.description_text}
             </Typography>
           ) : (
             <CommentsMissingPerson comments={comments} username={loggedIn.username}/>
