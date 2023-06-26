@@ -2,18 +2,14 @@ import { useContext, useState } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { createUser } from "../adapters/user-adapter";
+import { Input, Button } from "@material-tailwind/react";
 
-// Controlling the signup form is a good idea because we want to adde (eventually)
-// more validation and provide real time feedback to the user about usernames and passwords
 export default function SignUpPage() {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const [errorText, setErrorText] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  // We could also use a single state variable for the form data:
-  // const [formData, setFormData] = useState({ username: '', password: '' });
-  // What would be the pros and cons of that?
 
   if (currentUser) return <Navigate to="/" />;
 
@@ -35,37 +31,49 @@ export default function SignUpPage() {
     if (name === 'password') setPassword(value);
   };
 
-  return <>
-    <h1>Sign Up</h1>
-    <form onSubmit={handleSubmit} onChange={handleChange}>
-      <label htmlFor="username">Username</label>
-      <input
-        autoComplete="off"
-        type="text"
-        id="username"
-        name="username"
-        onChange={handleChange}
-        value={username}
-      />
+  return (
+    <div className="flex flex-col items-center">
+      <h1 className="text-3xl font-bold mb-8">Sign Up</h1>
+      <form onSubmit={handleSubmit} onChange={handleChange} className="w-full max-w-sm">
+        <div className="mb-4">
+          <label htmlFor="username" className="text-gray-700 text-sm mb-1">Username</label>
+          <Input
+            type="text"
+            autoComplete="username"
+            id="username"
+            name="username"
+            value={username}
+            onChange={handleChange}
+          />
+        </div>
 
-      <label htmlFor="password">Password</label>
-      <input
-        autoComplete="off"
-        type="password"
-        id="password"
-        name="password"
-        onChange={handleChange}
-        value={password}
-      />
+        <div className="mb-4">
+          <label htmlFor="password" className="text-gray-700 text-sm mb-1">Password</label>
+          <Input
+            type="password"
+            autoComplete="off"
+            id="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+          />
+        </div>
 
-      {/* In reality, we'd want a LOT more validation on signup, so add more things if you have time
-        <label htmlFor="password-confirm">Password Confirm</label>
-        <input autoComplete="off" type="password" id="password-confirm" name="passwordConfirm" />
-      */}
-
-      <button>Sign Up Now!</button>
-    </form>
-    { !!errorText && <p>{errorText}</p> }
-    <p>Already have an account with us? <Link to="/login">Log in!</Link></p>
-  </>;
+        <Button
+          style={{ backgroundColor: "#ffb74d", width: "75%", padding: "5px", display: 'flex', alignItems: 'center' }}
+          type="submit"
+          color="blue"
+          ripple="light"
+          block={true}
+          className="mx-auto flex justify-center"
+        >
+          Sign Up Now!
+        </Button>
+      </form>
+      {!!errorText && <p>{errorText}</p>}
+      <p>
+        Already have an account with us? <Link to="/login">Log in!</Link>
+      </p>
+    </div>
+  );
 }

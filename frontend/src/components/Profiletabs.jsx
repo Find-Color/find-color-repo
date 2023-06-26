@@ -39,7 +39,7 @@ import {
         <Tab value="Edit Account">Edit Account</Tab>
         <Tab value="Quiz">Quiz</Tab>
         <Tab value="View Posts">View Posts</Tab>
-        <Tab value="Log Out">Log Out</Tab>
+        <Tab value="Log Out" onClick={handleLogout}>Log Out</Tab>
       </TabsHeader>
       <TabsBody>
         <TabPanel value="Edit Account">
@@ -54,9 +54,9 @@ import {
         <TabPanel value="View Posts">
           Posts
         </TabPanel>
-        <TabPanel value="Log Out">
-        { !!isCurrentUserProfile && <button onClick={handleLogout} color="red" variant="text">Log Out</button> }
-        </TabPanel>
+        {/* <TabPanel value="Log Out">
+        { !!isCurrentUserProfile && <button onClick={handleLogout} color="red" variant="text">Log Outt</button> }
+        </TabPanel> */}
       </TabsBody>
     </Tabs>
     </div>

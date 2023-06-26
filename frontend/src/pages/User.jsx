@@ -5,14 +5,9 @@ import { getUser } from "../adapters/user-adapter";
 import { logUserOut } from "../adapters/auth-adapter";
 import UpdateUsernameForm from "../components/UpdateUsernameForm";
 import { Button, Typography } from "@material-tailwind/react";
-import {
-  Tabs,
-  TabsHeader,
-  TabsBody,
-  Tab,
-  TabPanel,
-} from "@material-tailwind/react";
- import TransparentTabs from "../components/profiletabs";
+import Quiz from '../components/Quiz';
+import TransparentTabs from "../components/profiletabs";
+
 export default function UserPage() {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -36,6 +31,13 @@ export default function UserPage() {
     setCurrentUser(null);
     navigate('/');
   };
+
+  <Quiz
+  name="John Doe"
+  bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  imageLink="https://example.com/image.jpg"
+  websiteLink="https://areyoupressworthy.com/22_3"
+/>
 
   if (!userProfile && !errorText) return null;
   if (errorText) return <p>{errorText}</p>;

@@ -15,19 +15,18 @@ const Footer = () => {
         <div>
             <div className= "footercol2">
                 <div className= "footercol2 footerPadding">
+                    {/* <div>
+                        <p>Product</p>
+                        <p>Product</p>
+                        <p>Product</p>
+                        <p>Product</p>
+                        <p>Product</p>
+                    </div> */}
                     <div>
-                        <p>Product</p>
-                        <p>Product</p>
-                        <p>Product</p>
-                        <p>Product</p>
-                        <p>Product</p>
-                    </div>
-                    <div>
-                        <p>Company</p>
-                        <p>Company</p>
-                        <p>Company</p>
-                        <p>Company</p>
-                        <p>Company</p>
+                        <p>Home</p>
+                        <p>Users</p>
+                        <p>Missing People</p>
+                        <p>Profile</p>
                     </div>
                 </div>
             </div>
