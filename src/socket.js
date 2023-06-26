@@ -6,6 +6,12 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer);
 
+//Some middleware
+app.use((req, res, next) => {
+  req.io = io;
+  next();
+});
+
 io.on("connection", (socket) => {
   console.log("A user connected");
 
