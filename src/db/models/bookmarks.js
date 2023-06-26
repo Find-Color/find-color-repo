@@ -75,6 +75,21 @@ class Bookmark {
       return null;
     }
   }
+
+  // Find users by post ID
+  static async findUsersByPostId(post_id) {
+    try {
+      const result = await knex.raw(
+        `SELECT user_id FROM bookmarks WHERE post_id = ?`,
+        [post_id]
+      );
+      const userIds = result.rows.map((row) => row.user_id);
+      return userIds;
+    } catch (err) {
+      console.error(err);
+      return [];
+    }
+  }
 }
 
 module.exports = Bookmark;

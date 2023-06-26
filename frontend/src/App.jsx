@@ -15,7 +15,7 @@ import MissingPersonUpdateForm from './pages/MissingPersonUpdateForm';
 import Feed from './pages/Feed';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './components/Footer';
-
+import NotificationComponent from './components/notification';
 
 export default function App() {
   const { setCurrentUser } = useContext(UserContext);
@@ -39,6 +39,7 @@ export default function App() {
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </main>
+    <NotificationComponent/>
     <Footer />
   </>;
 }
