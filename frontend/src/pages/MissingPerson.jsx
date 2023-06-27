@@ -21,6 +21,11 @@ export default function MissingPerson() {
     });
     getAllCommentsFromPost(id).then(setComments);
   }, [id]);
+
+  const addComment = (newComment) => {
+    setComments((prevComments) => [...prevComments, newComment]);
+  };
+
   function handleClick() {
     navigate(`/missing_person_update/${id}`);
   }
@@ -30,6 +35,7 @@ export default function MissingPerson() {
   };
 
   if (!missing) return <div>Loading...</div>;
+  console.log(comments);
   // if(missing.height )
   return (
     <>
@@ -62,7 +68,7 @@ export default function MissingPerson() {
             alt=""
             className=" h-80 w-80 rounded-lg"
           />
-          <Typography variant="paragraph" id="dateAndContact">
+          <Typography variant="small" id="dateAndContact">
             Date Reported: {missing.date_reported}
           </Typography>
           <Typography variant="paragraph" id="dateAndContact">
@@ -71,20 +77,32 @@ export default function MissingPerson() {
         </section>
 
         <section className="missingPersonInfoThree">
-          <div id="decriptionCommentButton">
-            <Button color="amber" variant="text" onClick={handleDescription}>
+          <div id="decriptionCommentButtonParent">
+            <Button
+              id="decriptionCommentButton"
+              color="amber"
+              variant="text"
+              onClick={handleDescription}
+            >
               Description
             </Button>
-            <Button color="amber" variant="text" onClick={handleDescription}>
+            <Button
+              id="decriptionCommentButton"
+              color="amber"
+              variant="text"
+              onClick={handleDescription}
+            >
               Comments
             </Button>
           </div>
           {tabBool ? (
-            <Typography variant="lead">
-              About Them: {missing.description_text}
-            </Typography>
+            <Typography variant="small">{missing.description_text}</Typography>
           ) : (
-            <CommentsMissingPerson comments={comments} />
+            <CommentsMissingPerson
+              comments={comments}
+              username={loggedIn.username}
+              addComment={addComment} // Pass the function to the child component
+            />
           )}
         </section>
       </div>

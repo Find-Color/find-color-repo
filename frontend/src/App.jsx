@@ -35,7 +35,7 @@ import { Cloudinary } from "@cloudinary/url-gen";
           <Route path="/login" element={<LoginPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/users" element={<UsersPage />} />
-          <Route path="/users/:id" element={<UserPage />} />
+          <Route path="/users/:user_id" element={<UserPage />} />
           <Route path="/posts" element={<Feed />} />
           <Route path="/post/:id" element={<MissingPerson />} />
           <Route path="/missing_person" element={<MissingPersonForm />} />

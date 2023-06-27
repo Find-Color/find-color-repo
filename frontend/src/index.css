@@ -5,8 +5,13 @@
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
-  /* background-color: #1e2329;
-  color: #fff; */
+  background-color: black;
+  color: #fff;
+}
+
+Button {
+  display: flex;
+  justify-content: center;
 }
 
 .dark {
@@ -41,6 +46,11 @@ header {
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
+}
+
+header {
+  color: #fff;
+  background-color: transparent;
 }
 
 nav ul {
@@ -102,98 +112,13 @@ Button {
 /* Footer css */
 
 #footer {
-  height: 330px;
-  background-color: #000;
+  height: 55vh;
+  vertical-align: bottom;
+  background-color: black;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  color: whitesmoke;
+  color: white;
   gap: 15%;
-
-  position: relative;
-}
-
-#footer::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background-color: whitesmoke;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 80%;
-  margin: auto 0;
-}
-
-#footercol1 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.footercol2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.updateFormTitle {
-  text-align: center;
-}
-
-#footerTitle {
-  display: flex;
-  justify-content: center;
-}
-
-.footerPadding {
-  padding-top: 25px;
-}
-
-/* Footer css */
-
-#footer {
-  height: 330px;
-  background-color: #000;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  color: whitesmoke;
-  gap: 15%;
-
-  position: relative;
-}
-
-#footer::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background-color: whitesmoke;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 80%;
-  margin: auto 0;
-}
-
-#footercol1 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.footercol2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-/* Footer css */
-
-#footer {
-  height: 330px;
-  background-color: #000;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  color: whitesmoke;
-  gap: 15%;
-
   position: relative;
 }
 
@@ -241,11 +166,13 @@ Button {
 #missingPersonInfoParent {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .missingPersonInfoOne {
   width: 20%;
   padding-left: 2%;
+  margin-bottom: 2%;
 }
 
 .missingPersonInfoTwo {
@@ -256,23 +183,188 @@ Button {
 }
 
 .missingPersonInfoThree {
-  width: 40%;
+  width: 28%;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  align-content: center;
+  justify-content: center;
+  align-content: flex-end;
+  margin-bottom: 2%;
 }
 
 .userTabs {
   display: flex;
+  display: flex;
   justify-content: center;
 }
+
 #dateAndContact {
   padding-top: 2%;
   text-align: center;
 }
 
-#decriptionCommentButton {
+#decriptionCommentButtonParent {
   display: flex;
   justify-content: center;
+  align-content: center;
+}
+
+#decriptionCommentButton {
+  width: 28%;
+  height: 95%;
+}
+
+#personComment {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 7vh;
+  width: 8vw;
+}
+
+.landingPage-1 {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.landingPage-1-text {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  width: 37vw;
+  height: 52vh;
+  position: absolute;
+  top: 20vh;
+  left: 102vh;
+  color: white;
+  z-index: 2;
+}
+
+.landingimg-1 {
+  width: 55vw;
+  height: 50vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+#bnwimageparent {
+  position: relative;
+  /* margin-top: -8vh; */
+  height: 100vh;
+}
+
+.collage {
+  width: 100vw;
+  height: 100vh;
+}
+
+.landingPage-1-text Button {
+  display: flex;
+  width: 13vw;
+  /* margin-left: 48vh; */
+}
+
+.bnwText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50vh;
+  font-size: 3.1vh;
+  color: #f3f4f6;
+}
+
+.coverageWorth {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  height: 100vh;
+}
+
+.coverageWorthText {
+  color: white;
+  display: flex;
+  width: 40vw;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  align-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.coverageWorthButton {
+  width: 40vw;
+  justify-content: center;
+  display: flex;
+  position: relative;
+  z-index: 2;
+}
+
+.coverageWorthButton button {
+  width: 20vw;
+  position: relative;
+  z-index: 2;
+}
+
+.landing-page-1 {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.landing-page-3 {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#missingPersonInfoParent {
+  color: white;
+  background-color: #000;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#card-style {
+  background-color: #1b1b1e;
+  color: #f3f4f6;
+  /* height: 84vh; */
+  padding-top: 2vh;
+}
+
+#filterText {
+  color: white;
+}
+
+#footerCardButtons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cardHeaderText {
+  background-color: #1b1b1e;
+  color: #f3f4f6;
+  /* margin-bottom: 0vh; */
+  /* vertical-align: top; */
+  padding-left: 4%;
+  padding-bottom: 5vh;
+  /* text-align: center; */
 }

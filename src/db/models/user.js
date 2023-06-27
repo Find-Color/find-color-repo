@@ -4,8 +4,8 @@ const { hashPassword, isValidPassword } = require('../../utils/auth-utils');
 class User {
   #passwordHash = null;
 
-  constructor({ id, username, password_hash }) {
-    this.id = id;
+  constructor({ user_id, username, password_hash }) {
+    this.user_id = user_id;
     this.username = username;
     this.#passwordHash = password_hash;
   }
@@ -16,9 +16,10 @@ class User {
     return rows.map((user) => new User(user));
   }
 
-  static async find(id) {
-    const query = 'SELECT * FROM users WHERE id = ?';
-    const { rows: [user] } = await knex.raw(query, [id]);
+  static async find(user_id) {
+    console.log(user_id)
+    const query = 'SELECT * FROM users WHERE user_id = ?';
+    const { rows: [user] } = await knex.raw(query, [user_id]);
     return user ? new User(user) : null;
   }
 
@@ -38,12 +39,12 @@ class User {
   }
 
   static async deleteAll() {
-    return knex.raw('TRUNCATE users;');
+    return knex.raw('TRUNCATE users;'); 
   }
 
   update = async (username) => { // dynamic queries are easier if you add more properties
     const [updatedUser] = await knex('users')
-      .where({ id: this.id })
+      .where({ user_id: this.user_id })
       .update({ username })
       .returning('*');
     return updatedUser ? new User(updatedUser) : null;

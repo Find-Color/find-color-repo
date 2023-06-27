@@ -8,6 +8,7 @@ import {
   CardBody,
   CardFooter,
   Button,
+  Typography,
 } from "@material-tailwind/react";
 import {
   toggleUpvote,
@@ -20,12 +21,13 @@ export default function MissingPersonCard({
   status,
   post_id,
   image_post,
+  date_reported
 }) {
-  const [modalShow, setModalShow] = useState(false);
   const [upVoteCount, setUpVoteCount] = useState([]);
   const [loggedIn, setLoggedIn] = useState(null);
-  const [size, setSize] = useState(null);
+  const [upVoteBool, setUpVoteBool] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
+  const [counter, setCounter] = useState(upVoteCount.length);
 
   const toggleDialog = () => {
     setShowDialog(!showDialog);
@@ -47,7 +49,9 @@ export default function MissingPersonCard({
       console.log(image_post);
     });
     getAllUpvotesFromPost(post_id).then(setUpVoteCount);
-  }, []);
+    setCounter(upVoteCount.length);
+    console.log(counter);
+  }, [upVoteCount.length]);
 
   const navigate = useNavigate();
 
@@ -56,26 +60,35 @@ export default function MissingPersonCard({
   }
 
   async function handleUpVote(post_id) {
-    const user_id = loggedIn.id;
+    if (!upVoteBool) {
+      setUpVoteCount(counter + 1);
+      setUpVoteBool(true);
+    } else {
+      setUpVoteCount(counter - 1);
+      setUpVoteBool(false);
+    }
+
+    const user_id = loggedIn.user_id;
     await toggleUpvote(user_id, post_id);
   }
 
   return (
-    <Card className="mt-6 w-96 pt-6 pr-2 pl-2">
-      <CardHeader color="blue-gray" className="relative h-70">
-        <img src={image_post} alt="missing" layout="fill" />
+    <Card className="mt-10 w-96 pt-10 pr-2 pl-2 ml-10 mr-10" id="card-style">
+      <Typography variant="h4" className="cardHeaderText">
+        {name} 
+      </Typography>
+      <CardHeader className="relative h-80">
+        <img className="h-full w-full" src={image_post} alt="missing" />
       </CardHeader>
       <CardBody>
-        <h3>Name: {name}</h3>
-        <h4>Last Seen: {location_state}</h4>
-        <h5>Status: {status}</h5>
-        <h5>Up Votes: {upVoteCount.length}</h5>
-        <br />
-        <h4 className="seeMoreButton" onClick={handleClick}>
+        <Typography variant="h4">Last Seen in {location_state}</Typography>
+        <Typography variant="h6">Status: {status}</Typography>
+        <Typography variant="h6">Up Votes: {counter}</Typography>
+        <Typography variant="h5" className="seeMoreButton" onClick={handleClick}>
           See More
-        </h4>
+        </Typography>
       </CardBody>
-      <CardFooter className="pt-0">
+      <CardFooter className="pt-0" id="footerCardButtons">
         <Button
           className="cardButton"
           onClick={() => handleUpVote(post_id)}
@@ -83,8 +96,6 @@ export default function MissingPersonCard({
         >
           Up Vote
         </Button>
-        <br />
-        <br />
         <Button onClick={handleOpenDialog} className="cardButton" color="red">
           Comment
         </Button>

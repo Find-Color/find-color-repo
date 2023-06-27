@@ -19,6 +19,7 @@ const createPost = async (req, res) => {
       image_post,
       description_text,
       contact_info,
+
     },
   } = req;
   const post = await Post.create(
@@ -37,7 +38,7 @@ const createPost = async (req, res) => {
     age,
     image_post,
     description_text,
-    contact_info
+    contact_info,
   );
   res.send(post);
 };

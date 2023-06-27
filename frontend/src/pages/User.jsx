@@ -13,18 +13,18 @@ export default function UserPage() {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const [userProfile, setUserProfile] = useState(null);
   const [errorText, setErrorText] = useState(null);
-  const { id } = useParams();
-  const isCurrentUserProfile = currentUser && currentUser.id === Number(id);
+  const { user_id } = useParams();
+  const isCurrentUserProfile = currentUser && currentUser.user_id === Number(user_id);
 
   useEffect(() => {
     const loadUser = async () => {
-      const [user, error] = await getUser(id);
+      const [user, error] = await getUser(user_id);
       if (error) return setErrorText(error.statusText);
       setUserProfile(user);
     };
 
     loadUser();
-  }, [id]);
+  }, [user_id]);
 
   const handleLogout = async () => {
     logUserOut();
