@@ -5,8 +5,8 @@
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
-  /* background-color: black;
-  color: #fff; */
+  background-color: black;
+  color: #fff;
 }
 
 Button {
@@ -48,9 +48,9 @@ header {
   text-decoration: none;
 }
 
-header{
+header {
   color: #fff;
-  background-color: #000;
+  background-color: transparent;
 }
 
 nav ul {
@@ -59,12 +59,10 @@ nav ul {
   padding: 0;
   margin: 0;
   list-style: none;
-
 }
 
 nav a {
   display: block;
-
 }
 
 form {
@@ -255,7 +253,8 @@ Button {
   z-index: 1;
 }
 #bnwimageparent {
-  margin-top: -4vh;
+  position: relative;
+  /* margin-top: -8vh; */
   height: 100vh;
 }
 
@@ -274,7 +273,7 @@ Button {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: absolute;
   top: 50vh;
   font-size: 3.1vh;
   color: #f3f4f6;
@@ -332,4 +331,39 @@ Button {
   top: 0;
   left: 0;
   z-index: 1;
+}
+
+#missingPersonInfoParent {
+  color: white;
+  background-color: #000;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#card-style {
+  background-color: #1b1b1e;
+  color: #f3f4f6;
+  /* height: 84vh; */
+  padding-top: 2vh;
+}
+
+#filterText {
+  color: white;
+}
+
+#footerCardButtons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cardHeaderText {
+  background-color: #1b1b1e;
+  color: #f3f4f6;
+  /* margin-bottom: 0vh; */
+  /* vertical-align: top; */
+  padding-left: 4%;
+  padding-bottom: 5vh;
+  /* text-align: center; */
 }
