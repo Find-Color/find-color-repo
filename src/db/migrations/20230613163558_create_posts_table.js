@@ -12,14 +12,13 @@ exports.up = (knex) => {
     table.date("date_reported");
     table.timestamps(true, true);
     table.string("hair");
-    table.string("height");
+    table.integer("height");
     table.string("eye_color");
-    table.string("weight");
-    table.string("race");
+    table.integer("weight");
     table.string("ethnicity");
     table.string("gender");
     table.integer("age");
-    table.string("image");
+    table.string("image_post");
     table.text("description_text");
     table.string("contact_info");
     table.integer("user_id").unsigned();

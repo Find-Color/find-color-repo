@@ -17,7 +17,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './components/Footer';
 import NotificationComponent from './components/notification';
 
-export default function App() {
+ function App() {
+  const cld = new Cloudinary({ cloud: { cloudName: "dn7lhv9d9" } });
   const { setCurrentUser } = useContext(UserContext);
   useEffect(() => {
     checkForLoggedInUser().then(setCurrentUser);
@@ -43,3 +44,5 @@ export default function App() {
     <Footer />
   </>;
 }
+
+export default App

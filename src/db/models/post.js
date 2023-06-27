@@ -17,7 +17,7 @@ class Post {
     ethnicity,
     gender,
     age,
-    image,
+    image_post,
     description_text,
     contact_info
   ) {
@@ -36,7 +36,7 @@ class Post {
     this.ethnicity = ethnicity;
     this.gender = gender;
     this.age = age;
-    this.image = image;
+    this.image_post = image_post;
     this.description_text = description_text;
     this.contact_info = contact_info;
   }
@@ -56,14 +56,14 @@ class Post {
     ethnicity,
     gender,
     age,
-    image,
+    image_post,
     description_text,
     contact_info
   ) {
     try {
       const postInsert = await knex.raw(
         `
-        INSERT INTO posts(name, location, location_state, status, date_reported, hair, height, eye_color, weight, ethnicity, gender, age, image, description_text, contact_info, user_id)
+        INSERT INTO posts(name, location, location_state, status, date_reported, hair, height, eye_color, weight, ethnicity, gender, age, image_post, description_text, contact_info, user_id)
         VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)
         RETURNING *;
       `,
@@ -80,7 +80,7 @@ class Post {
           ethnicity,
           gender,
           age,
-          image,
+          image_post,
           description_text,
           contact_info,
           user_id,
@@ -101,7 +101,7 @@ class Post {
         `
           SELECT *, users.username
           FROM posts
-          JOIN users ON posts.user_id = users.id
+          JOIN users ON posts.user_id = users.user_id
           WHERE post_id = ?;
         `,
         [post_id]
@@ -119,7 +119,7 @@ class Post {
         `
           SELECT *, users.username
           FROM posts
-          JOIN users ON posts.user_id = users.id;
+          JOIN users ON posts.user_id = users.user_id;
       `
       );
       return rows;
@@ -137,7 +137,7 @@ class Post {
           SELECT *, users.username
           FROM posts
           JOIN users ON posts.user_id = users.id
-          WHERE users.id = ?;
+          WHERE users.user_id = ?;
       `,
         [user_id]
       );
@@ -166,7 +166,7 @@ class Post {
             ethnicity = ?, 
             gender = ?, 
             age = ?, 
-            image = ?, 
+            image_post = ?, 
             description_text = ?, 
             contact_info = ? 
           WHERE post_id = ?
@@ -185,7 +185,7 @@ class Post {
           newEntries.ethnicity,
           newEntries.gender,
           newEntries.age,
-          newEntries.image,
+          newEntries.image_post,
           newEntries.description_text,
           newEntries.contact_info,
           post_id,

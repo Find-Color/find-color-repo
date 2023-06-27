@@ -11,7 +11,7 @@ const loginUser = async (req, res) => {
   const isPasswordValid = await user.isValidPassword(password);
   if (!isPasswordValid) return res.sendStatus(401);
 
-  session.userId = user.id;
+  session.userId = user.user_id;
   res.send(user);
 };
 

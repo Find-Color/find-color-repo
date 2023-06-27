@@ -1,9 +1,10 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, Fragment } from "react";
 import { getPost } from "../adapters/post-adapter";
 import { useParams, useNavigate } from "react-router-dom";
 import { checkForLoggedInUser } from "../adapters/auth-adapter";
 import CommentsMissingPerson from "../components/CommentsMissingPerson";
 import { getAllCommentsFromPost } from "../adapters/comment-adapter";
+import { Button, Typography } from "@material-tailwind/react";
 
 export default function MissingPerson() {
   const { id } = useParams();
@@ -11,40 +12,94 @@ export default function MissingPerson() {
   const [missing, setMissing] = useState("");
   const [loggedIn, setLoggedIn] = useState(null);
   const [comments, setComments] = useState([]);
+  const [tabBool, setTabBool] = useState(true);
 
   useEffect(() => {
-    getPost(id).then(res => setMissing(res[0]));
-    checkForLoggedInUser().then(data => {
+    getPost(id).then((res) => setMissing(res[0]));
+    checkForLoggedInUser().then((data) => {
       setLoggedIn(data);
     });
     getAllCommentsFromPost(id).then(setComments);
   }, [id]);
+
   function handleClick() {
     navigate(`/missing_person_update/${id}`);
   }
 
-  if (!missing) return <div>Loading...</div>;
+  const handleDescription = () => {
+    !tabBool ? setTabBool(true) : setTabBool(false);
+  };
 
+  if (!missing) return <div>Loading...</div>;
+  console.log(comments)
+  // if(missing.height )
   return (
     <>
-      {!loggedIn ? <></> : <button onClick={handleClick}>Edit Form</button>}
-      <h2>Status: {missing.status}</h2>
-      <h6>Last Seen in: {missing.location}</h6>
-      <h3>Name: {missing.name}</h3>
-      <h5>Age: {missing.age}</h5>
-      <h5>Hair: {missing.hair}</h5>
-      <h5>Height: {convertInchesToFeetAndInches(missing.height)}</h5>
-      <h5>Eye Color: {missing.eye_color}</h5>
-      <h5>Weight: {missing.weight}</h5>
-      <h6>Nationality: {missing.ethnicity}</h6>
-      <h6>Gender: {missing.gender}</h6>
-      <img src={missing.image} alt="" />
-      <section>
-        <CommentsMissingPerson comments={comments} />
-        <h6>About Them: {missing.description_text}</h6>
-        <h6>Date Reported: {missing.date_reported}</h6>
-        <p>Contact Info: {missing.contact_info}</p>
-      </section>
+      <div id="missingPersonInfoParent">
+        <section className="missingPersonInfoOne">
+          <Typography variant="h1">{missing.name}</Typography>
+          <br />
+          <Typography variant="h3">Status: {missing.status}</Typography>
+          <br />
+          <Typography>Last Seen in: {missing.location_state}</Typography>
+          <h5>Age: {missing.age}</h5>
+          <h5>Hair: {missing.hair}</h5>
+          <h5>Height: {convertInchesToFeetAndInches(missing.height)}</h5>
+          <h5>Eye Color: {missing.eye_color}</h5>
+          <h5>Weight: {missing.weight}</h5>
+          <Typography>Nationality: {missing.ethnicity}</Typography>
+          <Typography>Gender: {missing.gender}</Typography>
+          {!loggedIn ? (
+            <></>
+          ) : (
+            <Button className="editForm" color="red" onClick={handleClick}>
+              Edit Form
+            </Button>
+          )}
+        </section>
+
+        <section className="missingPersonInfoTwo">
+          <img
+            src={missing.image_post}
+            alt=""
+            className=" h-80 w-80 rounded-lg"
+          />
+          <Typography variant="small" id="dateAndContact">
+            Date Reported: {missing.date_reported}
+          </Typography>
+          <Typography variant="paragraph" id="dateAndContact">
+            Contact Info: {missing.contact_info}
+          </Typography>
+        </section>
+
+        <section className="missingPersonInfoThree">
+          <div id="decriptionCommentButtonParent">
+            <Button
+              id="decriptionCommentButton"
+              color="amber"
+              variant="text"
+              onClick={handleDescription}
+            >
+              Description
+            </Button>
+            <Button
+              id="decriptionCommentButton"
+              color="amber"
+              variant="text"
+              onClick={handleDescription}
+            >
+              Comments
+            </Button>
+          </div>
+          {tabBool ? (
+            <Typography variant="small">
+               {missing.description_text}
+            </Typography>
+          ) : (
+            <CommentsMissingPerson comments={comments} username={loggedIn.username}/>
+          )}
+        </section>
+      </div>
     </>
   );
 }
