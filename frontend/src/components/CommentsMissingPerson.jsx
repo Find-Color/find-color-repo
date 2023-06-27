@@ -5,7 +5,11 @@ import { checkForLoggedInUser } from "../adapters/auth-adapter";
 import { useParams, useNavigate } from "react-router-dom";
 import CommentCard from "./CommentCard";
 
-export default function CommentsMissingPerson({ comments, username }) {
+export default function CommentsMissingPerson({
+  comments,
+  username,
+  addComment,
+}) {
   const navigate = useNavigate();
   const { id } = useParams();
   const [comment, setComments] = useState(comments);
@@ -21,14 +25,13 @@ export default function CommentsMissingPerson({ comments, username }) {
   // Helper functions for Comments
   const handleComment = (event) => {
     let value = event.target.value;
-    console.log(value);
     setCommentText(value);
   };
 
   const sendComment = async (e) => {
     e.preventDefault();
     console.log(commentText);
-    console.log(loggedIn)
+    console.log(loggedIn);
     let post_id = id;
     let user_id = loggedIn.user_id;
     const body = {
@@ -37,9 +40,12 @@ export default function CommentsMissingPerson({ comments, username }) {
       comment_text: commentText,
     };
 
+    // Create the comment
     await createComment(body);
 
     // Update the comments state with the new comment
+    addComment(body);
+
     setComments((prevComments) => [...prevComments, body]);
 
     // Clear the comment text input
@@ -53,7 +59,7 @@ export default function CommentsMissingPerson({ comments, username }) {
           return (
             <CommentCard
               key={i}
-              username={username}
+              username={comment.username}
               comment_text={comment.comment_text}
             />
           );
@@ -70,12 +76,18 @@ export default function CommentsMissingPerson({ comments, username }) {
         />
 
         <div className="w-full py-1.5" id="missingPersonCardCommentButton">
-          <div className="flex justify-center gap-6" >
-            <Button size="sm" color="red" variant="text" className="rounded-md" id="personComment" >
+          <div className="flex justify-center gap-6">
+            <Button
+              size="sm"
+              color="red"
+              variant="text"
+              className="rounded-md"
+              id="personComment"
+            >
               Cancel
             </Button>
             <Button
-            id="personComment"
+              id="personComment"
               size="lg"
               className="rounded-md w-90"
               color="red"

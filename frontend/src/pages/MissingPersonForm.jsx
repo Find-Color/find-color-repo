@@ -76,10 +76,10 @@ const MissingPersonForm = () => {
       ethnicity: ethnicity,
       gender: gender,
       age: age,
-      image: missingPersonURL,
+      image_post: missingPersonURL,
       description_text: description_text,
       contact_info: contact_info,
-      user_id: currentUser.id,
+      user_id: currentUser.user_id,
     };
     const result = await createPost(formData);
     if (result[0] == null) {

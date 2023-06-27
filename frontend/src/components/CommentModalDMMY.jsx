@@ -1,7 +1,8 @@
 import { createComment } from "../adapters/comment-adapter";
-import { useEffect, useState, Fragment } from "react";
+import { useEffect, useState, Fragment, useContext } from "react";
 import { checkForLoggedInUser } from "../adapters/auth-adapter";
 import { useNavigate } from "react-router-dom";
+
 import {
   Textarea,
   Dialog,
@@ -15,11 +16,8 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-export default function CommentModalDMMY({
-  showDialog,
-  handleCloseDialog,
-  post_id,
-}) {
+export default function CommentModalDMMY(props) {
+
   const navigate = useNavigate();
   const [commentText, setCommentText] = useState("");
   const [loggedIn, setLoggedIn] = useState(null);
@@ -30,14 +28,16 @@ export default function CommentModalDMMY({
     });
   }, []);
 
+
+
   const handleComment = (event) => {
     setCommentText(event.target.value);
   };
 
   const sendComment = async (e) => {
     e.preventDefault();
-    // let post_id = post_id;
-    let user_id = loggedIn.id;
+    let post_id = props.post_id;
+    let user_id = loggedIn.user_id;
     const body = {
       post_id: post_id,
       user_id: user_id,
@@ -49,8 +49,8 @@ export default function CommentModalDMMY({
 
   return (
     <Fragment>
-      <Dialog open={showDialog} handler={handleCloseDialog}>
-        <DialogHeader>User Name</DialogHeader>
+      <Dialog open={props.showDialog} handler={props.handleCloseDialog}>
+        <DialogHeader></DialogHeader>
         <DialogBody divider>
           <Card color="transparent" shadow={false}>
             <Typography variant="h4" color="blue-gray">
@@ -83,7 +83,7 @@ export default function CommentModalDMMY({
           <Button
             variant="text"
             color="red"
-            onClick={handleCloseDialog}
+            onClick={props.handleCloseDialog}
             className="mr-1"
           >
             <span>Cancel</span>

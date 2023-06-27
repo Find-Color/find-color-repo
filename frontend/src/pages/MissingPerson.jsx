@@ -22,6 +22,10 @@ export default function MissingPerson() {
     getAllCommentsFromPost(id).then(setComments);
   }, [id]);
 
+  const addComment = (newComment) => {
+    setComments((prevComments) => [...prevComments, newComment]);
+  };
+
   function handleClick() {
     navigate(`/missing_person_update/${id}`);
   }
@@ -31,7 +35,7 @@ export default function MissingPerson() {
   };
 
   if (!missing) return <div>Loading...</div>;
-  console.log(comments)
+  console.log(comments);
   // if(missing.height )
   return (
     <>
@@ -92,11 +96,13 @@ export default function MissingPerson() {
             </Button>
           </div>
           {tabBool ? (
-            <Typography variant="small">
-               {missing.description_text}
-            </Typography>
+            <Typography variant="small">{missing.description_text}</Typography>
           ) : (
-            <CommentsMissingPerson comments={comments} username={loggedIn.username}/>
+            <CommentsMissingPerson
+              comments={comments}
+              username={loggedIn.username}
+              addComment={addComment} // Pass the function to the child component
+            />
           )}
         </section>
       </div>

@@ -23,13 +23,13 @@ export default function Feed() {
     navigate("/missing_person");
   };
   return (
-    <Fragment>
+    <Fragment id="feedParent">
       <>
         <Button onClick={handleFormRoute} color="amber" className="mt-4 mb-2 ml-2">New Post</Button>
       </>
       <Typography variant="h2" className="flex items-center justify-center">Missing People</Typography>
       <Accordion open={open === 2} className="mt-4 mb-2 ml-2" >
-        <AccordionHeader onClick={() => handleOpen(2)} color="amber">Filters</AccordionHeader>
+        <AccordionHeader onClick={() => handleOpen(2)} id="filterText">Filters</AccordionHeader>
         <AccordionBody>
           <Filter />
         </AccordionBody>
