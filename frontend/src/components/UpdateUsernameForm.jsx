@@ -57,14 +57,14 @@ export default function UpdateUsernameForm({ currentUser, setCurrentUser }) {
         type="text"
         id="username"
         name="username"
-        size="regular"
-        outline={true}
+        // size="regular"
+        // outline={true}
         placeholder="Enter new username"
       />
      <div className="flex justify-center">
-  <input type="hidden" name="id" value={currentUser.id} />
+  <input type="hidden" name="user_id" value={currentUser.user_id} />
 
-  <Button style={{ backgroundColor: "#ffb74d", width: "75%", padding: "5px" }} type="submit" ripple="light" block={true}>
+  <Button style={{ backgroundColor: "#ffb74d", width: "75%", padding: "5px" }} type="submit" >
     Update Username
   </Button>
 </div>
