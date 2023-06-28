@@ -1,8 +1,8 @@
 const User = require("../db/models/user");
 const Post = require("../db/models/post");
-const Upvote = require("../db/models/upvote")
-const Comment = require("../db/models/comment")
-const Bookmarks = require("../db/models/bookmarks")
+const Upvote = require("../db/models/upvote");
+const Comment = require("../db/models/comment");
+const Bookmark = require("../db/models/bookmarks");
 
 const addModels = (req, res, next) => {
   req.db = {
@@ -10,7 +10,7 @@ const addModels = (req, res, next) => {
     Post,
     Upvote,
     Comment,
-    Bookmarks
+    Bookmark,
   };
   next();
 };
