@@ -1,5 +1,8 @@
 
 
+const { Bookmark } = require('../db/models/bookmarks'); 
+
+
 async function createBookmark(req, res) {
   const { user_id, post_id } = req.body;
 
@@ -16,6 +19,4 @@ async function createBookmark(req, res) {
   }
 }
 
-module.exports =
-  createBookmark
-
+module.exports = createBookmark;

@@ -1,3 +1,4 @@
+const { Bookmark } = require('../db/models/bookmarks'); 
 
 async function remove(req, res) {
   const { user_id, post_id } = req.params;
