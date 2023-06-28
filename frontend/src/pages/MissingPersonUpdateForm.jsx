@@ -11,6 +11,7 @@ import {
   Option,
   Textarea,
   Button,
+  Typography,
 } from "@material-tailwind/react";
 
 const MissingPersonUpdateForm = () => {
@@ -36,7 +37,7 @@ const MissingPersonUpdateForm = () => {
   const [contact_info, setContactInfo] = useState("");
 
   useEffect(() => {
-    getPost(id).then(res => setMissing(res[0]));
+    getPost(id).then((res) => setMissing(res[0]));
   }, []);
 
   useEffect(() => {
@@ -67,7 +68,7 @@ const MissingPersonUpdateForm = () => {
   //Define navigate (for redirecting)
   const navigate = useNavigate();
   // Handle form submission
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Access the form data here and perform desired actions
     // e.g., send it to an API, update state, etc.
@@ -105,28 +106,33 @@ const MissingPersonUpdateForm = () => {
 
   return (
     <>
-      <h1 className="updateFormTitle">Update Form</h1>
-      <form onSubmit={handleSubmit}>
+      <Typography variant="h2" className="flex items-center justify-center">
+        Update Form
+      </Typography>
+      <form onSubmit={handleSubmit} className="missingPersonForm">
         {/* Input fields */}
         <Input
+          color="white"
           required
           variant="standard"
           label="Name"
           value={name}
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
         />
         <Input
+          color="white"
           variant="standard"
           label="City / Town"
           value={location}
-          onChange={e => setLocation(e.target.value)}
+          onChange={(e) => setLocation(e.target.value)}
         />
         <Select
+          color="gray-50"
+          variant="gray-50"
           required
           label="State"
-          variant="standard"
           value={location_state}
-          onChange={e => setLocationState(e)}
+          onChange={(e) => setLocationState(e)}
         >
           {statesUSA.map((name, i) => (
             <Option key={i} value={name}>
@@ -136,19 +142,24 @@ const MissingPersonUpdateForm = () => {
         </Select>
         {/* need to find a tailwind date picker */}
         <Input
+          className="text-white placeholder-white label-white"
+          color="gray-50"
+          variant="gray-50"
           required
           label="Date Reported"
           type="date"
           value={date_reported}
-          onChange={e => setDateReported(e.target.value)}
+          onChange={(e) => setDateReported(e.target.value)}
         />
         {/*  */}
         <Select
+          className="text-white placeholder-white label-white input-group"
+          color="gray-50"
+          variant="gray-50"
           required
           label="Ethnicity"
-          variant="standard"
           value={ethnicity}
-          onChange={e => setEthnicity(e)}
+          onChange={(e) => setEthnicity(e)}
         >
           {ethnicities.map((name, i) => (
             <Option key={i} value={name}>
@@ -158,20 +169,22 @@ const MissingPersonUpdateForm = () => {
         </Select>
 
         <Input
+          className="text-white placeholder-white label-white"
           required
           label="Age"
           type="number"
           min="0"
           value={age}
-          onChange={e => setAge(e.target.value)}
+          onChange={(e) => setAge(e.target.value)}
         />
 
         <Select
+          className="text-white placeholder-white label-white"
           label="Gender"
           variant="standard"
           required
           value={gender}
-          onChange={e => setGender(e)}
+          onChange={(e) => setGender(e)}
         >
           <Option value="Male">Male</Option>
           <Option value="Female">Female</Option>
@@ -181,31 +194,36 @@ const MissingPersonUpdateForm = () => {
 
         <div className=" flex gap-2">
           <Input
+            className="text-white placeholder-white label-white"
+            color="white"
             required
             label="Height ( ft )"
             type="number"
             min="0"
             variant="outlined"
             value={feet}
-            onChange={e => setFeet(e.target.value)}
+            onChange={(e) => setFeet(e.target.value)}
           />
           <p>ft</p>
           <Input
+            color="white"
             required
             label="Height ( in )"
             type="number"
             max="11"
             value={inches}
-            onChange={e => setInches(e.target.value)}
+            onChange={(e) => setInches(e.target.value)}
           />
           <p>in</p>
         </div>
 
         <Select
+          color="white"
+          className="text-white placeholder-white label-white"
           variant="standard"
           label="Hair Color"
           value={hair}
-          onChange={e => setHair(e)}
+          onChange={(e) => setHair(e)}
         >
           <Option value="Black">Black</Option>
           <Option value="Light Brown">Light Brown</Option>
@@ -219,10 +237,12 @@ const MissingPersonUpdateForm = () => {
         {/* //this calculates the height in inches */}
         <Select
           label="Eye Color"
+          className="text-white placeholder-white label-white"
+          color="white"
           variant="standard"
           required
           value={eye_color}
-          onChange={e => setEyeColor(e)}
+          onChange={(e) => setEyeColor(e)}
         >
           <Option value="Brown">Brown</Option>
           <Option value="Blue">Blue</Option>
@@ -231,36 +251,63 @@ const MissingPersonUpdateForm = () => {
         </Select>
 
         <Input
+          color="white"
           required
           label="Weight ( lbs )"
           type="number"
           min="0"
           value={weight}
-          onChange={e => setWeight(e.target.value)}
+          onChange={(e) => setWeight(e.target.value)}
         />
 
         <Input
+          color="white"
           label="Image"
-          type="file"
-          value={image}
-          onChange={e => setImage(e.target.value)}
+          // placeholder="test"
+          className="text-white placeholder-white label-white"
+          // type="file"
+          // value={image}
+          // onClick={(e) => openWidget(e)}
         />
 
+        <div className="relative flex w-full max-w-[24rem]">
+          <Button
+            color="red"
+            onClick={(e) => openWidget(e)}
+            size="sm"
+            className="!absolute right-1 top-1 rounded w-20"
+          >
+            Upload
+          </Button>
+          <Input
+            readOnly
+            label="Image"
+            value={image}
+            className="pr-20 w-100"
+            containerProps={{
+              className: "min-w-0",
+            }}
+          />
+        </div>
         <Textarea
+          className="text-white"
+          inputClass="text-white"
           label="Description"
           variant="standard"
           value={description_text}
-          onChange={e => setDescription(e.target.value)}
+          onChange={(e) => setDescription(e.target.value)}
         ></Textarea>
 
         <Textarea
+          className="text-white"
+          inputClass="text-white"
           label="Contact Information"
           value={contact_info}
-          onChange={e => setContactInfo(e.target.value)}
+          onChange={(e) => setContactInfo(e.target.value)}
         ></Textarea>
         {/* Submit button */}
-        <Button type="submit">Update Form</Button>
-        <Button onClick={handleDelete}>Remove Post</Button>
+        <Button color="red" type="submit">Update Form</Button>
+        <Button color="red" onClick={handleDelete}>Remove Post</Button>
       </form>
     </>
   );

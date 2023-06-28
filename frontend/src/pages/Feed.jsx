@@ -30,7 +30,7 @@ export default function Feed() {
         <Button
           onClick={handleFormRoute}
           color="amber"
-          className="mt-4 mb-2 ml-2"
+          className="mt-4 mb-2 ml-2 newPostButton"
         >
           New Post
         </Button>

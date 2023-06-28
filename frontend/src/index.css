@@ -12,6 +12,7 @@ body {
 Button {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .dark {
@@ -355,6 +356,9 @@ Button {
 
 #filterText {
   color: white;
+  display: flex;
+  width: 90vw;
+  margin-left: 4vw;
 }
 
 #footerCardButtons {
@@ -447,3 +451,9 @@ form button {
   flex-direction: row-reverse;
   height: 100vh;
 }
+
+.newPostButton{
+  margin-left: 4.5vw;
+}
+
+
