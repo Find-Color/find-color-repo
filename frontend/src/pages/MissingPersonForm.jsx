@@ -27,7 +27,7 @@ const MissingPersonForm = () => {
   const [ethnicity, setEthnicity] = useState("");
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("0");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState("Upload Image");
   const [description_text, setDescription] = useState("");
   const [contact_info, setContactInfo] = useState("");
   const [missingPersonURL, setMissingPersonURL] = useState("");
@@ -45,6 +45,7 @@ const MissingPersonForm = () => {
           const deliveryURL = result.info.secure_url;
           console.log("Delivery URL:", deliveryURL);
           setMissingPersonURL(deliveryURL);
+          setImage(deliveryURL);
           console.error("Upload error:", error);
         }
       }
@@ -93,7 +94,9 @@ const MissingPersonForm = () => {
 
   return (
     <section>
-      <Typography variant="h2" className="flex items-center justify-center">Report Missing Person</Typography>
+      <Typography variant="h2" className="flex items-center justify-center">
+        Report Missing Person
+      </Typography>
 
       <form onSubmit={handleSubmit} className="missingPersonForm">
         <Input
@@ -250,11 +253,33 @@ const MissingPersonForm = () => {
         <Input
           color="white"
           label="Image"
+          // placeholder="test"
           className="text-white placeholder-white label-white"
-          type="file"
-          value={image}
-          onClick={(e) => openWidget(e)}
+          // type="file"
+          // value={image}
+          // onClick={(e) => openWidget(e)}
         />
+
+        <div className="relative flex w-full max-w-[24rem]">
+        <Button
+        color="red"
+          onClick={(e) => openWidget(e)}
+          size="sm"
+          className="!absolute right-1 top-1 rounded w-20"
+        >
+          Upload
+        </Button>
+          <Input
+          
+            readOnly
+            label="Image"
+            value={image}
+            className="pr-20 w-100"
+            containerProps={{
+              className: "min-w-0",
+            }}
+          />
+        </div>
 
         <Textarea
           className="text-white"

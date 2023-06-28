@@ -26,7 +26,7 @@ export default function HomePage() {
           alt=""
           className="landingimg-1"
         />
-                <img
+        <img
           src="./src/images/landing-page-1.jpg"
           alt=""
           className="landing-page-3"
@@ -58,6 +58,21 @@ export default function HomePage() {
           src="./src/images/landing-page-3.jpg"
           alt=""
           className="landing-page-3"
+        />
+      </section>
+      <section>
+        <img
+          src="./src/images/landing-page-3.jpg"
+          alt=""
+          className="landing-page-4"
+        />
+      </section>
+
+      <section>
+        <img
+          src="./src/images/landing-page-3.jpg"
+          alt=""
+          className="landing-page-5"
         />
       </section>
     </>
