@@ -59,19 +59,21 @@ nav ul {
   padding: 0;
   margin: 0;
   list-style: none;
-
 }
 
 nav a {
   display: block;
-
 }
 
-form {
+.missingPersonForm {
   padding: 1rem;
   border: 1px solid #ccc;
-  width: 15rem;
+  width: 50vw;
   margin: 1rem auto;
+  height: 155vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* automatically added by NavLink component */
@@ -368,4 +370,19 @@ Button {
   padding-left: 4%;
   padding-bottom: 5vh;
   /* text-align: center; */
+}
+
+Select {
+  color: white;
+}
+
+button {
+  color: white;
+}
+.input-group:focus-within label {
+  color: red !important;
+}
+
+form button{
+  width: 40vh
 }

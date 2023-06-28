@@ -90,7 +90,7 @@ const MissingPersonForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="missingPersonForm">
       <Input
         required
         variant="standard"
