@@ -5,8 +5,9 @@ export default function HomePage() {
     <>
       <section className="landingPage-1">
         <div className="landingPage-1-text">
-          <Typography variant="h1">Find Color Finds your loved ones</Typography>
-          <Typography variant="paragraph">
+          <Typography variant="h1">Find Color
+          <br />Finds your loved ones</Typography>
+          <Typography variant="h6">
             Our mission is to foster a united community where individuals can
             come together to actively support and locate missing persons of
             color. We provide a dedicated platform that empowers users to share
