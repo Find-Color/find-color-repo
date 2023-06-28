@@ -96,13 +96,13 @@ export default function MissingPersonCard({
 
   return (
     <Card className="mt-10 w-96 pt-10 pr-2 pl-2 ml-10 mr-10" id="card-style">
-      <div class="flex justify-between">
-        <div>
-          <Typography variant="h4" className="cardHeaderText">
+      <div class="flex justify-between" >
+        <div className="cardHeaderText">
+          <Typography variant="h4">
             {name}
           </Typography>
-          <Typography variant="h6" className="cardHeaderText">
-            {username}
+          <Typography variant="h6">
+            Posted By: {username}
             <br />
             <TimeAgo date={date_reported} />
           </Typography>
@@ -147,10 +147,10 @@ export default function MissingPersonCard({
           onClick={() => handleUpVote(post_id)}
           color="red"
         >
-          <PanToolAltIcon fonstSize="large"/>
+          <PanToolAltIcon fonstSize="large" />
         </Button>
         <Button onClick={handleOpenDialog} className="cardButton" color="red">
-          <ChatIcon fontSize="medium"/>
+          <ChatIcon fontSize="medium" />
         </Button>
       </CardFooter>
       <CommentModalDMMY

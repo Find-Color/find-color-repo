@@ -8,6 +8,7 @@ import { Button, Typography } from "@material-tailwind/react";
 import TimeAgo from "react-timeago";
 import frenchStrings from "react-timeago/lib/language-strings/fr";
 import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
+import CurrentUserContext from "../contexts/current-user-context";
 
 const formatter = buildFormatter(frenchStrings);
 
@@ -18,6 +19,7 @@ export default function MissingPerson() {
   const [loggedIn, setLoggedIn] = useState(null);
   const [comments, setComments] = useState([]);
   const [tabBool, setTabBool] = useState(true);
+  const { currentUser } = useContext(CurrentUserContext);
 
   useEffect(() => {
     getPost(id).then(res => setMissing(res[0]));
@@ -58,9 +60,7 @@ export default function MissingPerson() {
           <h5>Weight: {missing.weight} lbs</h5>
           <Typography>Nationality: {missing.ethnicity}</Typography>
           <Typography>Gender: {missing.gender}</Typography>
-          {!loggedIn ? (
-            <></>
-          ) : (
+          {currentUser?.user_id == missing.user_id && (
             <Button className="editForm" color="red" onClick={handleClick}>
               Edit Form
             </Button>
