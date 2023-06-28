@@ -37,10 +37,10 @@ input {
 }
 
 header {
-  display: flex;
   justify-content: space-between;
+  display: flex;
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 4.2vw;
 }
 
 #logo {
@@ -452,8 +452,10 @@ form button {
   height: 100vh;
 }
 
-.newPostButton{
-  margin-left: 4.5vw;
+.newPostButton {
+  margin-left: 74.5vw;
+  display: flex;
+  margin-top: 7vh;
+  position: absolute;
+  z-index: 5;
 }
-
-
