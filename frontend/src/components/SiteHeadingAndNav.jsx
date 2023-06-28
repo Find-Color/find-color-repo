@@ -4,6 +4,7 @@ import CurrentUserContext from "../contexts/current-user-context";
 
 export default function SiteHeadingAndNav() {
   const { currentUser } = useContext(CurrentUserContext);
+  console.log(currentUser)
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleDarkMode = () => {

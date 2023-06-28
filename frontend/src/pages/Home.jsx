@@ -42,16 +42,21 @@ export default function HomePage() {
 
       <section className="coverageWorth">
         <div className="coverageWorthText">
-          <Typography variant="h1">
+          <Typography variant="h1" style={{ marginBottom: '20px', fontSize: '32px', fontWeight: 'bold' }}>
             How much coverage are your worth?
           </Typography>
-          <Typography variant="lead">
-            Your news coverage depends on your demographics yada yada we gotta
-            do a lil blurb here that segways into take the quiz
+          <Typography variant="lead" style={{ fontSize: '18px', lineHeight: '1.5'}}>
+          In today's media landscape, a profound disparity in coverage regarding missing persons has become evident. Despite tens of thousands of reported missing individuals, only a fraction of these cases receive substantial press attention. Critics argue that the media exhibits a tendency to prioritize attractive, young white women, thereby neglecting the cases of missing women who belong to marginalized groups based on race, age, body size, or non-conventional attractiveness. This media bias highlights an alarming manifestation of racism and systemic discrimination, contributing to the perpetuation of inequity within our society.
+          <br />
+          <br />
+          Cases such as that of Gabby Petito exemplify the phenomenon known as "missing white woman syndrome," where disproportionate media coverage detracts attention and resources from other cases, particularly those involving individuals of color. It is of utmost importance that we address and challenge these biases, actively striving for equal and unbiased media coverage for all missing persons, irrespective of their race or physical appearance.
           </Typography>
         </div>
+
         <div className="coverageWorthButton">
+          <a href="https://areyoupressworthy.com/22_3">
           <Button color="red">Take the quiz now</Button>
+          </a>
         </div>
 
         <img

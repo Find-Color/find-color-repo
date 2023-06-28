@@ -1,5 +1,8 @@
-
+import CurrentUserContext from "../contexts/current-user-context"
+import { Link } from "react-router-dom"
+import { useContext } from "react";
 const Footer = () => {
+    const { currentUser } = useContext(CurrentUserContext);
     return (
        <div id= "footer">
         <div id= "footercol1">
@@ -14,7 +17,7 @@ const Footer = () => {
         </div>
         <div>
             <div className= "footercol2">
-                <div className= "footercol2 footerPadding">
+                <div className= "footerPadding">
                     {/* <div>
                         <p>Product</p>
                         <p>Product</p>
@@ -22,12 +25,26 @@ const Footer = () => {
                         <p>Product</p>
                         <p>Product</p>
                     </div> */}
-                    <div>
-                        <p>Home</p>
-                        <p>Users</p>
-                        <p>Missing People</p>
-                        <p>Profile</p>
-                    </div>
+                
+                    <Link to='/'><p>Home</p></Link>
+                    <Link to='/posts'><p>Missing People</p></Link>
+                    {currentUser ? (
+            <p>
+              <Link to={`/users/${currentUser.user_id}`}>
+                {currentUser.username}
+              </Link>
+            </p>
+          ) : (
+            // if user logged in we will update nav up here ^ else update nav for down here /
+            <>
+              <p>
+                <Link to="/login">Login</Link>
+              </p>
+              <p>
+                <Link to="/sign-up">Sign Up</Link>
+              </p>
+            </>
+          )}
                 </div>
             </div>
             <div className= "footercol2 footerPadding">

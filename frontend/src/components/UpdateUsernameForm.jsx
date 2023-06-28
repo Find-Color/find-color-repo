@@ -51,7 +51,7 @@ export default function UpdateUsernameForm({ currentUser, setCurrentUser }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-     <label htmlFor="username" className="text-sm text-gray-600 flex justify-center">New Username</label>
+     <label htmlFor="username" className="text-sm text-white-500 flex justify-center" style={{color:'white'}}>New Username</label>
 
       <Input
         type="text"
@@ -64,7 +64,7 @@ export default function UpdateUsernameForm({ currentUser, setCurrentUser }) {
      <div className="flex justify-center">
   <input type="hidden" name="user_id" value={currentUser.user_id} />
 
-  <Button style={{ backgroundColor: "#ffb74d", width: "75%", padding: "5px" }} type="submit" >
+  <Button style={{ backgroundColor: "#ffb74d", width: "75%", padding: "10px" }} type="submit" >
     Update Username
   </Button>
 </div>

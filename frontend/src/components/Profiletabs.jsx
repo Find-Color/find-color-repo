@@ -5,6 +5,8 @@ import {
   Tab,
   TabPanel,
 } from "@material-tailwind/react";
+import UsersPostsList from "./UsersPostsList"
+
 import UpdateUsernameForm from "./UpdateUsernameForm";
 import { useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
@@ -31,17 +33,16 @@ export default function TransparentTabs() {
 
   return (
     <div>
-      <Tabs value="html" style={containerStyle} className="max-w-[40rem]">
+      <Tabs value="Edit Account" style={containerStyle} className="max-w-[40rem]" >
         <TabsHeader
           className="bg-transparent"
           indicatorProps={{
             className: "bg-blue-500/10 shadow-none text-blue-500",
           }}
         >
-          <Tab value="Edit Account">Edit Account</Tab>
-          <Tab value="Quiz">Quiz</Tab>
-          <Tab value="View Posts">View Posts</Tab>
-          <Tab value="Log Out" onClick={handleLogout}>
+          <Tab value="Edit Account" className="text-white-500">Edit Account</Tab>
+          <Tab value="View Posts" className="text-white-500">View Posts</Tab>
+          <Tab value="Log Out" className="text-white-500" onClick={handleLogout}>
             Log Out
           </Tab>
         </TabsHeader>
@@ -54,8 +55,10 @@ export default function TransparentTabs() {
               />
             )}
           </TabPanel>
-          <TabPanel value="Quiz">Quiz</TabPanel>
-          <TabPanel value="View Posts">Posts</TabPanel>
+          <TabPanel value="View Posts">
+            <UsersPostsList />
+
+          </TabPanel>
           <TabPanel value="Log Out">
         { !!isCurrentUserProfile && <button onClick={handleLogout} color="red" variant="text">Log Outt</button> }
         </TabPanel>

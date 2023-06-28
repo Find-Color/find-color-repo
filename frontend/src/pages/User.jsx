@@ -5,7 +5,6 @@ import { getUser } from "../adapters/user-adapter";
 import { logUserOut } from "../adapters/auth-adapter";
 import UpdateUsernameForm from "../components/UpdateUsernameForm";
 import { Button, Typography } from "@material-tailwind/react";
-import Quiz from '../components/Quiz';
 import TransparentTabs from "../components/profiletabs";
 
 export default function UserPage() {
@@ -32,13 +31,6 @@ export default function UserPage() {
     navigate('/');
   };
 
-  <Quiz
-  name="John Doe"
-  bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-  imageLink="https://example.com/image.jpg"
-  websiteLink="https://areyoupressworthy.com/22_3"
-/>
-
   if (!userProfile && !errorText) return null;
   if (errorText) return <p>{errorText}</p>;
 
@@ -55,7 +47,7 @@ export default function UserPage() {
     <Button color="red" variant="text">View Posts</Button> */}
     {/* { !!isCurrentUserProfile && <Button onClick={handleLogout} color="red" variant="text">Log Out</Button> } */}
   </section>
-  <TransparentTabs />
+  <TransparentTabs currentUser={currentUser} setCurrentUser={setCurrentUser} />
     
     {/* {
       !!isCurrentUserProfile
