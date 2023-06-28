@@ -1,12 +1,16 @@
 import { Typography, Button } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   return (
     <>
       <section className="landingPage-1">
         <div className="landingPage-1-text">
-          <Typography variant="h1">Find Color
-          <br />Finds your loved ones</Typography>
+          <Typography variant="h1">
+            Find Color
+            <br />
+            Finds your loved ones
+          </Typography>
           <Typography variant="h6">
             Our mission is to foster a united community where individuals can
             come together to actively support and locate missing persons of
@@ -17,9 +21,11 @@ export default function HomePage() {
             and resources they deserve. Together, we aim to bring hope,
             facilitate connections, and reunite families.
           </Typography>
-          <Button color="red" className="w50">
-            Sign Up
-          </Button>
+          <Link to="/posts" end={true}>
+            <Button color="red" className="w50">
+              Go To Find Color
+            </Button>
+          </Link>
         </div>
 
         <img
@@ -51,7 +57,7 @@ export default function HomePage() {
         <img className="collage" src="./src/images/collage.png" alt="" />
       </section>
 
-        {/* Indias blank template */}
+      {/* Indias blank template */}
 
       <section className="className4">
         <img

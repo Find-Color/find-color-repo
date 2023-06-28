@@ -25,7 +25,7 @@ function Filter() {
 
   const genders = ["Female", "Male", "Non-Binary", "Other"];
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const form = document.getElementById("form");
     const formData = new FormData(form);
 

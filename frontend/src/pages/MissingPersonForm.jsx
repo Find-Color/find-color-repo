@@ -250,7 +250,7 @@ const MissingPersonForm = () => {
           onChange={(e) => setWeight(e.target.value)}
         />
 
-        <Input
+        {/* <Input
           color="white"
           label="Image"
           // placeholder="test"
@@ -258,7 +258,7 @@ const MissingPersonForm = () => {
           // type="file"
           // value={image}
           // onClick={(e) => openWidget(e)}
-        />
+        /> */}
 
         <div
           className="relative flex w-full max-w-[24rem]"
