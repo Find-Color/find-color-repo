@@ -124,7 +124,6 @@ class Post {
       `
       );
       return rows;
-      // return rows.map(post => new Post(post));
     } catch (err) {
       console.error(err);
       return null;

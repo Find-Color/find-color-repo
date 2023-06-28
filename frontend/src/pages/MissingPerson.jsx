@@ -5,6 +5,11 @@ import { checkForLoggedInUser } from "../adapters/auth-adapter";
 import CommentsMissingPerson from "../components/CommentsMissingPerson";
 import { getAllCommentsFromPost } from "../adapters/comment-adapter";
 import { Button, Typography } from "@material-tailwind/react";
+import TimeAgo from "react-timeago";
+import frenchStrings from "react-timeago/lib/language-strings/fr";
+import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
+
+const formatter = buildFormatter(frenchStrings);
 
 export default function MissingPerson() {
   const { id } = useParams();
@@ -15,15 +20,15 @@ export default function MissingPerson() {
   const [tabBool, setTabBool] = useState(true);
 
   useEffect(() => {
-    getPost(id).then((res) => setMissing(res[0]));
-    checkForLoggedInUser().then((data) => {
+    getPost(id).then(res => setMissing(res[0]));
+    checkForLoggedInUser().then(data => {
       setLoggedIn(data);
     });
     getAllCommentsFromPost(id).then(setComments);
   }, [id]);
 
-  const addComment = (newComment) => {
-    setComments((prevComments) => [...prevComments, newComment]);
+  const addComment = newComment => {
+    setComments(prevComments => [...prevComments, newComment]);
   };
 
   function handleClick() {
@@ -36,7 +41,7 @@ export default function MissingPerson() {
 
   if (!missing) return <div>Loading...</div>;
   console.log(comments);
-  // if(missing.height )
+
   return (
     <>
       <div id="missingPersonInfoParent">
@@ -46,11 +51,11 @@ export default function MissingPerson() {
           <Typography variant="h3">Status: {missing.status}</Typography>
           <br />
           <Typography>Last Seen in: {missing.location_state}</Typography>
-          <h5>Age: {missing.age}</h5>
+          <h5>Age: {missing.age} y/o</h5>
           <h5>Hair: {missing.hair}</h5>
           <h5>Height: {convertInchesToFeetAndInches(missing.height)}</h5>
           <h5>Eye Color: {missing.eye_color}</h5>
-          <h5>Weight: {missing.weight}</h5>
+          <h5>Weight: {missing.weight} lbs</h5>
           <Typography>Nationality: {missing.ethnicity}</Typography>
           <Typography>Gender: {missing.gender}</Typography>
           {!loggedIn ? (
@@ -69,7 +74,11 @@ export default function MissingPerson() {
             className=" h-80 w-80 rounded-lg"
           />
           <Typography variant="small" id="dateAndContact">
-            Date Reported: {missing.date_reported}
+            Date Reported:
+            <strong>
+              {" " + missing.date_reported.slice(0, 10) + " "}(
+              <TimeAgo date={missing.date_reported} />)
+            </strong>
           </Typography>
           <Typography variant="paragraph" id="dateAndContact">
             Contact Info: {missing.contact_info}
