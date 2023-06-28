@@ -4,6 +4,7 @@ import { useEffect, useState, useContext, Fragment } from "react";
 import { checkForLoggedInUser } from "../adapters/auth-adapter";
 import { useParams, useNavigate } from "react-router-dom";
 import CommentCard from "./CommentCard";
+import CurrentUserContext from "../contexts/current-user-context";
 
 export default function CommentsMissingPerson({
   comments,
@@ -15,25 +16,24 @@ export default function CommentsMissingPerson({
   const [comment, setComments] = useState(comments);
   const [commentText, setCommentText] = useState("");
   const [loggedIn, setLoggedIn] = useState(null);
-
+  const { currentUser } = useContext(CurrentUserContext);
   useEffect(() => {
-    checkForLoggedInUser().then((data) => {
+    checkForLoggedInUser().then(data => {
       setLoggedIn(data);
     });
   }, [commentText, comment]);
 
   // Helper functions for Comments
-  const handleComment = (event) => {
+  const handleComment = event => {
     let value = event.target.value;
     setCommentText(value);
   };
 
-  const sendComment = async (e) => {
+  const sendComment = async e => {
     e.preventDefault();
-    console.log(commentText);
-    console.log(loggedIn);
+    console.log(currentUser?.user_id, commentText);
     let post_id = id;
-    let user_id = loggedIn.user_id;
+    let user_id = currentUser?.user_id;
     const body = {
       post_id: post_id,
       user_id: user_id,
@@ -41,13 +41,11 @@ export default function CommentsMissingPerson({
     };
 
     // Create the comment
-    await createComment(body);
-
+    const newComment = await createComment(body);
     // Update the comments state with the new comment
+    body.username = currentUser?.username;
     addComment(body);
-
-    setComments((prevComments) => [...prevComments, body]);
-
+    setComments(prevComments => [...prevComments, body]);
     // Clear the comment text input
     setCommentText("");
   };

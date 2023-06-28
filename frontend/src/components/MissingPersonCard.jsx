@@ -1,16 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { checkForLoggedInUser } from "../adapters/auth-adapter";
 import CommentModalDMMY from "./CommentModalDMMY";
 import TimeAgo from "react-timeago";
-import frenchStrings from "react-timeago/lib/language-strings/fr";
-import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import PanToolAltIcon from "@mui/icons-material/PanToolAlt";
-import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import ChatIcon from "@mui/icons-material/Chat";
 import { createTheme } from "@mui/material/styles";
+import CurrentUserContext from "../contexts/current-user-context";
 
 import {
   Card,
@@ -34,13 +32,14 @@ export default function MissingPersonCard({
   date_reported,
   username,
 }) {
-  const bookmarked = false;
+  const bookmarked = false; //this will be removed once there is context (false by default)
   const [upVoteCount, setUpVoteCount] = useState([]);
   const [loggedIn, setLoggedIn] = useState(null);
   const [upVoteBool, setUpVoteBool] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const [counter, setCounter] = useState(upVoteCount.length);
   const [bookmark, setBookmark] = useState(bookmarked);
+  const { currentUser } = useContext(CurrentUserContext);
 
   const toggleDialog = () => {
     setShowDialog(!showDialog);
@@ -59,11 +58,9 @@ export default function MissingPersonCard({
   useEffect(() => {
     checkForLoggedInUser().then(data => {
       setLoggedIn(data);
-      console.log(image_post);
     });
     getAllUpvotesFromPost(post_id).then(setUpVoteCount);
     setCounter(upVoteCount.length);
-    console.log(counter);
   }, [upVoteCount.length]);
 
   const navigate = useNavigate();
@@ -96,11 +93,9 @@ export default function MissingPersonCard({
 
   return (
     <Card className="mt-10 w-96 pt-10 pr-2 pl-2 ml-10 mr-10" id="card-style">
-      <div class="flex justify-between" >
+      <div class="flex justify-between">
         <div className="cardHeaderText">
-          <Typography variant="h4">
-            {name}
-          </Typography>
+          <Typography variant="h4">{name}</Typography>
           <Typography variant="h6">
             Posted By: {username}
             <br />
@@ -141,23 +136,31 @@ export default function MissingPersonCard({
           See More
         </Typography>
       </CardBody>
-      <CardFooter className="pt-0" id="footerCardButtons">
-        <Button
-          className="cardButton"
-          onClick={() => handleUpVote(post_id)}
-          color="red"
-        >
-          <PanToolAltIcon fonstSize="large" />
-        </Button>
-        <Button onClick={handleOpenDialog} className="cardButton" color="red">
-          <ChatIcon fontSize="medium" />
-        </Button>
-      </CardFooter>
-      <CommentModalDMMY
-        showDialog={showDialog}
-        handleCloseDialog={handleCloseDialog}
-        post_id={post_id}
-      />
+      {currentUser && (
+        <>
+          <CardFooter className="pt-0" id="footerCardButtons">
+            <Button
+              className="cardButton"
+              onClick={() => handleUpVote(post_id)}
+              color="red"
+            >
+              <PanToolAltIcon fontSize="medium" />
+            </Button>
+            <Button
+              onClick={handleOpenDialog}
+              className="cardButton"
+              color="red"
+            >
+              <ChatIcon fontSize="medium" />
+            </Button>
+          </CardFooter>
+          <CommentModalDMMY
+            showDialog={showDialog}
+            handleCloseDialog={handleCloseDialog}
+            post_id={post_id}
+          />
+        </>
+      )}
     </Card>
   );
 }

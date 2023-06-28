@@ -42,7 +42,6 @@ export default function MissingPerson() {
   };
 
   if (!missing) return <div>Loading...</div>;
-  console.log(comments);
 
   return (
     <>
@@ -109,7 +108,7 @@ export default function MissingPerson() {
           ) : (
             <CommentsMissingPerson
               comments={comments}
-              username={loggedIn.username}
+              username={currentUser?.username}
               addComment={addComment} // Pass the function to the child component
             />
           )}
