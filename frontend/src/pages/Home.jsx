@@ -29,15 +29,35 @@ export default function HomePage() {
         <img
           src="./src/images/landing-page-1.jpg"
           alt=""
-          className="landing-page-3"
+          className="landing-page-1"
         />
       </section>
+
+      {/* Indias blank template */}
+      <section className="className4">
+        <img
+          src="./src/images/landing-page-3.jpg"
+          alt=""
+          className="landing-page-4"
+        />
+      </section>
+
       <section id="bnwimageparent">
         <Typography className="bnwText" variant="h1">
           "Darkness cannot drive out darkness; only light can do that. Hate
           cannot drive out hate; only love can do that." –Martin Luther King Jr.
         </Typography>
         <img className="collage" src="./src/images/collage.png" alt="" />
+      </section>
+
+        {/* Indias blank template */}
+
+      <section className="className4">
+        <img
+          src="./src/images/landing-page-3.jpg"
+          alt=""
+          className="landing-page-5"
+        />
       </section>
 
       <section className="coverageWorth">
@@ -58,21 +78,6 @@ export default function HomePage() {
           src="./src/images/landing-page-3.jpg"
           alt=""
           className="landing-page-3"
-        />
-      </section>
-      <section>
-        <img
-          src="./src/images/landing-page-3.jpg"
-          alt=""
-          className="landing-page-4"
-        />
-      </section>
-
-      <section>
-        <img
-          src="./src/images/landing-page-3.jpg"
-          alt=""
-          className="landing-page-5"
         />
       </section>
     </>

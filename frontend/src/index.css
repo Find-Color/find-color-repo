@@ -380,11 +380,11 @@ button {
   color: white;
 }
 
-form button{
-  width: 40vh
+form button {
+  width: 40vh;
 }
 
-#missingPersonFilters button{
+#missingPersonFilters button {
   margin-top: 5vh;
   display: flex;
   justify-content: center;
@@ -392,11 +392,9 @@ form button{
   width: 15vw;
 }
 
-
-
 .gap-5 {
-    gap: 1.25rem;
-    margin-left: 6vw;
+  gap: 1.25rem;
+  margin-left: 6vw;
 }
 
 #missingPersonFiltersParent {
@@ -407,14 +405,14 @@ form button{
   align-items: start;
   align-content: space-evenly;
 }
-#missingPersonFilters{
+#missingPersonFilters {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 55vw;
 }
 
-.landing-page-5{
+.landing-page-4 {
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -423,11 +421,29 @@ form button{
   z-index: 1;
 }
 
-.landing-page-5{
+.className4 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  height: 100vh;
+}
+
+.landing-page-5 {
   height: 100vh;
   width: 100vw;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
+}
+
+.className4 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  height: 100vh;
 }
