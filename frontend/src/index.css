@@ -388,7 +388,7 @@ form button {
   width: 40vh;
 }
 
-#missingPersonFilters button {
+.missingPersonFilters button {
   margin-top: 5vh;
   display: flex;
   justify-content: center;
@@ -409,7 +409,7 @@ form button {
   align-items: start;
   align-content: space-evenly;
 }
-#missingPersonFilters {
+.missingPersonFilters {
   display: flex;
   align-items: center;
   justify-content: center;
