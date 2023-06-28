@@ -1,10 +1,13 @@
-const { Bookmark } = require("../db/models/bookmarks");
-
 async function getAllBookmarksFromUser(req, res) {
   const { user_id } = req.params;
 
+  // Add the db object to the destructuring assignment
+  const {
+    db: { Bookmark },
+  } = req;
+
   try {
-    const bookmarks = await Bookmark.getAllBookmarksFromUser(user_id);
+    const bookmarks = await db.Bookmark.getAllBookmarksFromUser(user_id);
     return res.json({ success: true, bookmarks });
   } catch (err) {
     console.error(err);

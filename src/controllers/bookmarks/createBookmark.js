@@ -1,13 +1,12 @@
 
-
-const { Bookmark } = require('../db/models/bookmarks'); 
-
-
 async function createBookmark(req, res) {
   const { user_id, post_id } = req.body;
 
+  // Add the db object to the destructuring assignment
+  const {db: {Bookmark}} = req;
+
   try {
-    const bookmark = await Bookmark.createBookmark(user_id, post_id);
+    const bookmark = await db.Bookmark.createBookmark(user_id, post_id);
     if (bookmark) {
       return res.status(201).json({ success: true, bookmark });
     } else {

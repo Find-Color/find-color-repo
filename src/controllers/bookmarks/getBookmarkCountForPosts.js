@@ -1,8 +1,10 @@
-const { Bookmark } = require("../db/models/bookmarks");
 
 async function getBookmarkCountForPosts(req, res) {
+  // Add the db object to the destructuring assignment
+  const { db: {Bookmark} } = req;
+
   try {
-    const bookmarkCounts = await Bookmark.getBookmarkCountForPosts();
+    const bookmarkCounts = await db.Bookmark.getBookmarkCountForPosts();
     return res.json({ success: true, bookmarkCounts });
   } catch (err) {
     console.error(err);
