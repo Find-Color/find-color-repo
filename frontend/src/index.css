@@ -379,10 +379,37 @@ Select {
 button {
   color: white;
 }
-.input-group:focus-within label {
-  color: red !important;
-}
 
 form button{
   width: 40vh
+}
+
+#missingPersonFilters button{
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15vw;
+}
+
+
+
+.gap-5 {
+    gap: 1.25rem;
+    margin-left: 6vw;
+}
+
+#missingPersonFiltersParent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 70vh;
+  align-items: start;
+  align-content: space-evenly;
+}
+#missingPersonFilters{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55vw;
 }
