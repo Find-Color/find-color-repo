@@ -237,6 +237,7 @@ Button {
   height: 100vh;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10vh;
 }
 
 .landingPage-1-text {
@@ -245,7 +246,7 @@ Button {
   align-content: center;
   justify-content: space-between;
   align-items: center;
-  text-align: center;
+  text-align: start;
   width: 37vw;
   height: 52vh;
   position: absolute;
@@ -263,11 +264,7 @@ Button {
   left: 0;
   z-index: 1;
 }
-#bnwimageparent {
-  position: relative;
-  /* margin-top: -8vh; */
-  height: 100vh;
-}
+
 
 .collage {
   width: 100vw;
@@ -280,12 +277,17 @@ Button {
   /* margin-left: 48vh; */
 }
 
+#bnwimageparent {
+  /* margin-top: -8vh; */
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+}
+
 .bnwText {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 50vh;
   font-size: 3.1vh;
   color: #f3f4f6;
 }
@@ -474,7 +476,18 @@ form button {
   z-index: 5;
 }
 
-.find-person{
+.find-person {
   width: 70vw;
   margin-right: 15%;
+}
+
+.landing-page-blurb {
+  text-align: left;
+  font-size: 1.35rem;
+  text-shadow: rgb(23 22 22) 0px 0 60px;
+}
+
+.landing-page-intro {
+  font-size: 3.25rem;
+  width: 40vw;
 }

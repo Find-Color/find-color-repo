@@ -6,17 +6,13 @@ export default function HomePage() {
     <>
       <section className="landingPage-1">
         <div className="landingPage-1-text">
-          <Typography variant="h1">
+          <Typography variant="h1" className="landing-page-intro">
             Find Color
             <br />
-            Finds your loved ones
+            Finds Your Loved Ones.
           </Typography>
-          <Typography variant="h6">
-            Our mission is to foster a united community where individuals can
-            come together to actively support and locate missing persons of
-            color. We provide a dedicated platform that empowers users to share
-            information, raise awareness, and collaborate in the search efforts.
-            Through our app, we strive to bridge the gap, amplify the voices,
+          <Typography variant="h6" className="landing-page-blurb">
+            We strive to bridge the gap, amplify the voices,
             and ensure that every missing person of color is given the attention
             and resources they deserve. Together, we aim to bring hope,
             facilitate connections, and reunite families.
@@ -30,33 +26,23 @@ export default function HomePage() {
         <img className="find-person" src="./src/images/find-person.png" alt="Finding Color" />
         {/* <a href="https://storyset.com/job">Job illustrations by Storyset</a> */}
       </section>
-
-      {/* Indias blank template */}
-      <section className="className4">
-        <img
-          src="./src/images/landing-page-3.jpg"
-          alt=""
-          className="landing-page-4"
-        />
-      </section>
-
-      <section id="bnwimageparent">
+      {/* <section id="bnwimageparent">
         <Typography className="bnwText" variant="h1">
           "Darkness cannot drive out darkness; only light can do that. Hate
           cannot drive out hate; only love can do that." –Martin Luther King Jr.
         </Typography>
         <img className="collage" src="./src/images/collage.png" alt="" />
-      </section>
+      </section> */}
 
       {/* Indias blank template */}
 
-      <section className="className4">
+      {/* <section className="className4">
         <img
           src="./src/images/landing-page-3.jpg"
           alt=""
           className="landing-page-5"
         />
-      </section>
+      </section> */}
 
       <section className="coverageWorth">
         <div className="coverageWorthText">
