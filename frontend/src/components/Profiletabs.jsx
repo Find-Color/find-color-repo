@@ -26,7 +26,7 @@ export default function TransparentTabs() {
   const { user_id } = useParams();
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
-  const isCurrentUserProfile = currentUser && currentUser.user_id === Number(user_id);
+  const isCurrentUserProfile = currentUser ? currentUser?.user_id === Number(user_id) : null
   console.log(user_id)
   console.log(`current user:`, currentUser);
   console.log(`isCurrentUserProfile:`, isCurrentUserProfile);

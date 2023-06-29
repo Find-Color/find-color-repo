@@ -13,7 +13,8 @@ export default function UsersPostsList() {
       setLoggedIn(data);
     });
   }, []);
-  const filteredArray = posts.filter(post => post.user_id === loggedIn.user_id)
+  console.log(posts)
+  const filteredArray = loggedIn ? posts.filter(post => post.user_id === loggedIn.user_id) : []
   return (
     <>
       <div className="ui centered cards missing-people-container" id="missingPersonCardParent">
