@@ -419,6 +419,7 @@ form button {
   height: 70vh;
   align-items: flex-start;
   align-content: space-evenly;
+  color: white;
 }
 .missingPersonFilters {
   display: flex;

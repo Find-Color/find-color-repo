@@ -63,7 +63,12 @@ function Filter() {
         <div className="flex gap-5">
           <div className="flex flex-col justify-center gap-2">
             {/* //name, status and age */}
-            <Input name="Name" label="Name" pattern="[A-Za-z ]*" />
+            <Input
+              name="Name"
+              label="Name"
+              pattern="[A-Za-z ]*"
+              color="white"
+            />
             <h5>Status</h5>
             <div className="flex gap-2">
               <Chip
@@ -107,7 +112,7 @@ function Filter() {
                   className="rounded-full"
                   icon={
                     <Checkbox
-                      color="gray"
+                      color="white"
                       name="Gender"
                       className="rounded-full border"
                       value={name}
@@ -146,9 +151,21 @@ function Filter() {
         <div>
           <h5>Age</h5>
           <div className="flex gap-2">
-            <Input type="number" min="0" name="Age-" label="Min" />
+            <Input
+              type="number"
+              min="0"
+              name="Age-"
+              label="Min"
+              color="white"
+            />
             <p>to</p>
-            <Input type="number" max="100" name="Age+" label="Max" />
+            <Input
+              type="number"
+              max="100"
+              name="Age+"
+              label="Max"
+              color="white"
+            />
           </div>
         </div>
         <Button type="button" color="gray" onClick={handleClear}>
