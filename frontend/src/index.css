@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: "Tiro Devanagari Hindi", serif;
   margin: 0;
   background-color: black;
   color: #fff;
@@ -12,6 +13,7 @@ body {
 Button {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .dark {
@@ -36,10 +38,10 @@ input {
 }
 
 header {
-  display: flex;
   justify-content: space-between;
+  display: flex;
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 4.2vw;
 }
 
 #logo {
@@ -51,6 +53,7 @@ header {
 header {
   color: #fff;
   background-color: transparent;
+  padding: 6vh;
 }
 
 nav ul {
@@ -101,6 +104,10 @@ nav a {
   flex-direction: column;
   flex-basis: 30%; /* Adjust the width as needed */
   margin: 10px;
+}
+
+.missing-people-container .card :hover {
+  outline: #eebc32;
 }
 
 .cardButton {
@@ -207,8 +214,12 @@ Button {
 
 #decriptionCommentButtonParent {
   display: flex;
+  /* position: absolute; */
+  /* z-index: 3; */
   justify-content: center;
   align-content: center;
+position: relative;
+bottom: 20;
 }
 
 #decriptionCommentButton {
@@ -230,6 +241,7 @@ Button {
   height: 100vh;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10vh;
 }
 
 .landingPage-1-text {
@@ -238,7 +250,7 @@ Button {
   align-content: center;
   justify-content: space-between;
   align-items: center;
-  text-align: center;
+  text-align: start;
   width: 37vw;
   height: 52vh;
   position: absolute;
@@ -256,11 +268,6 @@ Button {
   left: 0;
   z-index: 1;
 }
-#bnwimageparent {
-  position: relative;
-  /* margin-top: -8vh; */
-  height: 100vh;
-}
 
 .collage {
   width: 100vw;
@@ -273,12 +280,17 @@ Button {
   /* margin-left: 48vh; */
 }
 
+#bnwimageparent {
+  /* margin-top: -8vh; */
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+}
+
 .bnwText {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 50vh;
   font-size: 3.1vh;
   color: #f3f4f6;
 }
@@ -355,6 +367,9 @@ Button {
 
 #filterText {
   color: white;
+  display: flex;
+  width: 90vw;
+  margin-left: 4vw;
 }
 
 #footerCardButtons {
@@ -384,7 +399,7 @@ form button {
   width: 40vh;
 }
 
-#missingPersonFilters button {
+.missingPersonFilters button {
   margin-top: 5vh;
   display: flex;
   justify-content: center;
@@ -402,10 +417,10 @@ form button {
   flex-wrap: wrap;
   justify-content: center;
   height: 70vh;
-  align-items: start;
+  align-items: flex-start;
   align-content: space-evenly;
 }
-#missingPersonFilters {
+.missingPersonFilters {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -446,4 +461,48 @@ form button {
   align-items: center;
   flex-direction: row-reverse;
   height: 100vh;
+}
+
+.font-sans {
+  font-family: "Tiro Devanagari Hindi", serif !important;
+}
+
+.font-sans h6 {
+  font-family: "Jost", serif !important;
+}
+
+.newPostButton {
+  margin-left: 74.5vw;
+  display: flex;
+  margin-top: 7vh;
+  position: absolute;
+  z-index: 5;
+}
+
+.find-person {
+  width: 70vw;
+  margin-right: 15%;
+}
+
+.landing-page-blurb {
+  text-align: left;
+  font-size: 1.35rem;
+  text-shadow: rgb(23 22 22) 0px 0 60px;
+}
+
+.landing-page-intro {
+  font-size: 3.25rem;
+  width: 40vw;
+}
+
+.missingPersonPhoto {
+  width: 30vw;
+  border-radius: 5px;
+}
+
+.missingPersonText {
+  font-size: 1.25rem;
+}
+.singleComment {
+  display: flex;
 }

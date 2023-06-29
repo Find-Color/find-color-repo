@@ -92,7 +92,11 @@ export default function MissingPersonCard({
   };
 
   return (
-    <Card className="mt-10 w-96 pt-10 pr-2 pl-2 ml-10 mr-10" id="card-style">
+    <Card
+      className="mt-10 w-96 pt-10 pr-2 pl-2 ml-10 mr-10 hover:outline-double hover:outline-amber-500"
+      onClick={handleClick}
+      id="card-style"
+    >
       <div class="flex justify-between">
         <div className="cardHeaderText">
           <Typography variant="h4">{name}</Typography>
@@ -102,7 +106,7 @@ export default function MissingPersonCard({
             <TimeAgo date={date_reported} />
           </Typography>
         </div>
-        <div>
+        <div onClick={e => e.stopPropagation()}>
           {bookmark ? (
             <BookmarkIcon
               variant="outline"
@@ -128,17 +132,14 @@ export default function MissingPersonCard({
         <Typography variant="h4">Last Seen in {location_state}</Typography>
         <Typography variant="h6">Status: {status}</Typography>
         <Typography variant="h6">Up Votes: {counter}</Typography>
-        <Typography
-          variant="h5"
-          className="seeMoreButton"
-          onClick={handleClick}
-        >
-          See More
-        </Typography>
       </CardBody>
       {currentUser && (
         <>
-          <CardFooter className="pt-0" id="footerCardButtons">
+          <CardFooter
+            className="pt-0"
+            onClick={e => e.stopPropagation()}
+            id="footerCardButtons"
+          >
             <Button
               className="cardButton"
               onClick={() => handleUpVote(post_id)}

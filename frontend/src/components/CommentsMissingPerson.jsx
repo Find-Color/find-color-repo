@@ -18,20 +18,19 @@ export default function CommentsMissingPerson({
   const [loggedIn, setLoggedIn] = useState(null);
   const { currentUser } = useContext(CurrentUserContext);
   useEffect(() => {
-    checkForLoggedInUser().then(data => {
+    checkForLoggedInUser().then((data) => {
       setLoggedIn(data);
     });
   }, [commentText, comment]);
 
   // Helper functions for Comments
-  const handleComment = event => {
+  const handleComment = (event) => {
     let value = event.target.value;
     setCommentText(value);
   };
 
-  const sendComment = async e => {
+  const sendComment = async (e) => {
     e.preventDefault();
-    console.log(currentUser?.user_id, commentText);
     let post_id = id;
     let user_id = currentUser?.user_id;
     const body = {
@@ -45,28 +44,32 @@ export default function CommentsMissingPerson({
     // Update the comments state with the new comment
     body.username = currentUser?.username;
     addComment(body);
-    setComments(prevComments => [...prevComments, body]);
+    setComments((prevComments) => [...prevComments, body]);
     // Clear the comment text input
     setCommentText("");
   };
 
   return (
     <Fragment>
-      <ul>
-        {comments.map((comment, i) => {
-          return (
-            <CommentCard
-              key={i}
-              username={comment.username}
-              comment_text={comment.comment_text}
-            />
-          );
-        })}
-      </ul>
+      <div className="max-h-60 overflow-y-auto">
+        <ul>
+          {comments.map((comment, i) => {
+            return (
+              <CommentCard
+                key={i}
+                username={comment.username}
+                comment_text={comment.comment_text}
+              />
+            );
+          })}
+        </ul>
+      </div>
       <br />
       <div className="flex w-96 flex-col gap-6">
         <Textarea
-          color="blue"
+          color="gray-50"
+          className="text-white"
+          inputClass="text-white"
           label="Comment"
           rows={2}
           value={commentText}

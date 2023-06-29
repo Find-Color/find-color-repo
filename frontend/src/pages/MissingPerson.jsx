@@ -22,15 +22,15 @@ export default function MissingPerson() {
   const { currentUser } = useContext(CurrentUserContext);
 
   useEffect(() => {
-    getPost(id).then(res => setMissing(res[0]));
-    checkForLoggedInUser().then(data => {
+    getPost(id).then((res) => setMissing(res[0]));
+    checkForLoggedInUser().then((data) => {
       setLoggedIn(data);
     });
     getAllCommentsFromPost(id).then(setComments);
   }, [id]);
 
-  const addComment = newComment => {
-    setComments(prevComments => [...prevComments, newComment]);
+  const addComment = (newComment) => {
+    setComments((prevComments) => [...prevComments, newComment]);
   };
 
   function handleClick() {
@@ -51,14 +51,18 @@ export default function MissingPerson() {
           <br />
           <Typography variant="h3">Status: {missing.status}</Typography>
           <br />
-          <Typography>Last Seen in: {missing.location_state}</Typography>
-          <h5>Age: {missing.age} y/o</h5>
-          <h5>Hair: {missing.hair}</h5>
-          <h5>Height: {convertInchesToFeetAndInches(missing.height)}</h5>
-          <h5>Eye Color: {missing.eye_color}</h5>
-          <h5>Weight: {missing.weight} lbs</h5>
-          <Typography>Nationality: {missing.ethnicity}</Typography>
-          <Typography>Gender: {missing.gender}</Typography>
+          <Typography variant="h6">
+            Last Seen in {missing.location_state}
+          </Typography>
+          <Typography variant="h6">Age: {missing.age} y/o</Typography>
+          <Typography variant="h6">Hair: {missing.hair}</Typography>
+          <Typography variant="h6">
+            Height: {convertInchesToFeetAndInches(missing.height)}
+          </Typography>
+          <Typography variant="h6">Eye Color: {missing.eye_color}</Typography>
+          <Typography variant="h6">Weight: {missing.weight} lbs</Typography>
+          <Typography variant="h6">Nationality: {missing.ethnicity}</Typography>
+          <Typography variant="h6">Gender: {missing.gender}</Typography>
           {currentUser?.user_id == missing.user_id && (
             <Button className="editForm" color="red" onClick={handleClick}>
               Edit Form
@@ -70,7 +74,7 @@ export default function MissingPerson() {
           <img
             src={missing.image_post}
             alt=""
-            className=" h-80 w-80 rounded-lg"
+            className="missingPersonPhoto"
           />
           <Typography variant="small" id="dateAndContact">
             Date Reported:
@@ -104,7 +108,7 @@ export default function MissingPerson() {
             </Button>
           </div>
           {tabBool ? (
-            <Typography variant="small">{missing.description_text}</Typography>
+            <Typography className="missingPersonText" variant="small">{missing.description_text}</Typography>
           ) : (
             <CommentsMissingPerson
               comments={comments}
