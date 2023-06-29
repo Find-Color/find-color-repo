@@ -4,14 +4,14 @@ const createBookmark = async (req, res) => {
     db: {Bookmark},
     body: { user_id, post_id },
   } = req;
-
+     console.log(req.body)
   try {
     const bookmark = await Bookmark.createBookmark(user_id, post_id);
     if (bookmark) {
       return res.status(201).send({ success: true, bookmark });
     } else {
       return res
-        .status(500)
+        .status(501)
         .send({ success: false, message: "Failed to create bookmark" });
     }
   } catch (err) {

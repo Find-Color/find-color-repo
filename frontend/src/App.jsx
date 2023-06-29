@@ -16,7 +16,7 @@ import Feed from './pages/Feed';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './components/Footer';
 import NotificationComponent from './components/notification';
-
+import { Cloudinary } from "@cloudinary/url-gen";
  function App() {
   const cld = new Cloudinary({ cloud: { cloudName: "dn7lhv9d9" } });
   const { setCurrentUser } = useContext(UserContext);

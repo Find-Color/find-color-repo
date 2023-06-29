@@ -7,7 +7,7 @@ async function getAllBookmarksFromUser(req, res) {
   } = req;
 
   try {
-    const bookmarks = await db.Bookmark.getAllBookmarksFromUser(user_id);
+    const bookmarks = await Bookmark.getAllBookmarksFromUser(user_id);
     return res.json({ success: true, bookmarks });
   } catch (err) {
     console.error(err);

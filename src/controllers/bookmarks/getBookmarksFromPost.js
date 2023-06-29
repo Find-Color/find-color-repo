@@ -6,7 +6,7 @@ async function getBookmarksFromPost(req, res) {
   const {db: {Bookmark} } = req;
 
   try {
-    const bookmarks = await db.Bookmark.getBookmarksFromPost(post_id);
+    const bookmarks = await Bookmark.getBookmarksFromPost(post_id);
     return res.json({ success: true, bookmarks });
   } catch (err) {
     console.error(err);
