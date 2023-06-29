@@ -63,7 +63,7 @@ exports.seed = async function (knex) {
       gender: "Female",
       age: 32,
       image_post:
-        "https://res.cloudinary.com/dn7lhv9d9/image/upload/v1687535883/obkfsfwt4balospud56g.jpg",
+        "https://res.cloudinary.com/dn7lhv9d9/image/upload/v1687916418/download_10_gatuy6.jpg",
       description_text:
         "Linda Nguyen is an Asian female who has been reported missing since May 23, 2023. She has beautiful black hair that is usually styled in a shoulder-length bob. Linda has enchanting brown eyes that reflect her vibrant personality. She stands at a height of 5 feet 2 inches and has a slender build, weighing approximately 110 pounds. As an Asian woman of Vietnamese ethnicity, Linda has a graceful appearance and features that reflect her cultural background. Linda is 32 years old. If you have any information regarding her whereabouts, please contact the local authorities using the provided contact information.",
       contact_info:

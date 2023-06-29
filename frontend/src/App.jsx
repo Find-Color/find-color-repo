@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SignUpPage from "./pages/SignUp";
 import LoginPage from "./pages/Login";
+import AboutUs from "./pages/AboutUs";
 import SiteHeadingAndNav from "./components/SiteHeadingAndNav";
 import NotFoundPage from "./pages/NotFound";
 import UserContext from "./contexts/current-user-context";
@@ -34,6 +35,7 @@ import { Cloudinary } from "@cloudinary/url-gen";
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/about" element={<AboutUs />} />
           <Route path="/users" element={<UsersPage />} />
           <Route path="/users/:user_id" element={<UserPage />} />
           <Route path="/posts" element={<Feed />} />

@@ -9,6 +9,8 @@ import {
   Option,
   Textarea,
   Button,
+  typography,
+  Typography,
 } from "@material-tailwind/react";
 
 const MissingPersonForm = () => {
@@ -25,7 +27,7 @@ const MissingPersonForm = () => {
   const [ethnicity, setEthnicity] = useState("");
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("0");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState("Upload Image");
   const [description_text, setDescription] = useState("");
   const [contact_info, setContactInfo] = useState("");
   const [missingPersonURL, setMissingPersonURL] = useState("");
@@ -43,13 +45,14 @@ const MissingPersonForm = () => {
           const deliveryURL = result.info.secure_url;
           console.log("Delivery URL:", deliveryURL);
           setMissingPersonURL(deliveryURL);
+          setImage(deliveryURL);
           console.error("Upload error:", error);
         }
       }
     );
   }, []);
 
-  const openWidget = e => {
+  const openWidget = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
     widgetRef.current.open();
   };
@@ -59,7 +62,7 @@ const MissingPersonForm = () => {
   //Define navigate (for redirecting)
   const navigate = useNavigate();
   // Handle form submission
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const height = feet * 12 + inches;
@@ -90,161 +93,217 @@ const MissingPersonForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Input
-        required
-        variant="standard"
-        label="Name"
-        value={name}
-        onChange={e => setName(e.target.value)}
-      />
-      <Input
-        variant="standard"
-        label="City / Town"
-        value={location}
-        onChange={e => setLocation(e.target.value)}
-      />
-      <Select
-        required
-        label="State"
-        variant="standard"
-        value={location_state}
-        onChange={e => setLocationState(e)}
-      >
-        {statesUSA.map((name, i) => (
-          <Option key={i} value={name}>
-            {name}
-          </Option>
-        ))}
-      </Select>
-      {/* need to find a tailwind date picker */}
-      <Input
-        required
-        label="Date Reported"
-        type="date"
-        value={date_reported}
-        onChange={e => setDateReported(e.target.value)}
-      />
-      {/*  */}
-      <Select
-        required
-        label="Ethnicity"
-        variant="standard"
-        value={ethnicity}
-        onChange={e => setEthnicity(e)}
-      >
-        {ethnicities.map((name, i) => (
-          <Option key={i} value={name}>
-            {name}
-          </Option>
-        ))}
-      </Select>
+    <section>
+      <Typography variant="h2" className="flex items-center justify-center">
+        Report Missing Person
+      </Typography>
 
-      <Input
-        required
-        label="Age"
-        type="number"
-        min="0"
-        value={age}
-        onChange={e => setAge(e.target.value)}
-      />
-
-      <Select
-        label="Gender"
-        variant="standard"
-        required
-        value={gender}
-        onChange={e => setGender(e)}
-      >
-        <Option value="Male">Male</Option>
-        <Option value="Female">Female</Option>
-        <Option value="Non-Binary">Non-Binary</Option>
-        <Option value="Other">Other</Option>
-      </Select>
-
-      <div className=" flex gap-2">
+      <form onSubmit={handleSubmit} className="missingPersonForm">
         <Input
+          color="white"
           required
-          label="Height ( ft )"
+          variant="standard"
+          label="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <Input
+          color="white"
+          variant="standard"
+          label="City / Town"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+        />
+        <Select
+          color="gray-50"
+          variant="gray-50"
+          required
+          label="State"
+          value={location_state}
+          onChange={(e) => setLocationState(e)}
+          className="text-white"
+        >
+          {statesUSA.map((name, i) => (
+            <Option key={i} value={name}>
+              {name}
+            </Option>
+          ))}
+        </Select>
+        {/* need to find a tailwind date picker */}
+        <Input
+          className="text-white placeholder-white label-white"
+          color="gray-50"
+          variant="gray-50"
+          required
+          label="Date Reported"
+          type="date"
+          value={date_reported}
+          onChange={(e) => setDateReported(e.target.value)}
+        />
+        {/*  */}
+        <Select
+          className="text-white placeholder-white label-white input-group"
+          color="gray-50"
+          variant="gray-50"
+          required
+          label="Ethnicity"
+          value={ethnicity}
+          onChange={(e) => setEthnicity(e)}
+        >
+          {ethnicities.map((name, i) => (
+            <Option key={i} value={name}>
+              {name}
+            </Option>
+          ))}
+        </Select>
+
+        <Input
+          className="text-white placeholder-white label-white"
+          required
+          label="Age"
           type="number"
           min="0"
-          variant="outlined"
-          value={feet}
-          onChange={e => setFeet(e.target.value)}
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
         />
-        <p>ft</p>
-        <Input
+
+        <Select
+          className="text-white placeholder-white label-white"
+          color="white"
+          label="Gender"
+          variant="standard"
           required
-          label="Height ( in )"
+          value={gender}
+          onChange={(e) => setGender(e)}
+        >
+          <Option value="Male">Male</Option>
+          <Option value="Female">Female</Option>
+          <Option value="Non-Binary">Non-Binary</Option>
+          <Option value="Other">Other</Option>
+        </Select>
+
+        <div className=" flex gap-2">
+          <Input
+            className="text-white placeholder-white label-white"
+            color="white"
+            required
+            label="Height ( ft )"
+            type="number"
+            min="0"
+            variant="outlined"
+            value={feet}
+            onChange={(e) => setFeet(e.target.value)}
+          />
+          <p>ft</p>
+          <Input
+            color="white"
+            required
+            label="Height ( in )"
+            type="number"
+            min="0"
+            max="11"
+            value={inches}
+            onChange={(e) => setInches(e.target.value)}
+          />
+          <p>in</p>
+        </div>
+
+        <Select
+          color="white"
+          className="text-white placeholder-white label-white"
+          label="Hair Color"
+          value={hair}
+          onChange={(e) => setHair(e)}
+        >
+          <Option value="Black">Black</Option>
+          <Option value="Light Brown">Light Brown</Option>
+          <Option value="Brown">Brown</Option>
+          <Option value="Dark Brown">Dark Brown</Option>
+          <Option value="Blonde">Blonde</Option>
+          <Option value="Ginger">Ginger</Option>
+          <Option value="Dyed">Dyed</Option>
+          <Option value="Other">Other</Option>
+        </Select>
+
+        <Select
+          label="Eye Color"
+          className="text-white placeholder-white label-white"
+          color="white"
+          required
+          value={eye_color}
+          onChange={(e) => setEyeColor(e)}
+        >
+          <Option value="Brown">Brown</Option>
+          <Option value="Blue">Blue</Option>
+          <Option value="Green">Green</Option>
+          <Option value="Hazel">Hazel</Option>
+        </Select>
+
+        <Input
+          color="white"
+          required
+          label="Weight ( lbs )"
           type="number"
           min="0"
-          max="11"
-          value={inches}
-          onChange={e => setInches(e.target.value)}
+          value={weight}
+          className="text-white placeholder-white label-white"
+          onChange={(e) => setWeight(e.target.value)}
         />
-        <p>in</p>
-      </div>
 
-      <Select
-        variant="standard"
-        label="Hair Color"
-        value={hair}
-        onChange={e => setHair(e)}
-      >
-        <Option value="Black">Black</Option>
-        <Option value="Light Brown">Light Brown</Option>
-        <Option value="Brown">Brown</Option>
-        <Option value="Dark Brown">Dark Brown</Option>
-        <Option value="Blonde">Blonde</Option>
-        <Option value="Ginger">Ginger</Option>
-        <Option value="Dyed">Dyed</Option>
-        <Option value="Other">Other</Option>
-      </Select>
+        {/* <Input
+          color="white"
+          label="Image"
+          // placeholder="test"
+          className="text-white placeholder-white label-white"
+          // type="file"
+          // value={image}
+          // onClick={(e) => openWidget(e)}
+        /> */}
 
-      <Select
-        label="Eye Color"
-        variant="standard"
-        required
-        value={eye_color}
-        onChange={e => setEyeColor(e)}
-      >
-        <Option value="Brown">Brown</Option>
-        <Option value="Blue">Blue</Option>
-        <Option value="Green">Green</Option>
-        <Option value="Hazel">Hazel</Option>
-      </Select>
+        <div
+          className="relative flex w-full max-w-[24rem]"
+          onClick={(e) => openWidget(e)}
+        >
+          <Button
+            color="red"
+            size="sm"
+            className="!absolute right-1 top-1 rounded w-20"
+          >
+            Upload
+          </Button>
+          <Input
+            readOnly
+            label="Image"
+            value={image}
+            className="pr-20 w-100"
+            containerProps={{
+              className: "min-w-0",
+            }}
+          />
+        </div>
 
-      <Input
-        required
-        label="Weight ( lbs )"
-        type="number"
-        min="0"
-        value={weight}
-        onChange={e => setWeight(e.target.value)}
-      />
+        <Textarea
+          className="text-white"
+          inputClass="text-white"
+          label="Description"
+          variant="standard"
+          value={description_text}
+          onChange={(e) => setDescription(e.target.value)}
+        ></Textarea>
 
-      <Input
-        label="Image"
-        type="file"
-        value={image}
-        onClick={e => openWidget(e)}
-      />
+        <Textarea
+          className="text-white"
+          inputClass="text-white"
+          label="Contact Information"
+          value={contact_info}
+          onChange={(e) => setContactInfo(e.target.value)}
+        ></Textarea>
 
-      <Textarea
-        label="Description"
-        variant="standard"
-        value={description_text}
-        onChange={e => setDescription(e.target.value)}
-      ></Textarea>
-
-      <Textarea
-        label="Contact Information"
-        value={contact_info}
-        onChange={e => setContactInfo(e.target.value)}
-      ></Textarea>
-
-      <Button type="submit">Report Missing Person</Button>
-    </form>
+        <Button color="red" type="submit">
+          Report Missing Person
+        </Button>
+      </form>
+    </section>
   );
 };
 

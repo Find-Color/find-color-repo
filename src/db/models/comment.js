@@ -6,6 +6,7 @@ class Comment {
     this.post_id = post_id;
     this.user_id = user_id;
     this.comment_text = comment_text;
+    this.username = username;
   }
 
   static async create(post_id, user_id, comment_text) {
@@ -38,7 +39,7 @@ class Comment {
       user_id,
     ]);
     const comments = result.rows.map(
-      (comment) =>
+      comment =>
         new Comment(
           comment.comment_id,
           comment.post_id,
@@ -51,10 +52,13 @@ class Comment {
   static async listFromPost(post_id) {
     try {
       const result = await knex.raw(
-        "SELECT * FROM comments WHERE post_id = ?",
+        `SELECT comments.*, users.username 
+        FROM comments
+        JOIN users ON comments.user_id = users.user_id
+        WHERE comments.post_id = ?;`,
         [post_id]
       );
-      const comments = result.rows.map((comment) => new Comment(comment));
+      const comments = result.rows.map(comment => new Comment(comment));
       return comments;
     } catch (err) {
       console.log(err);
