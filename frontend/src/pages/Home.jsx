@@ -5,32 +5,20 @@ export default function HomePage() {
     <>
       <section className="landingPage-1">
         <div className="landingPage-1-text">
-          <Typography variant="h1">Find Color Finds your loved ones</Typography>
-          <Typography variant="paragraph">
-            Our mission is to foster a united community where individuals can
-            come together to actively support and locate missing persons of
-            color. We provide a dedicated platform that empowers users to share
-            information, raise awareness, and collaborate in the search efforts.
-            Through our app, we strive to bridge the gap, amplify the voices,
+          <Typography variant="h1">Find Color 
+          <br />Finds Your Loved Ones.</Typography>
+          <Typography variant="h6">
+            We strive to bridge the gap, amplify the voices,
             and ensure that every missing person of color is given the attention
             and resources they deserve. Together, we aim to bring hope,
             facilitate connections, and reunite families.
           </Typography>
-          <Button color="red" className="w50">
+          <Button color="amber" className="w50">
             Sign Up
           </Button>
         </div>
-
-        <img
-          src="./src/images/landing-page-photo.png"
-          alt=""
-          className="landingimg-1"
-        />
-        <img
-          src="./src/images/landing-page-1.jpg"
-          alt=""
-          className="landing-page-1"
-        />
+        <img className="find-person" src="./src/images/find-person.png" alt="Finding Color" />
+        {/* <a href="https://storyset.com/job">Job illustrations by Storyset</a> */}
       </section>
 
       {/* Indias blank template */}

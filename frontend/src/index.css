@@ -459,3 +459,8 @@ form button {
   position: absolute;
   z-index: 5;
 }
+
+.find-person{
+  width: 70vw;
+  margin-right: 15%;
+}
