@@ -64,7 +64,7 @@ class Post {
       const postInsert = await knex.raw(
         `
         INSERT INTO posts(name, location, location_state, status, date_reported, hair, height, eye_color, weight, ethnicity, gender, age, image_post, description_text, contact_info, user_id)
-        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)
+        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         RETURNING *;
       `,
         [
@@ -93,6 +93,7 @@ class Post {
       return null;
     }
   }
+  
 
   //READ
   static async find(post_id) {
@@ -123,7 +124,6 @@ class Post {
       `
       );
       return rows;
-      // return rows.map(post => new Post(post));
     } catch (err) {
       console.error(err);
       return null;
