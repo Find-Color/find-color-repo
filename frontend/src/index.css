@@ -414,7 +414,7 @@ form button {
   flex-wrap: wrap;
   justify-content: center;
   height: 70vh;
-  align-items: start;
+  align-items: flex-start;
   align-content: space-evenly;
 }
 .missingPersonFilters {

@@ -12,10 +12,10 @@ export default function HomePage() {
             Finds Your Loved Ones.
           </Typography>
           <Typography variant="h6" className="landing-page-blurb">
-            We strive to bridge the gap, amplify the voices,
-            and ensure that every missing person of color is given the attention
-            and resources they deserve. Together, we aim to bring hope,
-            facilitate connections, and reunite families.
+            We strive to bridge the gap, amplify the voices, and ensure that
+            every missing person of color is given the attention and resources
+            they deserve. Together, we aim to bring hope, facilitate
+            connections, and reunite families.
           </Typography>
           <Link to="/posts" end={true}>
             <Button color="red" className="w50">
@@ -23,7 +23,11 @@ export default function HomePage() {
             </Button>
           </Link>
         </div>
-        <img className="find-person" src="./src/images/find-person.png" alt="Finding Color" />
+        <img
+          className="find-person"
+          src="./src/images/find-person.png"
+          alt="Finding Color"
+        />
         {/* <a href="https://storyset.com/job">Job illustrations by Storyset</a> */}
       </section>
       {/* <section id="bnwimageparent">
@@ -55,7 +59,9 @@ export default function HomePage() {
           </Typography>
         </div>
         <div className="coverageWorthButton">
-          <Button color="red">Take the quiz now</Button>
+          <a target="_blank" href="https://areyoupressworthy.com/">
+            <Button color="red">Take the quiz now</Button>
+          </a>
         </div>
 
         <img
