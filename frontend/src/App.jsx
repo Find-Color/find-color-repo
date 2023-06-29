@@ -16,9 +16,6 @@ import MissingPersonUpdateForm from "./pages/MissingPersonUpdateForm";
 import Feed from "./pages/Feed";
 import Footer from "./components/Footer";
 import { Cloudinary } from "@cloudinary/url-gen";
-// import { ThemeProvider } from "@material-tailwind/react";
-
-
  function App() {
   const cld = new Cloudinary({ cloud: { cloudName: "dn7lhv9d9" } });
   const { setCurrentUser } = useContext(UserContext);

@@ -2,8 +2,11 @@
 async function remove(req, res) {
   const { user_id, post_id } = req.params;
 
+  // Add the db object to the destructuring assignment
+  const {db: {Bookmark} } = req;
+
   try {
-    const isDeleted = await Bookmark.remove(user_id, post_id);
+    const isDeleted = await db.Bookmark.remove(user_id, post_id);
     if (isDeleted) {
       return res.json({ success: true, message: 'Bookmark deleted successfully' });
     } else {

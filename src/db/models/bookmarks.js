@@ -12,7 +12,7 @@ class Bookmark {
     try {
       const result = await knex.raw(
         `INSERT INTO bookmarks(user_id, post_id) VALUES (?, ?) RETURNING bookmark_id`,
-        [user_id, post_id]
+        [+user_id, +post_id]
       );
       const { bookmark_id } = result.rows[0];
       return new Bookmark(bookmark_id, user_id, post_id);
@@ -41,8 +41,14 @@ class Bookmark {
   // Get all bookmarks from a user
   static async getAllBookmarksFromUser(user_id) {
     try {
-      const result = await knex.raw("SELECT * FROM bookmarks WHERE user_id = ?", [user_id]);
-      const bookmarks = result.rows.map((bookmark) => new Bookmark(bookmark.bookmark_id, bookmark.user_id, bookmark.post_id));
+      const result = await knex.raw(
+        "SELECT * FROM bookmarks WHERE user_id = ?",
+        [user_id]
+      );
+      const bookmarks = result.rows.map(
+        (bookmark) =>
+          new Bookmark(bookmark.bookmark_id, bookmark.user_id, bookmark.post_id)
+      );
       return bookmarks;
     } catch (err) {
       console.error(err);
@@ -53,8 +59,14 @@ class Bookmark {
   // Get bookmarks from a post
   static async getBookmarksFromPost(post_id) {
     try {
-      const result = await knex.raw("SELECT * FROM bookmarks WHERE post_id = ?", [post_id]);
-      const bookmarks = result.rows.map((bookmark) => new Bookmark(bookmark.bookmark_id, bookmark.user_id, bookmark.post_id));
+      const result = await knex.raw(
+        "SELECT * FROM bookmarks WHERE post_id = ?",
+        [post_id]
+      );
+      const bookmarks = result.rows.map(
+        (bookmark) =>
+          new Bookmark(bookmark.bookmark_id, bookmark.user_id, bookmark.post_id)
+      );
       return bookmarks;
     } catch (err) {
       console.error(err);
@@ -73,6 +85,21 @@ class Bookmark {
     } catch (err) {
       console.error(err);
       return null;
+    }
+  }
+
+  // Find users by post ID
+  static async findUsersByPostId(post_id) {
+    try {
+      const result = await knex.raw(
+        `SELECT user_id FROM bookmarks WHERE post_id = ?`,
+        [post_id]
+      );
+      const userIds = result.rows.map((row) => row.user_id);
+      return userIds;
+    } catch (err) {
+      console.error(err);
+      return [];
     }
   }
 }
