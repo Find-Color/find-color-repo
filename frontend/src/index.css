@@ -214,8 +214,12 @@ Button {
 
 #decriptionCommentButtonParent {
   display: flex;
+  /* position: absolute; */
+  /* z-index: 3; */
   justify-content: center;
   align-content: center;
+position: relative;
+bottom: 20;
 }
 
 #decriptionCommentButton {
@@ -264,7 +268,6 @@ Button {
   left: 0;
   z-index: 1;
 }
-
 
 .collage {
   width: 100vw;
@@ -490,4 +493,16 @@ form button {
 .landing-page-intro {
   font-size: 3.25rem;
   width: 40vw;
+}
+
+.missingPersonPhoto {
+  width: 30vw;
+  border-radius: 5px;
+}
+
+.missingPersonText {
+  font-size: 1.25rem;
+}
+.singleComment {
+  display: flex;
 }

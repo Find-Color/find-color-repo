@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
@@ -35,12 +35,33 @@ const MissingPersonUpdateForm = () => {
   const [image, setImage] = useState("");
   const [description_text, setDescription] = useState("");
   const [contact_info, setContactInfo] = useState("");
+  const widgetRef = useRef(null);
+  useEffect(() => {
+    widgetRef.current = window.cloudinary.createUploadWidget(
+      {
+        cloudName: "dn7lhv9d9",
+        uploadPreset: "ml_default",
+      },
+      (error, result) => {
+        if (!error && result && result.event === "success") {
+          console.log("Upload result:", result);
+          const deliveryURL = result.info.secure_url;
+          console.log("Delivery URL:", deliveryURL);
+          setMissingPersonURL(deliveryURL);
+          setImage(deliveryURL);
+          console.error("Upload error:", error);
+        }
+      }
+    );
+  }, []);
+
+  const openWidget = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+    widgetRef.current.open();
+  };
 
   useEffect(() => {
     getPost(id).then((res) => setMissing(res[0]));
-  }, []);
-
-  useEffect(() => {
     if (missing) {
       setName(missing.name);
       setLocation(missing.location);
@@ -270,10 +291,12 @@ const MissingPersonUpdateForm = () => {
           // onClick={(e) => openWidget(e)}
         />
 
-        <div className="relative flex w-full max-w-[24rem]">
+        <div
+          className="relative flex w-full max-w-[24rem]"
+          onClick={(e) => openWidget(e)}
+        >
           <Button
             color="red"
-            onClick={(e) => openWidget(e)}
             size="sm"
             className="!absolute right-1 top-1 rounded w-20"
           >
@@ -306,8 +329,13 @@ const MissingPersonUpdateForm = () => {
           onChange={(e) => setContactInfo(e.target.value)}
         ></Textarea>
         {/* Submit button */}
-        <Button color="red" type="submit">Update Form</Button>
-        <Button color="red" onClick={handleDelete}>Remove Post</Button>
+
+        <Button color="red" type="submit">
+          Update Form
+        </Button>
+        <Button color="red" onClick={handleDelete}>
+          Remove Post
+        </Button>
       </form>
     </>
   );
