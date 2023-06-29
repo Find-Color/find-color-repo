@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: "Tiro Devanagari Hindi", serif;
   margin: 0;
   background-color: black;
   color: #fff;
@@ -52,6 +53,7 @@ header {
 header {
   color: #fff;
   background-color: transparent;
+  padding: 6vh;
 }
 
 nav ul {
@@ -102,6 +104,10 @@ nav a {
   flex-direction: column;
   flex-basis: 30%; /* Adjust the width as needed */
   margin: 10px;
+}
+
+.missing-people-container .card :hover {
+  outline: #eebc32;
 }
 
 .cardButton {
@@ -450,6 +456,14 @@ form button {
   align-items: center;
   flex-direction: row-reverse;
   height: 100vh;
+}
+
+.font-sans {
+  font-family: "Tiro Devanagari Hindi", serif !important;
+}
+
+.font-sans h6 {
+  font-family: "Jost", serif !important;
 }
 
 .newPostButton {

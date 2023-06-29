@@ -25,8 +25,7 @@ function Filter() {
 
   const genders = ["Female", "Male", "Non-Binary", "Other"];
 
-  const handleChange = (e) => {
-    console.log(e.target.value)
+  const handleChange = e => {
     const form = document.getElementById("form");
     const formData = new FormData(form);
 
@@ -57,8 +56,7 @@ function Filter() {
   return (
     <section id="missingPersonFiltersParent">
       <form
-      id="form"
-        // id="missingPersonFilters"
+        id="form"
         onChange={handleChange}
         className="flex flex-col gap-2 missingPersonFilters"
       >
