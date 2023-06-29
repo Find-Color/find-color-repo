@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { checkForLoggedInUser } from "../adapters/auth-adapter";
+// import { getAllBookmarksFromPost } from "../adapters/bookmark-adapter";
 import CommentModalDMMY from "./CommentModalDMMY";
 import TimeAgo from "react-timeago";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
@@ -32,13 +33,12 @@ export default function MissingPersonCard({
   date_reported,
   username,
 }) {
-  const bookmarked = false; //this will be removed once there is context (false by default)
   const [upVoteCount, setUpVoteCount] = useState([]);
   const [loggedIn, setLoggedIn] = useState(null);
   const [upVoteBool, setUpVoteBool] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const [counter, setCounter] = useState(upVoteCount.length);
-  const [bookmark, setBookmark] = useState(bookmarked);
+  const [bookmark, setBookmark] = useState(false);
   const { currentUser } = useContext(CurrentUserContext);
 
   const toggleDialog = () => {
@@ -61,6 +61,18 @@ export default function MissingPersonCard({
     });
     getAllUpvotesFromPost(post_id).then(setUpVoteCount);
     setCounter(upVoteCount.length);
+    // getAllBookmarksFromPost(post_id).then(bookmarks => console.log(bookmarks));
+
+    //   bookmarks => {
+    //   if (bookmarks.includes(mark => mark.user_id == currentUser?.user_id)) {
+
+    //   }
+    // });
+    //get all bookmarks from post (post_id) .then(
+    //if bookmarks.inludes( mark => mark.user_id == currentUser?.user_id)
+    //setBookmark(true)
+    //
+    //)
   }, [upVoteCount.length]);
 
   const navigate = useNavigate();
@@ -85,8 +97,10 @@ export default function MissingPersonCard({
   const handleBookmark = () => {
     //do the toggling here
     if (bookmark) {
+      //remove the bookmark
       setBookmark(false);
     } else {
+      //add the bookmark
       setBookmark(true);
     }
   };

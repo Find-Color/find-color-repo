@@ -58,10 +58,37 @@ const Footer = () => {
             <div>
               <h1>About Us</h1>
               <br />
-              <p>Mathew</p>
-              <p>India</p>
-              <p>Ivon</p>
-              <p>SJ</p>
+              <a
+                target="blank"
+                href="https://www.linkedin.com/in/mathew-santos/"
+                className="seeMoreButton"
+              >
+                Mathew
+              </a>
+              <br />
+              <a
+                target="blank"
+                href="https://www.linkedin.com/in/india-hill/"
+                className="seeMoreButton"
+              >
+                India
+              </a>
+              <br />
+              <a
+                target="blank"
+                href="https://www.linkedin.com/in/ivoherre/"
+                className="seeMoreButton"
+              >
+                Ivon
+              </a>
+              <br />
+              <a
+                target="blank"
+                href="https://www.linkedin.com/in/sonobia-james/"
+                className="seeMoreButton"
+              >
+                SJ
+              </a>
             </div>
           </div>
         </div>

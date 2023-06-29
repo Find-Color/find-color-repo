@@ -51,12 +51,12 @@ export default function HomePage() {
       <section className="coverageWorth">
         <div className="coverageWorthText">
           <Typography variant="h1">
-            How much coverage are your worth?
+            How much coverage are YOU worth?
           </Typography>
-          <Typography variant="lead">
+          {/* <Typography variant="lead">
             Your news coverage depends on your demographics yada yada we gotta
             do a lil blurb here that segways into take the quiz
-          </Typography>
+          </Typography> */}
         </div>
         <div className="coverageWorthButton">
           <a target="_blank" href="https://areyoupressworthy.com/">
