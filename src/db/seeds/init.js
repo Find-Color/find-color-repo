@@ -4,7 +4,7 @@ const User = require("../models/user");
  * @returns { Promise<void> }
  */
 exports.seed = async knex => {
-  await User.deleteAll();
+  // await User.deleteAll();
   await User.create("Ben1010", "123");
   await User.create("LinseyLL", "123");
   await User.create("CJ00", "123");
