@@ -24,28 +24,39 @@ export default function LoginPage() {
   if (currentUser) return <Navigate to="/" />;
 
   return (
-    <>
+    <div style={{ display: "flex", justifyContent: "center"}}>
+    <div style={{ display: "flex", flexDirection: 'column', alignItems: "center", width: "400px", padding: "20px", border: "1px solid white"}}>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: 'column', alignItems: "center"}}>
+        <div>
         <label htmlFor="username">Username</label>
         <input
           type="text"
           autoComplete="username"
           id="username"
           name="username"
+          style={{ color: "black" }}
         />
-
+        </div>
+        <div>
         <label htmlFor="password">Password</label>
         <input
           type="password"
           autoComplete="current-password"
           id="password"
           name="password"
+          style={{ color: "black" }}
         />
-
-        <button>Log in!</button>
+        </div>
+        <button style={{ backgroundColor: "#ffb74d", width: "75%", padding: "5px" }}
+  type="submit"
+  color="blue"
+  ripple="light"
+  block={true}
+  className="mx-auto flex justify-center">Log in</button>
       </form>
       {!!errorText && <p>{errorText}</p>}
-    </>
+    </div>
+    </div>
   );
 }

@@ -36,9 +36,12 @@ export default function SignUpPage() {
   };
 
   return (
-    <>
+    <div style={{ display: "flex", justifyContent: "center"}}>
+    <div style={{ display: "flex", flexDirection: 'column', alignItems: "center", width: "400px", padding: "20px", border: "1px solid white"}}>
+       
       <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit} onChange={handleChange}>
+      <form onSubmit={handleSubmit} onChange={handleChange} style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+        <div>
         <label htmlFor="username">Username</label>
         <input
           autoComplete="off"
@@ -47,8 +50,10 @@ export default function SignUpPage() {
           name="username"
           onChange={handleChange}
           value={username}
+          style={{ color: "black" }}
         />
-
+        </div>
+        <div>
         <label htmlFor="password">Password</label>
         <input
           autoComplete="off"
@@ -58,6 +63,7 @@ export default function SignUpPage() {
           onChange={handleChange}
           value={password}
         />
+        </div>
 
         {/* In reality, we'd want a LOT more validation on signup, so add more things if you have time
         <label htmlFor="password-confirm">Password Confirm</label>
@@ -70,6 +76,7 @@ export default function SignUpPage() {
       <p>
         Already have an account with us? <Link to="/login">Log in!</Link>
       </p>
-    </>
+      </div>
+    </div>
   );
 }
