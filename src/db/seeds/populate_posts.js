@@ -190,11 +190,11 @@ exports.seed = async function (knex) {
       weight: 180,
       ethnicity: "Indigenous American/Alaska Native",
       gender: "Male",
-      age: 24,
+      age: 23,
       image_post:
         "https://res.cloudinary.com/dn7lhv9d9/image/upload/v1687536474/rolf2dszzfeq2jpxyenr.jpg",
       description_text:
-        "We are deeply concerned about the disappearance of Nathan Redwolf, a 24-year-old Native American male hailing from the Navajo tribe. Nathan was last seen on June 14, 2023, in Tucson, Arizona. He stands at a height of 6 feet, weighs approximately 180 pounds, and has striking black hair and brown eyes that reflect both wisdom and determination. Nathan possesses a strong connection to his Native American heritage and is deeply rooted in his community. He has a passion for traditional Navajo arts and crafts and has showcased his talent through beautiful handcrafted jewelry and pottery. Nathan's disappearance has left us in a state of distress, and we urge anyone with information to come forward. If you have any information about Nathan's whereabouts, please contact the local authorities immediately. Our family and community are devastated by his absence, and we long for his safe return. Nathan, if you can hear this plea, know that we love you and are doing everything in our power to find you and bring you back home.",
+        "We are deeply concerned about the disappearance of Nathan Redwolf, a 23-year-old Native American male hailing from the Navajo tribe. Nathan was last seen on June 14, 2023, in Tucson, Arizona. He stands at a height of 6 feet, weighs approximately 180 pounds, and has striking black hair and brown eyes that reflect both wisdom and determination. Nathan possesses a strong connection to his Native American heritage and is deeply rooted in his community. He has a passion for traditional Navajo arts and crafts and has showcased his talent through beautiful handcrafted jewelry and pottery. Nathan's disappearance has left us in a state of distress, and we urge anyone with information to come forward. If you have any information about Nathan's whereabouts, please contact the local authorities immediately. Our family and community are devastated by his absence, and we long for his safe return. Nathan, if you can hear this plea, know that we love you and are doing everything in our power to find you and bring you back home.",
       contact_info:
         "If you have any information regarding Nathan's disappearance, please contact the Tucson Police Department at (555) 987-6543.",
       user_id: 1,
@@ -220,7 +220,6 @@ exports.seed = async function (knex) {
         "If you have any information regarding Ji-hoon's disappearance, please contact the Columbus Police Department at (555) 123-4567.",
       user_id: 5,
     },
-
 
     {
       name: "Liam Nguyen",
@@ -351,7 +350,7 @@ exports.seed = async function (knex) {
       location: "Dallas",
       location_state: "Texas",
       status: "Missing",
-      date_reported: "1/20/24",
+      date_reported: "1/20/23",
       hair: "Black",
       height: 64,
       eye_color: "Brown",
@@ -362,7 +361,7 @@ exports.seed = async function (knex) {
       image_post:
         "https://res.cloudinary.com/dn7lhv9d9/image/upload/v1688088982/uxgkrwtxr3gw1brou7bj.jpg",
       description_text:
-        "Nadia Rahman went missing on January 20, 2024. She has black hair, brown eyes, and weighs approximately 120 lbs. She is 5'4'' tall and is of Middle Eastern descent. If you have any information regarding her whereabouts, please contact the authorities.",
+        "Nadia Rahman went missing on January 20, 2023. She has black hair, brown eyes, and weighs approximately 120 lbs. She is 5'4'' tall and is of Middle Eastern descent. If you have any information regarding her whereabouts, please contact the authorities.",
       contact_info: "Contact the local police department at (555) 678-9012",
       user_id: 4,
     },
@@ -371,7 +370,7 @@ exports.seed = async function (knex) {
       location: "Las Vegas",
       location_state: "Nevada",
       status: "Missing",
-      date_reported: "2/8/24",
+      date_reported: "2/8/23",
       hair: "Black",
       height: 68,
       eye_color: "Brown",
@@ -382,7 +381,7 @@ exports.seed = async function (knex) {
       image_post:
         "https://res.cloudinary.com/dn7lhv9d9/image/upload/v1688088981/n0h6ypeydujogkgqbnnr.jpg",
       description_text:
-        "Santiago Lopez went missing on February 8, 2024. He has black hair, brown eyes, and weighs approximately 170 lbs. He is 5'8'' tall and is of Hispanic descent. If you have any information regarding his whereabouts, please contact the authorities.",
+        "Santiago Lopez went missing on February 8, 2023. He has black hair, brown eyes, and weighs approximately 170 lbs. He is 5'8'' tall and is of Hispanic descent. If you have any information regarding his whereabouts, please contact the authorities.",
       contact_info: "Contact the local police department at (555) 901-2345",
       user_id: 3,
     },
@@ -392,7 +391,7 @@ exports.seed = async function (knex) {
       location: "Queens",
       location_state: "New York",
       status: "Missing",
-      date_reported: "3/16/24",
+      date_reported: "3/16/23",
       hair: "Brown",
       height: 66,
       eye_color: "Green",
@@ -403,7 +402,7 @@ exports.seed = async function (knex) {
       image_post:
         "https://res.cloudinary.com/dn7lhv9d9/image/upload/v1688088981/j5ga4poqvi8kbweeymoo.jpg",
       description_text:
-        "Zara Ahmed was reported missing on March 16, 2024. She has brown hair, green eyes, and weighs approximately 140 lbs. She is 5'6'' tall and is of South Asian descent. If you have any information about her location, please contact the authorities.",
+        "Zara Ahmed was reported missing on March 16, 2023. She has brown hair, green eyes, and weighs approximately 140 lbs. She is 5'6'' tall and is of South Asian descent. If you have any information about her location, please contact the authorities.",
       contact_info: "Contact the local police department at (555) 234-5678",
       user_id: 4,
     },
@@ -413,7 +412,7 @@ exports.seed = async function (knex) {
       location: "Atlanta",
       location_state: "Georgia",
       status: "Missing",
-      date_reported: "4/25/24",
+      date_reported: "4/25/23",
       hair: "Black",
       height: 72,
       eye_color: "Brown",
@@ -424,7 +423,7 @@ exports.seed = async function (knex) {
       image_post:
         "https://res.cloudinary.com/dn7lhv9d9/image/upload/v1688088981/k3o74lvqkhdhlonm4jhi.jpg",
       description_text:
-        "Marcus Johnson went missing on April 25, 2024. He has black hair, brown eyes, and weighs approximately 180 lbs. He is 6'0'' tall and is of African American descent. If you have any information regarding his whereabouts, please contact the authorities.",
+        "Marcus Johnson went missing on April 25, 2023. He has black hair, brown eyes, and weighs approximately 180 lbs. He is 6'0'' tall and is of African American descent. If you have any information regarding his whereabouts, please contact the authorities.",
       contact_info: "Contact the local police department at (555) 345-6789",
       user_id: 1,
     },
@@ -433,7 +432,7 @@ exports.seed = async function (knex) {
       location: "Los Angeles",
       location_state: "California",
       status: "Missing",
-      date_reported: "2/5/24",
+      date_reported: "2/5/23",
       hair: "Black",
       height: 67,
       eye_color: "Brown",
@@ -444,17 +443,17 @@ exports.seed = async function (knex) {
       image_post:
         "https://res.cloudinary.com/dn7lhv9d9/image/upload/v1688088981/ieavocokehp6kpc4799s.jpg",
       description_text:
-        "Janeffer Ramirez went missing on February 5, 2024. He has black hair, brown eyes, and weighs approximately 180 lbs. He is 5'7'' tall and is of Latino descent. If you have any information regarding his whereabouts, please contact the authorities.",
+        "Janeffer Ramirez went missing on February 5, 2023. He has black hair, brown eyes, and weighs approximately 180 lbs. He is 5'7'' tall and is of Latino descent. If you have any information regarding his whereabouts, please contact the authorities.",
       contact_info: "Contact the local police department at (555) 901-2345",
       user_id: 3,
     },
-  
+
     {
       name: "Jasmine Thompson",
       location: "Atlanta",
       location_state: "Georgia",
       status: "Missing",
-      date_reported: "3/18/24",
+      date_reported: "3/18/23",
       hair: "Black",
       height: 66,
       eye_color: "Brown",
@@ -465,7 +464,7 @@ exports.seed = async function (knex) {
       image_post:
         "https://res.cloudinary.com/dn7lhv9d9/image/upload/v1688088981/rqfn4dvd0agz1bizn3r5.jpg",
       description_text:
-        "Jasmine Thompson was reported missing on March 18, 2024. She has black hair, brown eyes, and weighs approximately 150 lbs. She is 5'6'' tall and is of Black descent. If you have any information about her location, please contact the authorities.",
+        "Jasmine Thompson was reported missing on March 18, 2023. She has black hair, brown eyes, and weighs approximately 150 lbs. She is 5'6'' tall and is of Black descent. If you have any information about her location, please contact the authorities.",
       contact_info: "Contact the local police department at (555) 234-5678",
       user_id: 4,
     },
