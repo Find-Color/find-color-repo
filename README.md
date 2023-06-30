@@ -1,6 +1,6 @@
 # FindColor - Read Me
 
-[Link to Deployed Site](https://www.findcolor.com)
+[Link to Deployed Site](https://find-color.onrender.com)
 
 ## Mission Statement
 Our mission is to foster a united community where individuals can come together to actively support and locate missing persons of color. We provide a dedicated platform that empowers users to share information, raise awareness, and collaborate in the search efforts. Through our app, we strive to bridge the gap, amplify the voices, and ensure that every missing person of color is given the attention and resources they deserve. Together, we aim to bring hope, facilitate connections, and reunite families.
@@ -13,6 +13,18 @@ Our platform is a dedicated website that serves as a helpful tool for locating m
 
 ## Summary 
 Our platform addresses the urgent need to address the inconsistency in media coverage, resource allocation, and community support for missing persons of color, particularly focusing on the alarming rates of missing and murdered Indigenous women. Statistics reveal the severity of the issue, with the National Crime Information Center reporting 5,712 cases of missing American Indian and Alaska Native women and girls, while the U.S. Department of Justice missing persons database only reported 116 cases. Despite these staggering numbers, data collection remains challenging due to poor record-keeping, underreporting, racial misclassification, and limited media coverage. Our platform aims to address these issues by actively involving the community, sharing crucial information, and fostering connections to bridge the gap between missing Indigenous individuals and their families.
+
+## Technologies
+
+![Technologies](https://github.com/Find-Color/find-color-repo/assets/113803263/d15b6bfa-b1d5-4473-a206-18b059a1a2af)
+
+## ERD
+
+![ERD]([images/erd.png](https://github.com/Find-Color/find-color-repo/assets/113803263/afa69dbf-c6d5-4a73-8306-6ef7195a0670)https://github.com/Find-Color/find-color-repo/assets/113803263/afa69dbf-c6d5-4a73-8306-6ef7195a0670)
+
+
+
+
 
 
 
