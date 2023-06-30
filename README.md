@@ -20,9 +20,7 @@ Our platform addresses the urgent need to address the inconsistency in media cov
 
 ## ERD
 
-![ERD]([images/erd.png](https://github.com/Find-Color/find-color-repo/assets/113803263/afa69dbf-c6d5-4a73-8306-6ef7195a0670)https://github.com/Find-Color/find-color-repo/assets/113803263/afa69dbf-c6d5-4a73-8306-6ef7195a0670)
-
-
+![ERD](https://github.com/Find-Color/find-color-repo/assets/113803263/afa69dbf-c6d5-4a73-8306-6ef7195a0670)
 
 
 
