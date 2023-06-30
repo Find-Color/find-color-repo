@@ -119,6 +119,7 @@ Button {
   height: 5vh;
 }
 
+
 /* Footer css */
 
 #footer {
@@ -153,6 +154,9 @@ Button {
 .footercol2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+.footercol2 p{
+  padding-bottom: 20px;
 }
 
 .updateFormTitle {

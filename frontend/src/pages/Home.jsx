@@ -58,6 +58,7 @@ export default function HomePage() {
             do a lil blurb here that segways into take the quiz
           </Typography> */}
         </div>
+
         <div className="coverageWorthButton">
           <a target="_blank" href="https://areyoupressworthy.com/">
             <Button color="red">Take the quiz now</Button>

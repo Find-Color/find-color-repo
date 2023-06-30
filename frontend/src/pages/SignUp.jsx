@@ -2,9 +2,8 @@ import { useContext, useState } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { createUser } from "../adapters/user-adapter";
+import { Input, Button } from "@material-tailwind/react";
 
-// Controlling the signup form is a good idea because we want to adde (eventually)
-// more validation and provide real time feedback to the user about usernames and passwords
 export default function SignUpPage() {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -37,9 +36,12 @@ export default function SignUpPage() {
   };
 
   return (
-    <>
+    <div style={{ display: "flex", justifyContent: "center"}}>
+    <div style={{ display: "flex", flexDirection: 'column', alignItems: "center", width: "400px", padding: "20px", border: "1px solid white"}}>
+       
       <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit} onChange={handleChange}>
+      <form onSubmit={handleSubmit} onChange={handleChange} style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+        <div>
         <label htmlFor="username">Username</label>
         <input
           autoComplete="off"
@@ -48,8 +50,10 @@ export default function SignUpPage() {
           name="username"
           onChange={handleChange}
           value={username}
+          style={{ color: "black" }}
         />
-
+        </div>
+        <div>
         <label htmlFor="password">Password</label>
         <input
           autoComplete="off"
@@ -59,6 +63,7 @@ export default function SignUpPage() {
           onChange={handleChange}
           value={password}
         />
+        </div>
 
         {/* In reality, we'd want a LOT more validation on signup, so add more things if you have time
         <label htmlFor="password-confirm">Password Confirm</label>
@@ -71,6 +76,7 @@ export default function SignUpPage() {
       <p>
         Already have an account with us? <Link to="/login">Log in!</Link>
       </p>
-    </>
+      </div>
+    </div>
   );
 }
