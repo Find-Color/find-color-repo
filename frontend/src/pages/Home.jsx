@@ -25,7 +25,7 @@ export default function HomePage() {
         </div>
         <img
           className="find-person  animate__animated animate__fadeIn"
-          src="https://res.cloudinary.com/dn7lhv9d9/image/upload/v1688136223/inhsldvxdt5vdnt5nnhn.png"
+          src="./src/images/find-person.png"
           alt="Finding Color"
         />
         {/* <a href="https://storyset.com/job">Job illustrations by Storyset</a> */}
@@ -40,7 +40,7 @@ export default function HomePage() {
         </div>
         <div className="coverageWorthImage">
           <img
-            src="https://res.cloudinary.com/dn7lhv9d9/image/upload/v1688091900/xyndob8ngtcad2tnrqvo.png"
+            src="./src/images/coverage.png"
             alt="Breaking News"
             className="landing-page-3"
           />
