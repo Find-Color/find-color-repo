@@ -387,9 +387,10 @@ Button {
   color: #f3f4f6;
   /* margin-bottom: 0vh; */
   /* vertical-align: top; */
+  margin-top: 5%;
+  margin-left: 3%;
   padding-left: 4%;
   padding-bottom: 5vh;
-  /* text-align: center; */
 }
 
 Select {
@@ -488,6 +489,7 @@ form button {
 .find-person {
   width: 70vw;
   margin-right: 15%;
+  animation-duration: 2.5s;
 }
 
 .landing-page-blurb {
@@ -512,3 +514,32 @@ form button {
 .singleComment {
   display: flex;
 }
+
+#card-style:hover {
+  cursor: grab !important;
+}
+
+#card-style {
+  width: 30vw;
+}
+
+.cardPhoto {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.logo{
+  height: 6.25vh;
+}
+
+.logoAndText {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 14vw;
+}
+
+

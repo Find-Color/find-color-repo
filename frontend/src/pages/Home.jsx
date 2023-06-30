@@ -24,7 +24,7 @@ export default function HomePage() {
           </Link>
         </div>
         <img
-          className="find-person"
+          className="find-person  animate__animated animate__fadeIn"
           src="./src/images/find-person.png"
           alt="Finding Color"
         />
@@ -48,7 +48,7 @@ export default function HomePage() {
         />
       </section> */}
 
-      <section className="coverageWorth">
+      <section className="coverageWorth ">
         <div className="coverageWorthText">
           <Typography variant="h1">
             How much coverage are YOU worth?

@@ -39,7 +39,7 @@ export default function Feed() {
       <Typography variant="h2" className="flex items-center justify-center">
         Missing People
       </Typography>
-      <Accordion open={open === 2} className="mt-4 mb-2 ml-2">
+      <Accordion open={open === 2} className="mt-4 mb-2 ml-2 ">
         <AccordionHeader onClick={() => handleOpen(2)} id="filterText">
           <div className="flex content-center">
             <TuneIcon

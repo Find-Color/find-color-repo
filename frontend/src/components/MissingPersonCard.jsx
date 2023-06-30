@@ -111,9 +111,9 @@ export default function MissingPersonCard({
 
   return (
     <Card
-      className="mt-10 w-96 pt-10 pr-2 pl-2 ml-10 mr-10 hover:outline-double hover:outline-amber-500"
-      onClick={handleClick}
+      className="mt-10 w-96 pt-10 pr-2 pl-2 ml-5 mr-5 missingPersonCard animate__animated animate__fadeIn"
       id="card-style"
+      onClick={handleClick}
     >
       <div class="flex justify-between">
         <div className="cardHeaderText">
@@ -144,7 +144,10 @@ export default function MissingPersonCard({
       </div>
       <br />
       <CardHeader className="relative h-80">
-        <img className="h-full w-full" src={image_post} alt="missing" />
+        <div className="cardPhoto" style={{backgroundImage:`url(${image_post})`}}>
+
+        </div>
+        {/* <img className="h-full w-full" src={image_post} alt="missing" /> */}
       </CardHeader>
       <CardBody>
         <Typography variant="h4">Last Seen in {location_state}</Typography>

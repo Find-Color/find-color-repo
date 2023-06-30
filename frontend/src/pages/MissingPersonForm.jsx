@@ -93,7 +93,7 @@ const MissingPersonForm = () => {
   };
 
   return (
-    <section>
+    <section >
       <Typography variant="h2" className="flex items-center justify-center">
         Report Missing Person
       </Typography>

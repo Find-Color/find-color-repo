@@ -1,4 +1,5 @@
 import ReactDOM from "react-dom/client";
+import 'animate.css';
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import UserContextProvider from "./contexts/CurrentUserContextProvider.jsx";

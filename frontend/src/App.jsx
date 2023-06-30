@@ -15,6 +15,7 @@ import MissingPersonForm from "./pages/MissingPersonForm";
 import MissingPersonUpdateForm from "./pages/MissingPersonUpdateForm";
 import Feed from "./pages/Feed";
 import Footer from "./components/Footer";
+import NewFooter from "./components/NewFooter";
 import { Cloudinary } from "@cloudinary/url-gen";
  function App() {
   const cld = new Cloudinary({ cloud: { cloudName: "dn7lhv9d9" } });
@@ -45,7 +46,7 @@ import { Cloudinary } from "@cloudinary/url-gen";
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
-      <Footer />
+      <NewFooter />
     </>
     // </ThemeProvider>
   );
