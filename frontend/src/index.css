@@ -119,7 +119,6 @@ Button {
   height: 5vh;
 }
 
-
 /* Footer css */
 
 #footer {
@@ -155,7 +154,7 @@ Button {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.footercol2 p{
+.footercol2 p {
   padding-bottom: 20px;
 }
 
@@ -301,15 +300,14 @@ Button {
 }
 
 .coverageWorth {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row-reverse;
+  flex-direction: row;
   height: 100vh;
 }
 
-.coverageWorthText {
+.coverageWorthImage {
   color: white;
   display: flex;
   width: 40vw;
@@ -319,15 +317,17 @@ Button {
   text-align: center;
   align-content: center;
   position: relative;
-  z-index: 2;
+  /* z-index: 2; */
 }
 
 .coverageWorthButton {
   width: 40vw;
-  justify-content: center;
+  height: 30vh;
+  justify-content: space-evenly;
   display: flex;
-  position: relative;
-  z-index: 2;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .coverageWorthButton button {
@@ -349,9 +349,6 @@ Button {
   height: 100vh;
   width: 100vw;
   position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
 }
 
 #missingPersonInfoParent {
@@ -531,7 +528,7 @@ form button {
   background-size: cover;
 }
 
-.logo{
+.logo {
   height: 6.25vh;
 }
 
@@ -541,5 +538,3 @@ form button {
   align-items: center;
   width: 14vw;
 }
-
-
