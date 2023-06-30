@@ -1,10 +1,9 @@
-
 const createBookmark = async (req, res) => {
   const {
-    db: {Bookmark},
+    db: { Bookmark },
     body: { user_id, post_id },
   } = req;
-     console.log(req.body)
+  console.log(req.body);
   try {
     const bookmark = await Bookmark.createBookmark(user_id, post_id);
     if (bookmark) {
@@ -20,6 +19,6 @@ const createBookmark = async (req, res) => {
       .status(500)
       .send({ success: false, message: "Internal server error" });
   }
-}
+};
 
 module.exports = createBookmark;

@@ -1,7 +1,12 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { checkForLoggedInUser } from "../adapters/auth-adapter";
-// import { getAllBookmarksFromPost } from "../adapters/bookmark-adapter";
+import {
+  getAllBookmarksFromPost,
+  createBookmark,
+  deleteBookmark,
+  findBookmark,
+} from "../adapters/bookmark-adapter";
 import CommentModalDMMY from "./CommentModalDMMY";
 import TimeAgo from "react-timeago";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
@@ -56,23 +61,13 @@ export default function MissingPersonCard({
   const { id } = useParams();
 
   useEffect(() => {
-    checkForLoggedInUser().then(data => {
+    checkForLoggedInUser().then(async data => {
       setLoggedIn(data);
+      const checkBookmark = await findBookmark(currentUser.user_id, post_id);
+      setBookmark(!!checkBookmark);
     });
     getAllUpvotesFromPost(post_id).then(setUpVoteCount);
     setCounter(upVoteCount.length);
-    // getAllBookmarksFromPost(post_id).then(bookmarks => console.log(bookmarks));
-
-    //   bookmarks => {
-    //   if (bookmarks.includes(mark => mark.user_id == currentUser?.user_id)) {
-
-    //   }
-    // });
-    //get all bookmarks from post (post_id) .then(
-    //if bookmarks.inludes( mark => mark.user_id == currentUser?.user_id)
-    //setBookmark(true)
-    //
-    //)
   }, [upVoteCount.length]);
 
   const navigate = useNavigate();
@@ -95,12 +90,21 @@ export default function MissingPersonCard({
   }
 
   const handleBookmark = () => {
+    const user_id = currentUser.user_id;
+    // const post_id = post_id;
     //do the toggling here
     if (bookmark) {
       //remove the bookmark
+      deleteBookmark(user_id, post_id);
       setBookmark(false);
     } else {
       //add the bookmark
+      const body = {
+        user_id,
+        post_id,
+      };
+      console.log("body", body);
+      createBookmark(body);
       setBookmark(true);
     }
   };

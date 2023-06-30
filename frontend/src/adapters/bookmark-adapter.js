@@ -14,6 +14,11 @@ export const getAllBookmarksFromPost = async post_id => {
   return bookmarks || [];
 };
 
+export const findBookmark = async (user_id, post_id) => {
+  const { bookmarks } = await getAllBookmarksFromPost(post_id);
+  return bookmarks.length && bookmarks.some(mark => mark.user_id == user_id);
+};
+
 export const getAllBookmarksFromUser = async user_id => {
   const [bookmarks] = await fetchHandler(`/api/users/${user_id}/bookmarks`);
   return bookmarks || [];
